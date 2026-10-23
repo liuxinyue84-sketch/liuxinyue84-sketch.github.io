@@ -134,8 +134,9 @@ function searchNotes(question, limit) {
   const heading = ragChunks[i].heading;
   const topicMatch = Boolean(examplePattern && examplePattern.heading.test(heading));
   if (topicMatch) score += 3.2;
-  const coverage = questionTokens.filter(token => freq.has(token)).length / questionTokens.length;
-  if (score > 0) hits.push({ score, coverage, topicMatch, chunk: ragChunks[i] });
+  const matchedTerms = questionTokens.filter(token => freq.has(token)).length;
+  const coverage = matchedTerms / questionTokens.length;
+  if (score > 0) hits.push({ score, coverage, matchedTerms, topicMatch, chunk: ragChunks[i] });
  });
  return hits.sort((a, b) => b.score - a.score).slice(0, limit);
 }
@@ -159,7 +160,7 @@ function trimExcerpt(text, max) {
 function renderAnswer(question) {
  const hits = searchNotes(question, 6);
  const best = hits[0];
- if (!best || (!best.topicMatch && best.coverage < .25) || best.score < .45) {
+ if (!best || (!best.topicMatch && (best.coverage < .5 || best.matchedTerms < 2)) || best.score < .45) {
   addMessage('Hmm, I couldn’t find that in my notes. Try asking about prompt engineering, MapReduce, RAG or agent memory.', 'bot');
   return;
  }
