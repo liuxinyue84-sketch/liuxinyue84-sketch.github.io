@@ -284,10 +284,14 @@ function addGalleryItem(url, label, kind) {
  const item = document.createElement('button');
  item.className = 'media-item';
  item.type = 'button';
+ item.dataset.galleryIndex = String(gallery.children.length);
+ item.dataset.mediaKind = kind;
+ item.setAttribute('aria-haspopup', 'dialog');
  item.setAttribute('aria-label', `Preview ${kind === 'image' ? 'photo' : 'video'}: ${label}`);
  const el = document.createElement(kind === 'image' ? 'img' : 'video');
  el.src = url;
  el.loading = 'lazy';
+ if (kind === 'image') el.alt = label;
  if (kind === 'video') { el.preload = 'metadata'; el.muted = true; el.playsInline = true; }
  item.append(el);
  const caption = document.createElement('span');

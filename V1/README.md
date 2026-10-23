@@ -21,3 +21,7 @@ Double-click `index.html`, or run `python3 -m http.server 8000` in this director
 - `assets/`, `knowledge/`: copied static resources and the same course-note corpus as V0.
 
 The matching SHA-256 manifest and generation record are stored in the coursework archive. Public deployment URL: https://liuxinyue84-sketch.github.io/V1/. The Pages package is additive under `/V1/`; the frozen V0 root remains the homepage.
+
+### Life media scrapbook wall (V1 iteration 4)
+
+The Life section keeps its original seven photos, two videos, labels, and native media preview. V1 arranges those same items in a responsive asymmetric paper-edged wall and adds two original inline SVG marginalia marks. Use Tab to focus a tile, Enter/Space to open it, and Escape to close the preview. The drawings are decorative and hidden from screen readers.
