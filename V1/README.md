@@ -8,11 +8,11 @@ Double-click `index.html`, or run `python3 -m http.server 8000` in this director
 
 ## V1 changes
 
-- **Structural revision 2 and visual refinement 3:** Home adds a numbered journal chapter rail and image-thumbnail scene selector; Projects adds an anchored four-story index, semantic ordered story list, and asymmetric paper-atlas layout. The chapter rail and project index use restrained editorial separators, leaving the carousel and project stories as the focal points. Project purpose, personal contribution, details, filters, and saved state are visibly distinct and interactive. Full prompts, generated-source iterations, feedback, screenshots and E2E JSON are retained in `coursework/evaluation/` and `coursework/prompt_appendix/task3_v1/`.
-- Highlights are arranged on a soft pegboard surface with a hand-drawn education connector; the education and skill facts remain from V0. Existing personal photographs already bundled with V0 are used for the two study cards.
-- Project contribution labels are made easier to scan, while V0 project data, filtering, detail, and saved-state behavior remain.
-- Few-shot-derived lexical topic patterns improve course-note passage ranking for MapReduce, RAG, and agent-planning questions. The chat quotes a retrieved passage and names its source; it does not call an LLM or synthesize answers.
-- Navigation state exposes `aria-current`; layout and transitions adapt to smaller screens and reduced-motion preferences.
+- **Iteration 5 component rebuild:** Home is composed as an editorial journal cover with an illustration carousel and chapter rail; Highlights is an academic folio with an education journey, skill ledger, and knowledge workbench; Projects is a numbered index plus semantic story articles; Life pairs a letter with a varied media atlas; Guestbook uses an open-postcard/writing-desk shell. These shells and layouts differ substantially from V0's flat sections.
+- All personal/business copy, project fields, education facts, awards, course names, guestbook labels, media captions, and carousel scene descriptions are compared against V0. No V0 business copy has been rewritten. Evidence is in `coursework/evaluation/evidence/V1/V1-R6-content-contract.json`.
+- The V1 few-shot patterns abstract composition and interaction from reviewed references only. No reference text, identity, or media is included. The full prompt, pattern examples, source snapshots, change log, screenshots, and raw E2E JSON are retained under `coursework/prompt_appendix/task3_v1/` and `coursework/evaluation/`.
+- V1 preserves the course-note retrieval experience and adds a relevance/confidence gate before returning an excerpt; out-of-scope questions receive the existing no-evidence message. The chat quotes retrieved notes and cites the source; it does not call an LLM or synthesize answers.
+- Existing carousel thumbnails, project filters/details/favorites, media previews, guestbook behavior, keyboard access, visible focus, and reduced-motion support remain.
 
 ## Files
 

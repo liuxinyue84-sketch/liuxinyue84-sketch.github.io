@@ -24,16 +24,15 @@ function renderProjects() {
       <span class="row-number" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
      </header>
      <p class="project-purpose">${p.purpose}</p>
-     <div class="project-contribution"><span class="contribution-label">MY CONTRIBUTION</span><p class="contribution-copy">${p.contribution}</p></div>
-     <div class="project-tags"><span>TOOLS &amp; METHODS</span><p>${p.tags}</p></div>
+     <p class="project-contribution"><span class="contribution-copy">My contribution · ${p.contribution}</span></p>
      <div class="paper-actions">
-      <button class="row-toggle" aria-label="Expand details of ${p.title}" aria-expanded="false" aria-controls="project-detail-${i}"><span class="project-action-icon" aria-hidden="true">＋</span><span class="project-open-label">Open project notes</span></button>
-      <button class="save-project" aria-label="Save ${p.title}" aria-pressed="false"><span class="heart-icon" aria-hidden="true">♡</span><span>Keep</span></button>
+      <button class="row-toggle" aria-label="Expand details of ${p.title}" aria-expanded="false" aria-controls="project-detail-${i}"><span class="project-action-icon" aria-hidden="true">＋</span><span class="project-open-label">Open this note</span></button>
+      <button class="save-project" aria-label="Save ${p.title}" aria-pressed="false"><span class="heart-icon" aria-hidden="true">♡</span></button>
      </div>
      <div id="project-detail-${i}" class="project-detail" inert>
       <div><div class="detail-inner">
-       <span class="detail-kicker">PROCESS NOTES</span>
        <ul>${p.detail.map(x => `<li>${x}</li>`).join('')}</ul>
+       <p>${p.tags}</p>
        ${p.link ? `<a class="paper-source-link" href="${p.link}" target="_blank" rel="noopener noreferrer">Read the paper ↗</a>` : ''}
       </div></div>
      </div>
@@ -45,7 +44,7 @@ function renderProjects() {
    const open = article.classList.toggle('open');
    button.setAttribute('aria-expanded', String(open));
    button.setAttribute('aria-label', `${open ? 'Collapse' : 'Expand'} details of ${projects[article.dataset.index].title}`);
-   article.querySelector('.project-open-label').textContent = open ? 'Close project notes' : 'Open project notes';
+   article.querySelector('.project-open-label').textContent = open ? 'Fold this note' : 'Open this note';
    article.querySelector('.project-detail').inert = !open;
   }));
 
@@ -105,6 +104,10 @@ function renderProjects() {
   }));
  }, filterRevision === 1 ? 0 : delay);
 }
+
+/* 【V1迭代新增】The index is generated only from V0 project titles and labels. */
+const projectIndex = document.querySelector('.project-atlas-index');
+if (projectIndex) projectIndex.innerHTML = projects.map((project, index) => `<a href="#project-story-${index}" aria-label="${project.title}"><span>${String(index + 1).padStart(2, '0')}</span></a>`).join('');
 
 function updateHearts() {
  document.querySelector('#saved-count').textContent = saved.size;
@@ -265,7 +268,7 @@ topButton.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' 
 
 /* ================= school cards: expand / collapse ================= */
 document.querySelectorAll('.school-head').forEach(button => button.addEventListener('click', () => {
- const card = button.closest('.school-card');
+ const card = button.closest('.education-leaf');
  const open = card.classList.toggle('open');
  button.setAttribute('aria-expanded', String(open));
  card.querySelector('.school-detail').inert = !open;
@@ -511,4 +514,4 @@ const starsObserver = new IntersectionObserver(entries => {
   starsObserver.disconnect();
  }
 }, { threshold: .2 });
-starsObserver.observe(document.querySelector('.guestbook-sky'));
+starsObserver.observe(document.querySelector('.guestbook-postcard'));

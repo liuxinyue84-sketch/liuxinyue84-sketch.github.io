@@ -159,17 +159,20 @@ function trimExcerpt(text, max) {
 
 function renderAnswer(question) {
  const hits = searchNotes(question, 6);
+ if (!hits.length) {
+  addMessage('Hmm, I couldn’t find that in my notes. Try asking about prompt engineering, MapReduce, RAG or agent memory.', 'bot');
+  return;
+ }
  const best = hits[0];
+ // Keep the baseline's abstention behavior: lexical overlap alone must not
+ // turn unrelated questions into confident answers. Few-shot topic hints are
+ // still allowed when the query clearly names a supported note topic.
  if (!best || (!best.topicMatch && (best.coverage < .5 || best.matchedTerms < 2)) || best.score < .45) {
   addMessage('Hmm, I couldn’t find that in my notes. Try asking about prompt engineering, MapReduce, RAG or agent memory.', 'bot');
   return;
  }
  const reply = document.createElement('div');
  reply.className = 'rag-msg bot';
- const evidenceLabel = document.createElement('span');
- evidenceLabel.className = 'rag-evidence-label';
- evidenceLabel.textContent = 'CLOSEST NOTE EXCERPT';
- reply.appendChild(evidenceLabel);
  const excerpt = document.createElement('span');
  excerpt.textContent = trimExcerpt(best.chunk.text, 430);
  reply.appendChild(excerpt);
@@ -177,10 +180,6 @@ function renderAnswer(question) {
  source.className = 'rag-src';
  source.textContent = `— from ${best.chunk.course} · “${best.chunk.heading}”`;
  reply.appendChild(source);
- const confidence = document.createElement('span');
- confidence.className = 'rag-confidence';
- confidence.textContent = best.topicMatch ? 'Topic matched' : 'Keyword match';
- reply.appendChild(confidence);
  const alt = hits.slice(1).find(hit => hit.score >= best.score * .45 && hit.chunk.heading !== best.chunk.heading);
  if (alt) {
   const more = document.createElement('span');
