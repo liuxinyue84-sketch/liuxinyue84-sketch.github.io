@@ -7,7 +7,6 @@
 <meta name="description" content="Aria's sky journal: research, projects, campus highlights and a little music.">
 <title>Aria’s Sky Journal</title>
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="style.css">
 <!-- 【V1迭代新增】Few-shot 生成的 pegboard 版式与内容状态反馈 -->
 <link rel="stylesheet" href="v1.css">
 </head>
@@ -51,18 +50,24 @@
   <p class="hero-description">AI agents, research and system development —<br>plus a few melodies beyond the code.</p>
   <a class="text-link" href="#highlights">Start exploring <span>↓</span></a>
   <div class="hero-caption"><span>01</span><span>SCROLL TO EXPLORE</span><i></i></div>
+  <!-- 【V1迭代新增】A journal chapter rail makes the home page a route into the long-scroll story. -->
+  <nav class="chapter-rail" aria-label="Journal chapters">
+   <a href="#highlights"><span class="chapter-rail-number">01</span><span><strong>Academic roots</strong><small>Highlights</small></span><span class="chapter-rail-arrow" aria-hidden="true">↘</span></a>
+   <a href="#projects"><span class="chapter-rail-number">02</span><span><strong>Ideas in practice</strong><small>Projects</small></span><span class="chapter-rail-arrow" aria-hidden="true">↘</span></a>
+   <a href="#life"><span class="chapter-rail-number">03</span><span><strong>Beyond the lab</strong><small>Life</small></span><span class="chapter-rail-arrow" aria-hidden="true">↘</span></a>
+  </nav>
  </div>
- <div class="hero-art">
+ <figure class="hero-art" aria-label="A changing journal of campus scenes">
   <img id="hero-art-image" src="assets/hero-1.jpg" alt="Graduate in gown holding a bouquet on the campus track">
   <div class="photo-stamp">ARIA’S<br>JOURNAL <span>✧</span></div>
-  <div class="art-caption"><span id="art-caption-text" aria-live="polite">A bright start on the campus track</span><span id="art-counter">— 01 / 03</span></div>
+  <figcaption class="art-caption"><span id="art-caption-text" aria-live="polite">A bright start on the campus track</span><span id="art-counter">— 01 / 03</span></figcaption>
   <div class="art-controls" role="group" aria-label="Switch hero scenery">
    <button id="art-prev" class="art-step" aria-label="Previous scene">‹</button>
    <div id="art-dots"></div>
    <button id="art-next" class="art-step" aria-label="Next scene">›</button>
   </div>
   <a href="#highlights" class="circle-link" aria-label="Scroll down to explore">↓</a>
- </div>
+ </figure>
 </section>
 
 <!-- ======================= HIGHLIGHTS ======================= -->
@@ -191,13 +196,22 @@
   <span class="section-number">02 / PROJECTS</span>
  </div>
  <div class="projects-intro reveal"><p>From a review paper to usable, everyday systems.</p><span id="project-count" aria-live="polite">4 stories</span></div>
+ <!-- 【V1迭代新增】A visual story index links directly into the project atlas. -->
+ <nav class="project-atlas-index reveal" aria-label="Project story index">
+  <a href="#project-story-0"><span>01</span><strong>Review</strong><small>Research</small></a>
+  <a href="#project-story-1"><span>02</span><strong>Annotation</strong><small>Research</small></a>
+  <a href="#project-story-2"><span>03</span><strong>Policy Q&amp;A</strong><small>System</small></a>
+  <a href="#project-story-3"><span>04</span><strong>Music data</strong><small>System</small></a>
+ </nav>
  <div class="filters reveal" role="group" aria-label="Filter projects by type">
   <button class="filter active" data-filter="all" aria-pressed="true">All <span>04</span></button>
   <button class="filter" data-filter="research" aria-pressed="false">Research <span>02</span></button>
   <button class="filter" data-filter="build" aria-pressed="false">System Builds <span>02</span></button>
   <button id="saved-filter" class="filter saved-filter" aria-pressed="false">♡ Saved <span id="saved-count">0</span></button>
  </div>
- <div id="project-list" class="project-list"></div>
+ <!-- 【V1迭代新增】Projects are rendered as semantic atlas entries instead of V0's loose paper rows. -->
+ <ol id="project-list" class="project-list projects-atlas" aria-label="Project stories"></ol>
+ <p id="projects-empty" class="empty-state" hidden>No saved stories yet — tap ♡ on a project to keep it here.</p>
 </section>
 
 <!-- ======================= LIFE ======================= -->

@@ -16,31 +16,36 @@ const saved = new Set((() => {
 function renderProjects() {
  if (!list.children.length) {
   list.innerHTML = projects.map((p, i) => `
-   <article class="project-row paper-project paper-${i}" data-index="${i}" style="--paper-angle:${[-1.3, 1.5, .8, -1.6][i % 4]}deg">
-    <span class="project-tape" aria-hidden="true"></span>
-    <span class="row-number">${String(i + 1).padStart(2, '0')}</span>
-    <span class="row-type">${p.label}</span>
-    <div class="row-main"><h3>${p.title}</h3><p>${p.purpose}<br><span>My contribution · ${p.contribution}</span></p></div>
-    <div class="paper-actions">
-     <button class="row-toggle" aria-label="Expand details of ${p.title}" aria-expanded="false" aria-controls="project-detail-${i}">＋</button>
-     <span>Open this note</span>
-     <button class="save-project" aria-label="Save ${p.title}" aria-pressed="false">♡</button>
-    </div>
-    <div id="project-detail-${i}" class="project-detail" inert>
-     <div><div class="detail-inner">
-      <ul>${p.detail.map(x => `<li>${x}</li>`).join('')}</ul>
-      <p>${p.tags}</p>
-      ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener noreferrer">Read the paper ↗</a>` : ''}
-     </div></div>
-    </div>
-   </article>`).join('') + '<p class="empty-state" hidden>No saved stories yet — tap ♡ on a project to keep it here.</p>';
+   <li class="project-entry project-entry-${i}" data-index="${i}">
+    <article id="project-story-${i}" class="project-row project-card paper-project paper-${i}" data-index="${i}" style="--paper-angle:${[-1.3, 1.5, .8, -1.6][i % 4]}deg">
+     <span class="project-tape" aria-hidden="true"></span>
+     <header class="project-card-heading">
+      <div class="project-heading-copy"><span class="row-type">${p.label}</span><h3>${p.title}</h3></div>
+      <span class="row-number" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+     </header>
+     <p class="project-purpose">${p.purpose}</p>
+     <div class="project-contribution"><span class="contribution-label">MY CONTRIBUTION</span><p class="contribution-copy">${p.contribution}</p></div>
+     <div class="project-tags"><span>TOOLS &amp; METHODS</span><p>${p.tags}</p></div>
+     <div class="paper-actions">
+      <button class="row-toggle" aria-label="Expand details of ${p.title}" aria-expanded="false" aria-controls="project-detail-${i}"><span class="project-action-icon" aria-hidden="true">＋</span><span class="project-open-label">Open project notes</span></button>
+      <button class="save-project" aria-label="Save ${p.title}" aria-pressed="false"><span class="heart-icon" aria-hidden="true">♡</span><span>Keep</span></button>
+     </div>
+     <div id="project-detail-${i}" class="project-detail" inert>
+      <div><div class="detail-inner">
+       <span class="detail-kicker">PROCESS NOTES</span>
+       <ul>${p.detail.map(x => `<li>${x}</li>`).join('')}</ul>
+       ${p.link ? `<a class="paper-source-link" href="${p.link}" target="_blank" rel="noopener noreferrer">Read the paper ↗</a>` : ''}
+      </div></div>
+     </div>
+    </article>
+   </li>`).join('');
 
   list.querySelectorAll('.row-toggle').forEach(button => button.addEventListener('click', () => {
    const article = button.closest('.project-row');
    const open = article.classList.toggle('open');
    button.setAttribute('aria-expanded', String(open));
    button.setAttribute('aria-label', `${open ? 'Collapse' : 'Expand'} details of ${projects[article.dataset.index].title}`);
-   article.querySelector('.paper-actions>span').textContent = open ? 'Fold this note' : 'Open this note';
+   article.querySelector('.project-open-label').textContent = open ? 'Close project notes' : 'Open project notes';
    article.querySelector('.project-detail').inert = !open;
   }));
 
@@ -58,6 +63,7 @@ function renderProjects() {
  updateHearts();
  const revision = ++filterRevision;
  const cards = [...list.querySelectorAll('.project-row')];
+ const oldRects = new Map(cards.map(card => [card.closest('.project-entry'), card.closest('.project-entry').getBoundingClientRect()]));
  const matches = cards.filter(card => {
   const i = Number(card.dataset.index), p = projects[i];
   return onlySaved ? saved.has(i)
@@ -76,9 +82,24 @@ function renderProjects() {
    const visible = matches.includes(card);
    card.hidden = !visible;
    card.inert = !visible;
+   card.closest('.project-entry').hidden = !visible;
   });
-  list.querySelector('.empty-state').hidden = matches.length > 0;
-  if (window.layoutProjectPapers) window.layoutProjectPapers();
+  document.querySelector('#projects-empty').hidden = matches.length > 0;
+  if (filterRevision > 1) {
+   const moving = matches.map(card => card.closest('.project-entry'));
+   moving.forEach(entry => {
+    const before = oldRects.get(entry), after = entry.getBoundingClientRect();
+    if (!before || entry.hidden) return;
+    const dx = before.left - after.left, dy = before.top - after.top;
+    if (Math.abs(dx) + Math.abs(dy) < 2) return;
+    entry.style.transition = 'none';
+    entry.style.transform = `translate(${dx}px, ${dy}px)`;
+   });
+   requestAnimationFrame(() => requestAnimationFrame(() => moving.forEach(entry => {
+    entry.style.transition = '';
+    entry.style.transform = '';
+   })));
+  }
   requestAnimationFrame(() => requestAnimationFrame(() => {
    if (revision === filterRevision) matches.forEach(card => card.classList.remove('filter-leaving'));
   }));
@@ -93,7 +114,7 @@ function updateHearts() {
   button.classList.toggle('saved', active);
   button.setAttribute('aria-pressed', String(active));
   button.setAttribute('aria-label', `${active ? 'Unsave' : 'Save'} ${projects[i].title}`);
-  button.textContent = active ? '♥' : '♡';
+  button.querySelector('.heart-icon').textContent = active ? '♥' : '♡';
  });
 }
 
@@ -167,6 +188,7 @@ scenes.forEach((scene, i) => {
  dot.className = 'scene-dot';
  dot.setAttribute('aria-label', `View scene ${i + 1}: ${scene.caption}`);
  dot.setAttribute('aria-pressed', String(i === 0));
+ dot.innerHTML = `<img src="assets/${scene.src}" alt="" loading="lazy"><span>${scene.caption}</span>`;
  dot.addEventListener('click', () => showScene(i));
  dots.append(dot);
 });
@@ -421,37 +443,8 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
    Paper layout, card tilt, stickers, parallax, stars.
    ============================================================ */
 
-/* Project papers: place each card into the shorter column. */
 const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
-let paperLayoutFrame = 0;
-window.layoutProjectPapers = function () {
- cancelAnimationFrame(paperLayoutFrame);
- paperLayoutFrame = requestAnimationFrame(() => {
-  const width = list.clientWidth, columns = width > 620 ? 2 : 1;
-  const gap = columns === 2 ? 42 : 29;
-  const cardWidth = (width - gap * (columns - 1) - 12) / columns;
-  const heights = columns === 2 ? [8, 38] : [8];
-  [...list.querySelectorAll('.paper-project:not([hidden])')].forEach(card => {
-   const column = heights.indexOf(Math.min(...heights));
-   const index = Number(card.dataset.index);
-   const inset = columns === 2 && index % 3 === 1 ? 8 : 0;
-   card.style.width = `${cardWidth - inset}px`;
-   card.style.left = `${6 + column * (cardWidth + gap) + inset / 2}px`;
-   card.style.top = `${heights[column]}px`;
-   heights[column] += card.offsetHeight + gap;
-  });
-  list.style.height = `${Math.max(...heights, 100) + 12}px`;
- });
-};
-const paperObserver = new ResizeObserver(() => window.layoutProjectPapers());
-list.querySelectorAll('.paper-project').forEach(card => paperObserver.observe(card));
-let previousWidth = 0;
-new ResizeObserver(entries => {
- const width = entries[0].contentRect.width;
- if (Math.abs(width - previousWidth) > 1) { previousWidth = width; window.layoutProjectPapers(); }
-}).observe(list);
-window.layoutProjectPapers();
-
+/* 【V1迭代新增】The project atlas now uses semantic grid entries with FLIP-style reflow; it no longer absolutely positions V0 paper rows. */
 /* Cards tilt only for fine pointers, never more than ~1.5 degrees. */
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
 document.querySelectorAll('[data-tilt]').forEach(card => {

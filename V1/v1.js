@@ -1,16 +1,7 @@
 'use strict';
 /* 【V1迭代新增】Few-shot 生成的语义反馈与可访问状态同步。 */
 
-// Keep the same source facts while making each contribution easy to scan.
-document.querySelectorAll('.project-row .row-main p > span').forEach(node => {
- const sourceText = node.textContent.replace(/^My contribution\s*·\s*/i, '').trim();
- node.textContent = sourceText;
- node.classList.add('contribution-copy');
- const label = document.createElement('span');
- label.className = 'contribution-label';
- label.textContent = 'MY CONTRIBUTION';
- node.before(label);
-});
+// 【V1迭代新增】Contribution facts are rendered as their own named block in the project atlas DOM.
 
 // The navigation's visual active state also has a screen-reader equivalent.
 const v1NavLinks = [...document.querySelectorAll('[data-nav]')];
