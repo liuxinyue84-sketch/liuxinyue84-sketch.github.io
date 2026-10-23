@@ -107,7 +107,7 @@ function renderProjects() {
 
 /* 【V1迭代新增】The index is generated only from V0 project titles and labels. */
 const projectIndex = document.querySelector('.project-atlas-index');
-if (projectIndex) projectIndex.innerHTML = projects.map((project, index) => `<a href="#project-story-${index}" aria-label="${project.title}"><span>${String(index + 1).padStart(2, '0')}</span></a>`).join('');
+if (projectIndex) projectIndex.innerHTML = projects.map((project, index) => `<a href="#project-story-${index}" aria-label="${project.title}"><span>${String(index + 1).padStart(2, '0')}</span><strong>${project.title}</strong></a>`).join('');
 
 function updateHearts() {
  document.querySelector('#saved-count').textContent = saved.size;
@@ -271,7 +271,12 @@ document.querySelectorAll('.school-head').forEach(button => button.addEventListe
  const card = button.closest('.education-leaf');
  const open = card.classList.toggle('open');
  button.setAttribute('aria-expanded', String(open));
+ button.querySelector('.school-action-hint').textContent = open ? 'Click to hide details' : 'Click to view details';
  card.querySelector('.school-detail').inert = !open;
+}));
+document.querySelectorAll('.education-leaf').forEach(card => card.addEventListener('click', event => {
+ if (event.target.closest('.school-head, .school-detail, a, button')) return;
+ card.querySelector('.school-head').click();
 }));
 
 /* ================= life media gallery ================= */

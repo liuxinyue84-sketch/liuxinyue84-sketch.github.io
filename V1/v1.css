@@ -317,3 +317,29 @@
 @media(prefers-reduced-motion:reduce){
  .education-leaf,.chapter-rail-line{transition:none}
 }
+
+/* 【V1迭代新增】Usability fixes from screenshot review: name destinations, expose card actions, and separate artwork controls. */
+.chapter-rail a{grid-template-columns:30px minmax(0,1fr) 18px}
+.chapter-rail-label{font-size:12px;font-weight:500;letter-spacing:.25px;color:#557383}
+.journal-cover .hero-art{margin-bottom:78px}
+.journal-cover .art-controls{bottom:-72px}
+.education-leaf .school-head{cursor:pointer}
+.education-leaf{cursor:pointer}
+.education-leaf .school-action-hint{display:block;margin-top:8px;font-size:10px;line-height:1.4;letter-spacing:.35px;color:#68818b}
+.education-leaf.open .school-toggle{transform:rotate(45deg);background:#fff}
+.education-leaf.open .school-detail{grid-template-rows:1fr}
+.education-leaf .school-detail{grid-template-rows:0fr;transition:grid-template-rows .55s ease-out}
+.education-leaf.open .school-columns{grid-template-columns:minmax(0,1fr);gap:12px}
+.project-atlas-index a{grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto;align-items:center;min-height:70px}
+.project-atlas-index a strong{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;align-self:center;font-size:10px;line-height:1.45;font-weight:500;color:#557383}
+.projects-atlas.project-list{align-items:start}
+.projects-atlas .project-row.paper-project{align-self:start;height:auto!important;min-height:300px}
+.projects-atlas .project-entry-0 .project-row{min-height:320px}
+@media(max-width:680px){
+ .journal-cover .hero-art{margin-bottom:78px}
+ .journal-cover .art-controls{bottom:-62px}
+ .chapter-rail a{grid-template-columns:24px minmax(0,1fr) 14px}
+ .project-atlas-index a{min-height:68px}
+ .projects-atlas .project-row.paper-project{min-height:0}
+ .projects-atlas .project-entry-0 .project-row{min-height:0}
+}
