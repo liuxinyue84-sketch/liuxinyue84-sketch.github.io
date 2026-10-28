@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#d5eaf3">
+<meta name="description" content="Aria's sky journal: research, projects, campus highlights and a little music.">
+<title>Aria’s Sky Journal</title>
+<link rel="stylesheet" href="style.css">
+<!-- 【V1迭代新增】Few-shot 生成的 pegboard 版式与内容状态反馈 -->
+<link rel="stylesheet" href="v1.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="paper-grain" aria-hidden="true"></div>
+<div class="sky-cloud-layer" aria-hidden="true"></div>
+
+<!-- 【V1迭代新增·R8】App shell: a persistent profile rail beside a framed content window. -->
+<div class="app-frame">
+ <aside class="app-rail" aria-label="Profile and section navigation">
+  <a class="rail-wordmark" href="#home">Aria’s Sky Journal <span>✧</span></a>
+  <div class="rail-id">
+   <img class="rail-avatar" src="assets/hero-2.jpg" alt="Aria beside a lake with willows" width="88" height="88" loading="lazy">
+   <p class="rail-name">Aria</p>
+   <p class="rail-role">Information Management × Agentic AI</p>
+  </div>
+  <dl class="rail-meta">
+   <div><dt>Based</dt><dd>Hong Kong</dd></div>
+   <div><dt>Now</dt><dd>MSc · Agentic AI</dd></div>
+   <div><dt>Tools</dt><dd>Python · RAG</dd></div>
+   <div><dt>GPA</dt><dd>89.6 / 100</dd></div>
+  </dl>
+  <div class="nav-bar">
+   <nav class="pill-nav" aria-label="Page navigation">
+    <a href="#home" data-nav="home">Home</a>
+    <a href="#highlights" data-nav="highlights">Highlights</a>
+    <a href="#projects" data-nav="projects">Projects</a>
+    <a href="#life" data-nav="life">Life</a>
+    <a href="#guestbook" data-nav="guestbook">Guestbook</a>
+    <span class="nav-indicator" aria-hidden="true"></span>
+   </nav>
+  </div>
+  <p class="rail-note">with a little curiosity, Aria</p>
+  <div class="music-pill">
+   <button id="sound-toggle" type="button" aria-pressed="false" aria-label="Play Schumann’s Träumerei" title="Play Schumann’s Träumerei"><span aria-hidden="true">♫</span></button>
+   <span class="music-pill-text">Träumerei<small>Schumann · Dreaming</small></span>
+  </div>
+ </aside>
+
+ <div class="app-main">
+  <div class="app-window">
+   <div class="pane-bar">
+    <span class="pane-crumb"><span class="pane-dot" aria-hidden="true"></span><b id="pane-crumb-text">Home</b></span>
+    <span class="pane-count" id="pane-count">01 / 05</span>
+   </div>
+   <div class="reading-progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+<main id="main">
+
+<!-- ======================= HOME ======================= -->
+<section id="home" class="section hero-section" aria-labelledby="hero-title">
+ <div class="home-stickers" aria-hidden="true"><span class="float-sticker sticker-note">♬</span><span class="float-sticker sticker-star">✧</span><span class="float-sticker sticker-plane">➤</span></div>
+ <!-- 【V1迭代新增】Home is composed as a cover spread; all displayed copy remains from V0. -->
+ <div class="journal-cover">
+ <header class="hero-copy cover-letter">
+  <span class="eyebrow">A LITTLE SPACE BETWEEN IDEAS &amp; DREAMS</span>
+  <p class="handwritten">Welcome to my sky journal</p>
+  <h1 id="hero-title">Exploring intelligence,<br>recording growth.</h1>
+  <p class="hero-description">AI agents, research and system development —<br>plus a few melodies beyond the code.</p>
+  <a class="text-link" href="#highlights">Start exploring <span>↓</span></a>
+  <div class="hero-caption"><span>01</span><span>SCROLL TO EXPLORE</span><i></i></div>
+ </header>
+ <figure class="hero-art" aria-label="A bright start on the campus track">
+  <img id="hero-art-image" src="assets/hero-1.jpg" alt="Graduate in gown holding a bouquet on the campus track">
+  <div class="photo-stamp">ARIA’S<br>JOURNAL <span>✧</span></div>
+  <figcaption class="art-caption"><span id="art-caption-text" aria-live="polite">A bright start on the campus track</span><span id="art-counter">— 01 / 03</span></figcaption>
+  <div class="art-controls" role="group" aria-label="Switch hero scenery">
+   <button id="art-prev" class="art-step" aria-label="Previous scene">‹</button>
+   <div id="art-dots"></div>
+   <button id="art-next" class="art-step" aria-label="Next scene">›</button>
+  </div>
+  <a href="#highlights" class="circle-link" aria-label="Scroll down to explore">↓</a>
+ </figure>
+ </div>
+ <!-- 【V1迭代新增】A separate journal route keeps the carousel controls clear. -->
+<nav class="chapter-rail" aria-label="Journal chapters">
+ <a href="#highlights" aria-label="Highlights"><span class="chapter-rail-number">01</span><strong class="chapter-rail-label">Highlights</strong><span class="chapter-rail-arrow" aria-hidden="true">↘</span></a>
+ <a href="#projects" aria-label="Projects"><span class="chapter-rail-number">02</span><strong class="chapter-rail-label">Projects</strong><span class="chapter-rail-arrow" aria-hidden="true">↘</span></a>
+ <a href="#life" aria-label="Life"><span class="chapter-rail-number">03</span><strong class="chapter-rail-label">Life</strong><span class="chapter-rail-arrow" aria-hidden="true">↘</span></a>
+</nav>
+</section>
+
+<!-- ======================= HIGHLIGHTS ======================= -->
+<section id="highlights" class="section highlights-section" aria-labelledby="highlights-title">
+ <div class="section-heading reveal">
+  <div><span class="eyebrow">ACADEMIC ACHIEVEMENTS · SKILLS</span><h2 id="highlights-title">Academic <em>Highlights</em></h2></div>
+  <span class="section-number">01 / HIGHLIGHTS</span>
+ </div>
+
+ <div class="academic-spread" role="group" aria-label="Academic highlights">
+ <svg class="study-thread" viewBox="0 0 900 420" aria-hidden="true"><path d="M240 112 C390 28 385 350 570 290"/><path d="M558 279l23 10-16 17"/></svg>
+ <ol class="education-journey" aria-label="Education">
+  <li class="education-stop education-stop-undergraduate reveal"><article class="education-leaf" data-tilt>
+   <span class="paper-tape" aria-hidden="true"></span>
+   <figure class="school-photo-frame"><img class="school-photo" src="assets/hero-1.jpg" alt="Graduate in gown holding a bouquet on the campus track" loading="lazy"></figure>
+   <h3 class="school-title"><button class="school-head" type="button" aria-expanded="false" aria-controls="school-undergraduate">
+    <span class="school-year">2022 — 2026 · WUHAN</span>
+    <span class="school-name">South-Central Minzu University</span>
+    <span class="school-sub">BBA in Information Management and Information Systems · GPA <strong>89.6 / 100</strong></span>
+    <span class="school-action-hint">Click to view details</span>
+    <span class="school-toggle" aria-hidden="true">＋</span>
+   </button></h3>
+   <div class="school-detail" id="school-undergraduate" inert>
+    <div><div class="school-detail-inner">
+     <div class="school-columns">
+      <div class="school-block">
+       <span class="eyebrow">AWARDS</span>
+       <ul class="award-list">
+        <li><strong>First-Class University Scholarship</strong><span>2023</span></li>
+        <li><strong>Third-Class University Scholarship</strong><span>2024 &amp; 2025</span></li>
+        <li><strong>University Merit Student</strong><span>2023</span></li>
+        <li><strong>Provincial 2nd Prize</strong><span>Chinese Collegiate Computing Competition</span></li>
+       </ul>
+      </div>
+      <div class="school-block">
+       <span class="eyebrow">OUTSTANDING ACADEMIC RECORDS</span>
+       <ul class="record-list">
+        <li><span>IS Development &amp; Practice</span><b>98</b></li>
+        <li><span>Management Decision Analysis</span><b>97</b></li>
+        <li><span>Web Development &amp; Design</span><b>95</b></li>
+        <li><span>C Programming</span><b>95</b></li>
+       </ul>
+      </div>
+     </div>
+    </div></div>
+   </div>
+  </article></li>
+
+  <li class="education-stop education-stop-postgraduate reveal"><article class="education-leaf sky-school" data-tilt>
+   <span class="paper-tape" aria-hidden="true"></span>
+   <figure class="school-photo-frame"><img class="school-photo" src="assets/hero-3.jpg" alt="Woman in a floral dress at the PolyU entrance sign" loading="lazy"></figure>
+   <h3 class="school-title"><button class="school-head" type="button" aria-expanded="false" aria-controls="school-postgraduate">
+    <span class="school-year">2026 — NOW · HONG KONG</span>
+    <span class="school-name">The Hong Kong Polytechnic University</span>
+    <span class="school-sub">MSc in Agentic AI Systems · Research focus <strong>NLP · LLMs · Agent Systems</strong></span>
+    <span class="school-action-hint">Click to view details</span>
+    <span class="school-toggle" aria-hidden="true">＋</span>
+   </button></h3>
+   <div class="school-detail" id="school-postgraduate" inert>
+    <div><div class="school-detail-inner">
+     <div class="school-block">
+      <span class="eyebrow">CORE COURSES</span>
+      <ul class="course-list">
+       <li>LLM for Agent</li>
+       <li>Big Data Computing</li>
+       <li>Agentic Computing, Systems and Application</li>
+       <li>Natural Language Processing</li>
+       <li>Introduction to AI</li>
+      </ul>
+     </div>
+    </div></div>
+   </div>
+  </article></li>
+ </ol>
+
+ <aside class="skill-ledger reveal" data-tilt>
+  <span class="paper-pin" aria-hidden="true"></span>
+  <span class="eyebrow">THINGS I WORK WITH</span>
+  <h3>Turning curiosity into capability</h3>
+  <p class="skill-footnote">Information Management × Agentic AI</p>
+  <ul class="skill-notes">
+   <li><span class="skill-beads" aria-hidden="true">● ○ ○ ○</span><strong>Python · Text Processing</strong><small>Parsing pipelines, regex cleaning, data wrangling</small></li>
+   <li><span class="skill-beads" aria-hidden="true">○ ● ○ ○</span><strong>RAG · Knowledge Retrieval</strong><small>BM25, SQLite FTS5, vector search</small></li>
+   <li><span class="skill-beads" aria-hidden="true">○ ○ ● ○</span><strong>AI Agents · Research</strong><small>Annotation review, LLM-agent frameworks</small></li>
+   <li><span class="skill-beads" aria-hidden="true">○ ○ ○ ●</span><strong>Full-Stack · Visualization</strong><small>Vue 3, Spring Boot, ECharts</small></li>
+  </ul>
+  <div class="skill-strip"><span class="eyebrow">TOOLS · CLICK TO SEE RELATED PROJECTS</span>
+   <div>
+    <button class="skill-chip" data-skill="Python">Python</button>
+    <button class="skill-chip" data-skill="RAG">RAG</button>
+    <button class="skill-chip" data-skill="SQLite">SQLite</button>
+    <button class="skill-chip" data-skill="ClickHouse">ClickHouse</button>
+    <button class="skill-chip" data-skill="Vue 3">Vue 3</button>
+    <button class="skill-chip" data-skill="Spring Boot">Spring Boot</button>
+    <button class="skill-chip" data-skill="ECharts">ECharts</button>
+   </div>
+  </div>
+ </aside>
+ </div><!-- /academic-spread -->
+
+ <section class="knowledge-workbench reveal" aria-label="RAG · EXTERNAL KNOWLEDGE BASE">
+  <header class="knowledge-intro">
+   <span class="eyebrow">RAG · EXTERNAL KNOWLEDGE BASE</span>
+   <h3>Chat with my course notes</h3>
+   <p>My lecture notes from Introduction to AI, Big Data Computing, Agentic Computing and LLM for Agent live in <a href="knowledge/">knowledge/</a> as plain Markdown — this little RAG chat retrieves answers straight from them.</p>
+  </header>
+  <div class="rag-chat">
+   <div class="rag-log" id="rag-log" role="log" aria-live="polite">
+    <p class="rag-welcome">Hi! Ask me about anything in my course notes — I’ll find the relevant passage and quote it for you.</p>
+   </div>
+   <div class="rag-suggest" aria-label="Suggested questions">
+    <button type="button">What is retrieval-augmented generation?</button>
+    <button type="button">How does MapReduce work?</button>
+    <button type="button">What is prompt engineering?</button>
+    <button type="button">How do LLM agents plan?</button>
+   </div>
+   <form class="rag-input" id="rag-form">
+    <input id="rag-question" type="text" maxlength="200" placeholder="Ask about my course notes…" autocomplete="off" aria-label="Ask about the course notes" required>
+    <button class="primary" type="submit">Ask <span aria-hidden="true">✧</span></button>
+   </form>
+  </div>
+ </section>
+</section>
+
+<!-- ======================= PROJECTS ======================= -->
+<section id="projects" class="section projects-section" aria-labelledby="projects-title">
+ <div class="section-heading reveal">
+  <div><span class="eyebrow">SMALL STEPS, IDEAS TAKING SHAPE</span><h2 id="projects-title">From ideas to <em>working systems</em>.</h2></div>
+  <span class="section-number">02 / PROJECTS</span>
+ </div>
+ <div class="projects-intro reveal"><p>From a review paper to usable, everyday systems.</p><span id="project-count" aria-live="polite">4 stories</span></div>
+ <!-- 【V1迭代新增】A visual story index links directly into the project atlas. -->
+ <nav class="project-atlas-index reveal" aria-label="Project stories">
+  <a href="#project-story-0" aria-label="AI Agents for Data Annotation: A Review"><span>01</span></a>
+  <a href="#project-story-1" aria-label="LLM-Agent Framework for Financial Data Annotation"><span>02</span></a>
+  <a href="#project-story-2" aria-label="Intelligent Policy Q&amp;A System"><span>03</span></a>
+  <a href="#project-story-3" aria-label="Music Information Platform"><span>04</span></a>
+ </nav>
+ <div class="filters reveal" role="group" aria-label="Filter projects by type">
+  <button class="filter active" data-filter="all" aria-pressed="true">All <span>04</span></button>
+  <button class="filter" data-filter="research" aria-pressed="false">Research <span>02</span></button>
+  <button class="filter" data-filter="build" aria-pressed="false">System Builds <span>02</span></button>
+  <button id="saved-filter" class="filter saved-filter" aria-pressed="false">♡ Saved <span id="saved-count">0</span></button>
+ </div>
+ <!-- 【V1迭代新增】Projects are rendered as semantic atlas entries instead of V0's loose paper rows. -->
+ <ol id="project-list" class="project-list projects-atlas" aria-label="Project stories"></ol>
+ <p id="projects-empty" class="empty-state" hidden>No saved stories yet — tap ♡ on a project to keep it here.</p>
+</section>
+
+<!-- ======================= LIFE ======================= -->
+<section id="life" class="section life-section" aria-labelledby="life-title">
+ <div class="section-heading reveal">
+  <div><span class="eyebrow">OFF-SCREEN, OFF-CLOCK</span><h2 id="life-title">Beyond the <em>Lab</em></h2></div>
+  <!-- 【V1迭代新增】原创手绘植物边注，为 Life 增添轻量旅行手账感。 -->
+  <svg class="margin-doodle life-sprig" viewBox="0 0 92 64" aria-hidden="true" focusable="false">
+   <path d="M9 53C28 45 40 34 59 11M29 42C24 31 17 29 13 31c1 7 7 11 16 11Zm12-10c-1-11 4-17 10-19 3 7-1 14-10 19Zm10-10c8 1 14 6 15 12-7 2-13-2-15-12Zm-29 26C17 43 10 43 6 47c4 5 9 6 16 1Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+   <path d="M63 8c5-3 10-2 13 1m-67 50 4-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.3"/>
+  </svg>
+  <span class="section-number">03 / LIFE</span>
+ </div>
+ <div class="life-spread">
+  <aside class="life-copy life-letter reveal">
+   <p>I am currently studying Artificial Intelligence at The Hong Kong Polytechnic University. I’m originally from Wuhan, Hubei. My research interests lie in natural language processing, large language models, and agent systems.</p>
+   <p>I like to combine theoretical knowledge with hands-on coding practice to test ideas and solve practical problems. In my leisure time, reading and music are my favorite ways to recharge. I believe AI becomes more meaningful when it is built thoughtfully. I’m glad to connect with fellow students, researchers, and anyone interested in this field. You are welcome to sign the guestbook if you’d like to say hi.</p>
+   <div class="hobby-badges"><span>♬ Music</span><span>✈ Travel</span><span>❁ Food</span></div>
+  </aside>
+  <figure class="life-media life-atlas reveal">
+   <p class="local-note">Snapshots and short films of music, travel and food — click any of them to view.</p>
+   <div id="media-gallery" class="media-gallery media-wall" aria-live="polite" aria-label="Snapshots and short films of music, travel and food"></div>
+   <p id="gallery-empty" class="empty-state gallery-empty" hidden>No moments yet — add your favorite snapshots of music, travel and food.</p>
+  </figure>
+ </div>
+</section>
+
+<!-- ======================= GUESTBOOK ======================= -->
+<section id="guestbook" class="section guestbook-section" aria-labelledby="guestbook-title">
+ <div class="guestbook-postcard reveal">
+  <div class="guestbook-stars" aria-hidden="true"><span>✧</span><span>⋆</span><span>✧</span><span>⋆</span><span>✧</span></div>
+  <header class="guestbook-letterhead">
+   <span class="eyebrow">SAY HI · LEAVE A NOTE</span>
+   <h2 id="guestbook-title">Guestbook</h2>
+   <p class="guestbook-intro">Thanks for stopping by — leave a little note before you go.</p>
+  </header>
+  <div class="guestbook-writing-desk">
+  <form id="guestbook-form" class="guestbook-form">
+   <label class="field"><span>YOUR NAME</span><input id="guest-name" name="name" type="text" maxlength="40" placeholder="e.g. a fellow sky watcher" autocomplete="name" required></label>
+   <label class="field field-wide"><span>YOUR MESSAGE</span><textarea id="guest-message" name="message" rows="4" maxlength="500" placeholder="Say hi, share a thought, or recommend a piece of music…" required></textarea></label>
+   <button class="primary" type="submit">Sign the guestbook <span aria-hidden="true">✧</span></button>
+  </form>
+  </div>
+  <section class="guestbook-notes" aria-label="Guestbook notes">
+   <div id="guestbook-list" class="guestbook-list" aria-live="polite"></div>
+   <p id="guestbook-empty" class="empty-state">No notes yet — be the first to say hi.</p>
+  </section>
+  <span class="handwritten guestbook-sign">with a little curiosity, Aria</span>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <a class="wordmark" href="#home">Aria’s Sky Journal <span>✧</span></a>
+ <span>RESEARCH · PROJECTS · MUSIC</span>
+ <span>V1 · 2026</span>
+</footer>
+ </div><!-- /app-main -->
+</div><!-- /app-frame -->
+
+<button class="back-top" aria-label="Back to top">↑</button>
+
+<dialog id="media-dialog" class="media-dialog">
+ <button class="dialog-close" aria-label="Close preview">×</button>
+ <div id="media-content"></div>
+ <p id="media-caption"></p>
+</dialog>
+
+<audio id="soundtrack" src="assets/traumerei.mp3" preload="auto" loop hidden></audio>
+<p id="audio-status" class="sr-only" role="status" aria-live="polite"></p>
+
+<script src="projects.js"></script>
+<script src="knowledge-data.js"></script>
+<script src="app.js"></script>
+<script src="rag.js"></script>
+<!-- 【V1迭代新增】导航语义、拼贴布局与微交互 -->
+<script src="v1.js"></script>
+
+</body>
+</html>

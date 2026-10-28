@@ -1,0 +1,471 @@
+{
+  "version": "V2-RAG",
+  "method": "client-side BM25 paragraph retrieval + deterministic extractive answer assembly",
+  "knowledgeRecords": 9831,
+  "tests": [
+    {
+      "id": "Q01",
+      "category": "clear-topic",
+      "query": "What is retrieval-augmented generation and how does it use retrieved context?",
+      "queryTokens": [
+        "retrieval",
+        "augmented",
+        "generation",
+        "doe",
+        "use",
+        "retrieved",
+        "context",
+        "rag"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-4343",
+          "topic": "1\\.8 RAG Definition",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 25.1334,
+          "queryCoverage": 0.625
+        },
+        {
+          "id": "KB-4351",
+          "topic": "1\\.8 RAG Definition",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 24.748,
+          "queryCoverage": 0.625
+        },
+        {
+          "id": "KB-4489",
+          "topic": "2\\.2 Building the Augmented Prompt 构造增强提示",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 23.4681,
+          "queryCoverage": 0.75
+        },
+        {
+          "id": "KB-4407",
+          "topic": "1\\.11 RAG for Web Search",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 23.1195,
+          "queryCoverage": 0.75
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-4343",
+          "topic": "1\\.8 RAG Definition",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 1 Why RAG? / 1\\.8 RAG Definition",
+          "originalParagraph": "RAG combines a pretrained LLM with external knowledge retrieved at inference time to support generation\\.",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 25.1334
+        },
+        {
+          "id": "KB-4351",
+          "topic": "1\\.8 RAG Definition",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 1 Why RAG? / 1\\.8 RAG Definition",
+          "originalParagraph": "**Retrieved at inference time：推理时检索**",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 24.748
+        },
+        {
+          "id": "KB-4489",
+          "topic": "2\\.2 Building the Augmented Prompt 构造增强提示",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 2 RAG Architecture / 2\\.2 Building the Augmented Prompt 构造增强提示",
+          "originalParagraph": "Retrieved Context:\n[Document 1]\nNational Day holiday weekend.",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 23.4681
+        },
+        {
+          "id": "KB-4407",
+          "topic": "1\\.11 RAG for Web Search",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 1 Why RAG? / 1\\.11 RAG for Web Search",
+          "originalParagraph": "Web\\-based RAG allows an LLM to retrieve the latest information from the Web and use it as external context when generating an answer\\.",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 23.1195
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nWhat is retrieval-augmented generation and how does it use retrieved context?\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 1\\.8 RAG Definition\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\nRAG combines a pretrained LLM with external knowledge retrieved at inference time to support generation\\.\n\n[R2] Topic: 1\\.8 RAG Definition\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\n**Retrieved at inference time：推理时检索**\n\n[R3] Topic: 2\\.2 Building the Augmented Prompt 构造增强提示\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\nRetrieved Context:\n[Document 1]\nNational Day holiday weekend.\n\n[R4] Topic: 1\\.11 RAG for Web Search\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\nWeb\\-based RAG allows an LLM to retrieve the latest information from the Web and use it as external context when generating an answer\\.\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Closest source excerpt: “RAG combines a pretrained LLM with external knowledge retrieved at inference time to support generation.” \n[R1]"
+    },
+    {
+      "id": "Q02",
+      "category": "clear-topic",
+      "query": "How does MapReduce divide and combine work?",
+      "queryTokens": [
+        "doe",
+        "mapreduce",
+        "divide",
+        "combine",
+        "work",
+        "mapper",
+        "reducer"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-1925",
+          "topic": "6\\.3 MapReduce Pipeline",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 17.0853,
+          "queryCoverage": 0.4286
+        },
+        {
+          "id": "KB-1929",
+          "topic": "6\\.5 MapReduce steps",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 15.2384,
+          "queryCoverage": 0.4286
+        },
+        {
+          "id": "KB-1799",
+          "topic": "5\\.1\\.2 DIvide and Conquer",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 12.6907,
+          "queryCoverage": 0.2857
+        },
+        {
+          "id": "KB-1788",
+          "topic": "4\\.5\\.2 Divide and Conquer 分治法",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 12.1507,
+          "queryCoverage": 0.4286
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-1925",
+          "topic": "6\\.3 MapReduce Pipeline",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6\\.3 MapReduce Pipeline",
+          "originalParagraph": "5. **归约阶段 \\(Reducing\\)**：Reducer 将不同 Mapper 的结果合并，生成最终输出并存储在本地。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 17.0853
+        },
+        {
+          "id": "KB-1929",
+          "topic": "6\\.5 MapReduce steps",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6\\.5 MapReduce steps",
+          "originalParagraph": "|阶段|课件原文|要点|\n|---|---|---|\n|判断适用性|Determine if the problem is parallelizable and solvable using MapReduce|两个条件：可并行 \\+ 可用 MapReduce 解|\n|检查数据形态|Is the data Write Once Read Many \\(WORM\\)?|WORM 数据一次写入、多次读取，是并行的前提（无需锁）|\n|设计与实现|Design and implement Mapper class and Reducer class|两个函数|\n|配置、加载与运行|Configure the application \\(job\\) as to the number of mappers and reducers \\(tasks\\), input and output streams；Load the data；Launch the job and monitor|任务数可配置；数据加载；提交并监控<br>|",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 15.2384
+        },
+        {
+          "id": "KB-1799",
+          "topic": "5\\.1\\.2 DIvide and Conquer",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 5 MapReduce Workflow and Programming / 5\\.1 Basic Workflow of MapReduce / 5\\.1\\.2 DIvide and Conquer",
+          "originalParagraph": "MapReduce的最简形式：Split → Parser → Counter → 汇总",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 12.6907
+        },
+        {
+          "id": "KB-1788",
+          "topic": "4\\.5\\.2 Divide and Conquer 分治法",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 4 MapReduce Technical Ideas / 4\\.5 For Memory and Storage Issues / 4\\.5\\.2 Divide and Conquer 分治法",
+          "originalParagraph": "1. **split 与 merge 成对出现：**每条边上都有 **split / merge**（split 用粉色箭头向下，merge 用蓝色箭头向上），在后面的内容中把这一页的两条边正式命名为 **Partition**（对应 split）与 **Combine**（对应 merge）。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 12.1507
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nHow does MapReduce divide and combine work?\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 6\\.3 MapReduce Pipeline\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n5. **归约阶段 \\(Reducing\\)**：Reducer 将不同 Mapper 的结果合并，生成最终输出并存储在本地。\n\n[R2] Topic: 6\\.5 MapReduce steps\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n|阶段|课件原文|要点|\n|---|---|---|\n|判断适用性|Determine if the problem is parallelizable and solvable using MapReduce|两个条件：可并行 \\+ 可用 MapReduce 解|\n|检查数据形态|Is the data Write Once Read Many \\(WORM\\)?|WORM 数据一次写入、多次读取，是并行的前提（无需锁）|\n|设计与实现|Design and implement Mapper class and Reducer class|两个函数|\n|配置、加载与运行|Configure the application \\(job\\) as to the number of mappers and reducers \\(tasks\\), input and output streams；Load the data；Launch the job and monitor|任务数可配置；数据加载；提交并监控<br>|\n\n[R3] Topic: 5\\.1\\.2 DIvide and Conquer\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\nMapReduce的最简形式：Split → Parser → Counter → 汇总\n\n[R4] Topic: 4\\.5\\.2 Divide and Conquer 分治法\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n1. **split 与 merge 成对出现：**每条边上都有 **split / merge**（split 用粉色箭头向下，merge 用蓝色箭头向上），在后面的内容中把这一页的两条边正式命名为 **Partition**（对应 split）与 **Combine**（对应 merge）。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Closest source excerpt: “5. 归约阶段 (Reducing)：Reducer 将不同 Mapper 的结果合并，生成最终输出并存储在本地。” \n[R1]"
+    },
+    {
+      "id": "Q03",
+      "category": "clear-topic",
+      "query": "How do I evaluate tool use by an LLM agent?",
+      "queryTokens": [
+        "evaluate",
+        "tool",
+        "use",
+        "llm",
+        "agent"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-8817",
+          "topic": "7\\.2\\.1 Selection：选择工具",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 12.1503,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-8815",
+          "topic": "7\\.2 Evaluate the Whole Stack：四层评估体系",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 11.778,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-8829",
+          "topic": "7\\.2\\.2 Arguments：检查参数",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 11.2742,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-8833",
+          "topic": "7\\.2\\.3 Trajectory：调用顺序",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 11.1645,
+          "queryCoverage": 1
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-8817",
+          "topic": "7\\.2\\.1 Selection：选择工具",
+          "sectionPath": "Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7\\.2 Evaluate the Whole Stack：四层评估体系 / 7\\.2\\.1 Selection：选择工具",
+          "originalParagraph": "第一层检查 Tool Selection。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 12.1503
+        },
+        {
+          "id": "KB-8815",
+          "topic": "7\\.2 Evaluate the Whole Stack：四层评估体系",
+          "sectionPath": "Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7\\.2 Evaluate the Whole Stack：四层评估体系",
+          "originalParagraph": "一次工具调用究竟应该从哪些层面判断正确性？四个层次：",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 11.778
+        },
+        {
+          "id": "KB-8829",
+          "topic": "7\\.2\\.2 Arguments：检查参数",
+          "sectionPath": "Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7\\.2 Evaluate the Whole Stack：四层评估体系 / 7\\.2\\.2 Arguments：检查参数",
+          "originalParagraph": "- AST Match：比较工具调用的结构。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 11.2742
+        },
+        {
+          "id": "KB-8833",
+          "topic": "7\\.2\\.3 Trajectory：调用顺序",
+          "sectionPath": "Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7\\.2 Evaluate the Whole Stack：四层评估体系 / 7\\.2\\.3 Trajectory：调用顺序",
+          "originalParagraph": "例如：Correct Trajectory；Find Customer ID；Fetch Orders；Refund Selected Order",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 11.1645
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nHow do I evaluate tool use by an LLM agent?\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 7\\.2\\.1 Selection：选择工具\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n第一层检查 Tool Selection。\n\n[R2] Topic: 7\\.2 Evaluate the Whole Stack：四层评估体系\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n一次工具调用究竟应该从哪些层面判断正确性？四个层次：\n\n[R3] Topic: 7\\.2\\.2 Arguments：检查参数\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n- AST Match：比较工具调用的结构。\n\n[R4] Topic: 7\\.2\\.3 Trajectory：调用顺序\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n例如：Correct Trajectory；Find Customer ID；Fetch Orders；Refund Selected Order\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Closest source excerpt: “第一层检查 Tool Selection。” \n[R1]"
+    },
+    {
+      "id": "Q04",
+      "category": "broad-query",
+      "query": "What did we discuss about memory?",
+      "queryTokens": [
+        "discus",
+        "memory"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-2019",
+          "topic": "2\\.4\\.3 Metadata in Memory 元数据放内存",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 3.7969,
+          "queryCoverage": 0.5
+        },
+        {
+          "id": "KB-9370",
+          "topic": "6\\.4\\.1 情景记忆：Episodic Memory",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 3.7969,
+          "queryCoverage": 0.5
+        },
+        {
+          "id": "KB-9363",
+          "topic": "6\\.4\\.1 情景记忆：Episodic Memory",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 3.7582,
+          "queryCoverage": 0.5
+        },
+        {
+          "id": "KB-9368",
+          "topic": "6\\.4\\.1 情景记忆：Episodic Memory",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 3.7582,
+          "queryCoverage": 0.5
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-2019",
+          "topic": "2\\.4\\.3 Metadata in Memory 元数据放内存",
+          "sectionPath": "Lecture 5 HDFS and Spark / Part 2 HDFS Technical Details / 2\\.4 NameNode / 2\\.4\\.3 Metadata in Memory 元数据放内存",
+          "originalParagraph": "The entire metadata is in main memory\\. Memory read/write is faster than disk read/write",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 3.7969
+        },
+        {
+          "id": "KB-9370",
+          "topic": "6\\.4\\.1 情景记忆：Episodic Memory",
+          "sectionPath": "Lecture 7  Agent Memory and RAG / Part 6 Agent Memory 智能体记忆 / 6\\.4 智能体长期记忆的分类 / 6\\.4\\.1 情景记忆：Episodic Memory",
+          "originalParagraph": "读取：Heuristic Retrieval",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 3.7969
+        },
+        {
+          "id": "KB-9363",
+          "topic": "6\\.4\\.1 情景记忆：Episodic Memory",
+          "sectionPath": "Lecture 7  Agent Memory and RAG / Part 6 Agent Memory 智能体记忆 / 6\\.4 智能体长期记忆的分类 / 6\\.4\\.1 情景记忆：Episodic Memory",
+          "originalParagraph": "其基本形式为： $m_i=(t_i,e_i,c_i) $",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 3.7582
+        },
+        {
+          "id": "KB-9368",
+          "topic": "6\\.4\\.1 情景记忆：Episodic Memory",
+          "sectionPath": "Lecture 7  Agent Memory and RAG / Part 6 Agent Memory 智能体记忆 / 6\\.4 智能体长期记忆的分类 / 6\\.4\\.1 情景记忆：Episodic Memory",
+          "originalParagraph": "写入：Append\\-only Event Streams。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 3.7582
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nWhat did we discuss about memory?\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 2\\.4\\.3 Metadata in Memory 元数据放内存\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\nThe entire metadata is in main memory\\. Memory read/write is faster than disk read/write\n\n[R2] Topic: 6\\.4\\.1 情景记忆：Episodic Memory\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n读取：Heuristic Retrieval\n\n[R3] Topic: 6\\.4\\.1 情景记忆：Episodic Memory\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n其基本形式为： $m_i=(t_i,e_i,c_i) $\n\n[R4] Topic: 6\\.4\\.1 情景记忆：Episodic Memory\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n写入：Append\\-only Event Streams。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Closest source excerpt: “The entire metadata is in main memory. Memory read/write is faster than disk read/write” \n[R1]"
+    },
+    {
+      "id": "Q05",
+      "category": "vague-query",
+      "query": "Tell me about that thing from class.",
+      "queryTokens": [],
+      "candidatePassages": [],
+      "retrievedPassages": [],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nTell me about that thing from class.\n\nRETRIEVED REFERENCE MATERIALS:\n[No reliable passages retrieved.]\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Insufficient reference materials to answer this question."
+    },
+    {
+      "id": "Q06",
+      "category": "out-of-scope",
+      "query": "What is the best recipe for tiramisu?",
+      "queryTokens": [
+        "tiramisu"
+      ],
+      "candidatePassages": [],
+      "retrievedPassages": [],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nWhat is the best recipe for tiramisu?\n\nRETRIEVED REFERENCE MATERIALS:\n[No reliable passages retrieved.]\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Insufficient reference materials to answer this question."
+    }
+  ]
+}

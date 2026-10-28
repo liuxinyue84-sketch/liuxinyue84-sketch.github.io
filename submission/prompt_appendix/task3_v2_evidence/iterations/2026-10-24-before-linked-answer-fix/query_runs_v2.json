@@ -1,0 +1,1313 @@
+{
+  "version": "V2-RAG",
+  "method": "client-side BM25 retrieval + source-checked English summaries or explicit abstention",
+  "knowledgeRecords": 9831,
+  "tests": [
+    {
+      "id": "Q01",
+      "category": "clear-topic",
+      "query": "What is retrieval-augmented generation and how does it use retrieved context?",
+      "queryTokens": [
+        "retrieval",
+        "augmented",
+        "generation",
+        "use",
+        "retrieved",
+        "context",
+        "rag"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-4343–KB-4352",
+          "topic": "1\\.8 RAG Definition",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 143.2725,
+          "queryCoverage": 0.4286
+        },
+        {
+          "id": "KB-5599–KB-5608",
+          "topic": "3\\.2\\.2 Self\\-RAG 的核心机制: Reflection Tokens",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 45.3229,
+          "queryCoverage": 0.5714
+        },
+        {
+          "id": "KB-4306–KB-4315",
+          "topic": "1\\.5 RAG 的两个关键步骤",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 39.8596,
+          "queryCoverage": 0.4286
+        },
+        {
+          "id": "KB-4328–KB-4329",
+          "topic": "1\\.6 Key Idea in RAG",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 33.6679,
+          "queryCoverage": 0.1429
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-4343–KB-4352",
+          "topic": "1\\.8 RAG Definition",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 1 Why RAG? / 1\\.8 RAG Definition",
+          "originalParagraph": "RAG combines a pretrained LLM with external knowledge retrieved at inference time to support generation\\.\n\nRAG 将预训练语言模型与推理时检索到的外部知识结合起来，以支持答案生成。\n\nRAG 的关键特征是在推理阶段检索外部知识，并利用检索结果支持生成，而不是要求模型事先记住全部知识。\n\n**Pretrained LLM：预训练语言模型**\n\n表示系统已经拥有一个经过训练的模型。它可以具备：语言理解能力、通用知识、文本生成能力、一定的推理能力。RAG 通常不需要从头训练一个新的语言模型。\n\n**External knowledge：外部知识**\n\n课件明确列举: Local documents, knowledge base, web search, APIs \\.\\.\\. 即本地文档、知识库、网页搜索和 API 等。\n\n这些来源有一个共同点：信息不必全部编码在语言模型参数中。\n\n**Retrieved at inference time：推理时检索**\n\nInference time 指模型实际处理用户请求、生成回答的阶段。在典型 RAG 中，系统会根据当前问题，从外部来源寻找相关信息。这与训练阶段学习知识不同。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 143.2725
+        },
+        {
+          "id": "KB-5599–KB-5608",
+          "topic": "3\\.2\\.2 Self\\-RAG 的核心机制: Reflection Tokens",
+          "sectionPath": "Lecture 7 Retrieval Optimization and Agentic RAG Systems 检索优化与智能体 RAG / Part 3 Advanced RAG Architectures 进阶 RAG 架构 / 3\\.2 Self\\-RAG：Retrieval and Self\\-Critique 检索与自我批判 / 3\\.2\\.2 Self\\-RAG 的核心机制: Reflection Tokens",
+          "originalParagraph": "传统 RAG 通常使用固定的两阶段流程：\n\n$\\text{Input}\\rightarrow\\text{Retrieve}\\rightarrow\\text{Generate} $\n\nSelf\\-RAG（Self\\-Reflective Retrieval\\-Augmented Generation）引入可学习的反思 Token（Learned Reflection Tokens），使模型能够在检索和生成过程中进行自主判断。\n\n三个判断：\n\n|**Reflection Token**|**核心问题**|**判断阶段**|**作用**|\n|---|---|---|---|\n|Retrieve?|Is retrieval needed?|检索之前|判断是否需要外部知识|\n|Relevant?|Are documents relevant?|检索之后|判断检索证据是否相关|\n|Supported?|Is generation supported?|生成之后|判断生成内容是否受到证据支持|\n\n这三个判断分别对应：\n\n1. Retrieval Decision：是否检索。\n\n2. Evidence Relevance：证据是否相关。\n\n3. Generation Grounding：生成内容是否有依据。\n\n与固定检索流程相比，Self\\-RAG 的关键变化是将检索与证据评估纳入模型学习的决策过程。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 45.3229
+        },
+        {
+          "id": "KB-4306–KB-4315",
+          "topic": "1\\.5 RAG 的两个关键步骤",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 1 Why RAG? / 1\\.5 RAG 的两个关键步骤",
+          "originalParagraph": "Two Critical Steps in RAG\n\n1. Retrieval：Collecting useful information\\.\n\n检索：收集有用信息。\n\n2. Generation：Reasoning over that information and responding\\.\n\n生成：基于这些信息进行推理并作答。\n\n第一类问题：不需要专门收集外部信息，模型可直接依据已有知识回答。\n\n第二类问题：需要先调查特定事件，再综合证据生成回答。\n\nRetrieval 主要解决：应该把哪些信息交给模型？\n\nGeneration 主要解决：已经拿到这些信息，应该如何回答？\n\n这是 RAG 系统最重要的职责划分。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 39.8596
+        },
+        {
+          "id": "KB-4328–KB-4329",
+          "topic": "1\\.6 Key Idea in RAG",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 1 Why RAG? / 1\\.6 Key Idea in RAG",
+          "originalParagraph": "OR 表示知识库是可插拔的：回答酒店问题需要网页，回答中国菜谱需要菜谱库，回答课程问题需要课程文档。工程含义是RAG 系统的检索器要对着一个特定的知识库来配。换库就要重建索引。\n\nRAG 不是替代 LLM：LLM 已有大量知识，但在需要的时候可以通过检索获得额外帮助。因此，RAG 应被理解为增强机制，而不是完全替代模型原有能力。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 33.6679
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nWhat is retrieval-augmented generation and how does it use retrieved context?\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 1\\.8 RAG Definition\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\nRAG combines a pretrained LLM with external knowledge retrieved at inference time to support generation\\.\n\nRAG 将预训练语言模型与推理时检索到的外部知识结合起来，以支持答案生成。\n\nRAG 的关键特征是在推理阶段检索外部知识，并利用检索结果支持生成，而不是要求模型事先记住全部知识。\n\n**Pretrained LLM：预训练语言模型**\n\n表示系统已经拥有一个经过训练的模型。它可以具备：语言理解能力、通用知识、文本生成能力、一定的推理能力。RAG 通常不需要从头训练一个新的语言模型。\n\n**External knowledge：外部知识**\n\n课件明确列举: Local documents, knowledge base, web search, APIs \\.\\.\\. 即本地文档、知识库、网页搜索和 API 等。\n\n这些来源有一个共同点：信息不必全部编码在语言模型参数中。\n\n**Retrieved at inference time：推理时检索**\n\nInference time 指模型实际处理用户请求、生成回答的阶段。在典型 RAG 中，系统会根据当前问题，从外部来源寻找相关信息。这与训练阶段学习知识不同。\n\n[R2] Topic: 3\\.2\\.2 Self\\-RAG 的核心机制: Reflection Tokens\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\n传统 RAG 通常使用固定的两阶段流程：\n\n$\\text{Input}\\rightarrow\\text{Retrieve}\\rightarrow\\text{Generate} $\n\nSelf\\-RAG（Self\\-Reflective Retrieval\\-Augmented Generation）引入可学习的反思 Token（Learned Reflection Tokens），使模型能够在检索和生成过程中进行自主判断。\n\n三个判断：\n\n|**Reflection Token**|**核心问题**|**判断阶段**|**作用**|\n|---|---|---|---|\n|Retrieve?|Is retrieval needed?|检索之前|判断是否需要外部知识|\n|Relevant?|Are documents relevant?|检索之后|判断检索证据是否相关|\n|Supported?|Is generation supported?|生成之后|判断生成内容是否受到证据支持|\n\n这三个判断分别对应：\n\n1. Retrieval Decision：是否检索。\n\n2. Evidence Relevance：证据是否相关。\n\n3. Generation Grounding：生成内容是否有依据。\n\n与固定检索流程相比，Self\\-RAG 的关键变化是将检索与证据评估纳入模型学习的决策过程。\n\n[R3] Topic: 1\\.5 RAG 的两个关键步骤\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\nTwo Critical Steps in RAG\n\n1. Retrieval：Collecting useful information\\.\n\n检索：收集有用信息。\n\n2. Generation：Reasoning over that information and responding\\.\n\n生成：基于这些信息进行推理并作答。\n\n第一类问题：不需要专门收集外部信息，模型可直接依据已有知识回答。\n\n第二类问题：需要先调查特定事件，再综合证据生成回答。\n\nRetrieval 主要解决：应该把哪些信息交给模型？\n\nGeneration 主要解决：已经拿到这些信息，应该如何回答？\n\n这是 RAG 系统最重要的职责划分。\n\n[R4] Topic: 1\\.6 Key Idea in RAG\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\nOR 表示知识库是可插拔的：回答酒店问题需要网页，回答中国菜谱需要菜谱库，回答课程问题需要课程文档。工程含义是RAG 系统的检索器要对着一个特定的知识库来配。换库就要重建索引。\n\nRAG 不是替代 LLM：LLM 已有大量知识，但在需要的时候可以通过检索获得额外帮助。因此，RAG 应被理解为增强机制，而不是完全替代模型原有能力。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Retrieval-augmented generation (RAG) combines a pretrained language model with external knowledge. [R1]\nThe system retrieves relevant material when it handles a question, then uses that material as context for its answer. [R1]\nThe model does not need to store every fact in its parameters. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n1.8 RAG Definition\nSource: 5583-Agentic-Computing-2.md · Lecture 6: Retrieval-Augmented Generation RAG / Part 1 Why RAG? / 1.8 RAG Definition\nRAG combines a pretrained LLM with external knowledge retrieved at inference time to support generation.\nRAG 将预训练语言模型与推理时检索到的外部知识结合起来，以支持答案生成。\nRAG 的关键特征是在推理阶段检索外部知识，并利用检索结果支持生成，而不是要求模型事先记住全部知识。\nPretrained LLM：预训练语言模型\n表示系统已经拥有一个经过训练的模型。它可以具备：语言理解能力、通用知识、文本生成能力、一定的推理能力。RAG 通常不需要从头训练一个新的语言模型。\nExternal knowledge：外部知识\n课件明确列举: Local documents, knowledge base, web search, APIs ... 即本地文档、知识库、网页搜索和 API 等。\n这些来源有一个共同点：信息不必全部编码在语言模型参数中。\nRetrieved at inference time：推理时检索\nInference time 指模型实际处理用户请求、生成回答的阶段。在典型 RAG 中，系统会根据当前问题，从外部来源寻找相关信息。这与训练阶段学习知识不同。\n[R2]\n3.2.2 Self-RAG 的核心机制: Reflection Tokens\nSource: 5583-Agentic-Computing-2.md · Lecture 7 Retrieval Optimization and Agentic RAG Systems 检索优化与智能体 RAG / Part 3 Advanced RAG Architectures…\n传统 RAG 通常使用固定的两阶段流程：\nInput\nSelf-RAG（Self-Reflective Retrieval-Augmented Generation）引入可学习的反思 Token（Learned Reflection Tokens），使模型能够在检索和生成过程中进行自主判断。\n三个判断：\nReflection Token · 核心问题 · 判断阶段 · 作用\nRetrieve? · Is retrieval needed? · 检索之前 · 判断是否需要外部知识\nRelevant? · Are documents relevant? · 检索之后 · 判断检索证据是否相关\nSupported? · Is generation supported? · 生成之后 · 判断生成内容是否受到证据支持\n这三个判断分别对应：\n1. Retrieval Decision：是否检索。\n2. Evidence Relevance：证据是否相关。\n3. Generation Grounding：生成内容是否有依据。\n与固定检索流程相比，Self-RAG 的关键变化是将检索与证据评估纳入模型学习的决策过程。\n[R3]\n1.5 RAG 的两个关键步骤\nSource: 5583-Agentic-Computing-2.md · Lecture 6: Retrieval-Augmented Generation RAG / Part 1 Why RAG? / 1.5 RAG 的两个关键步骤\nTwo Critical Steps in RAG\n1. Retrieval：Collecting useful information.\n检索：收集有用信息。\n2. Generation：Reasoning over that information and responding.\n生成：基于这些信息进行推理并作答。\n第一类问题：不需要专门收集外部信息，模型可直接依据已有知识回答。\n第二类问题：需要先调查特定事件，再综合证据生成回答。\nRetrieval 主要解决：应该把哪些信息交给模型？\nGeneration 主要解决：已经拿到这些信息，应该如何回答？\n这是 RAG 系统最重要的职责划分。\n[R4]\n1.6 Key Idea in RAG\nSource: 5583-Agentic-Computing-2.md · Lecture 6: Retrieval-Augmented Generation RAG / Part 1 Why RAG? / 1.6 Key Idea in RAG\nOR 表示知识库是可插拔的：回答酒店问题需要网页，回答中国菜谱需要菜谱库，回答课程问题需要课程文档。工程含义是RAG 系统的检索器要对着一个特定的知识库来配。换库就要重建索引。\nRAG 不是替代 LLM：LLM 已有大量知识，但在需要的时候可以通过检索获得额外帮助。因此，RAG 应被理解为增强机制，而不是完全替代模型原有能力。"
+    },
+    {
+      "id": "Q02",
+      "category": "clear-topic",
+      "query": "How does MapReduce divide and combine work?",
+      "queryTokens": [
+        "mapreduce",
+        "divide",
+        "combine",
+        "mapper",
+        "reducer"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-1921–KB-1925",
+          "topic": "6\\.3 MapReduce Pipeline",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 30.0176,
+          "queryCoverage": 0.6
+        },
+        {
+          "id": "KB-1929",
+          "topic": "6\\.5 MapReduce steps",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 18.5332,
+          "queryCoverage": 0.6
+        },
+        {
+          "id": "KB-1794",
+          "topic": "part 5 MapReduce Workflow and Programming",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 15.0447,
+          "queryCoverage": 0.4
+        },
+        {
+          "id": "KB-1786–KB-1791",
+          "topic": "4\\.5\\.2 Divide and Conquer 分治法",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 8.9587,
+          "queryCoverage": 0.6
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-1921–KB-1925",
+          "topic": "6\\.3 MapReduce Pipeline",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6\\.3 MapReduce Pipeline",
+          "originalParagraph": "1. **限制通信**：旨在减少进程间的通信量。\n\n2. **独立处理**：每个记录由 Mapper 独立处理，互不干扰。\n\n3. **映射阶段 \\(Mapping\\)**：各节点对本地预加载的数据进行映射处理。\n\n4. **洗牌阶段 \\(Shuffle\\)**：节点间交换 Mapper 生成的中间数据。\n\n5. **归约阶段 \\(Reducing\\)**：Reducer 将不同 Mapper 的结果合并，生成最终输出并存储在本地。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 30.0176
+        },
+        {
+          "id": "KB-1929",
+          "topic": "6\\.5 MapReduce steps",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6\\.5 MapReduce steps",
+          "originalParagraph": "|阶段|课件原文|要点|\n|---|---|---|\n|判断适用性|Determine if the problem is parallelizable and solvable using MapReduce|两个条件：可并行 \\+ 可用 MapReduce 解|\n|检查数据形态|Is the data Write Once Read Many \\(WORM\\)?|WORM 数据一次写入、多次读取，是并行的前提（无需锁）|\n|设计与实现|Design and implement Mapper class and Reducer class|两个函数|\n|配置、加载与运行|Configure the application \\(job\\) as to the number of mappers and reducers \\(tasks\\), input and output streams；Load the data；Launch the job and monitor|任务数可配置；数据加载；提交并监控<br>|",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 18.5332
+        },
+        {
+          "id": "KB-1794",
+          "topic": "part 5 MapReduce Workflow and Programming",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 5 MapReduce Workflow and Programming",
+          "originalParagraph": "分治法（Partition/Combine）→ 六类难题 → 负载均衡 → 自动化与三条设计立场 → 五段工作流 → 四步解题范式",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 15.0447
+        },
+        {
+          "id": "KB-1786–KB-1791",
+          "topic": "4\\.5\\.2 Divide and Conquer 分治法",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 4 MapReduce Technical Ideas / 4\\.5 For Memory and Storage Issues / 4\\.5\\.2 Divide and Conquer 分治法",
+          "originalParagraph": "方法论层面的答案：**分治法**\n\n|标签|含义|MapReduce 术语|阶段|\n|---|---|---|---|\n|Partition|把一个巨大工作拆成三份子工作，分给三个 worker 各自计算，得到三个局部结果，最后合成 Result|输入切分（Split）\\+ 任务分配|Map 之前（由运行时完成）|\n|各 worker 独立计算||Map \\+ 本地聚合|Map 阶段|\n|（中间的通信）||Shuffle and Sort|Map 之后、Reduce 之前|\n|Combine|把分与合正式命名为两个阶段|Reduce|Reduce 合并阶段|\n\n1. **split 与 merge 成对出现：**每条边上都有 **split / merge**（split 用粉色箭头向下，merge 用蓝色箭头向上），在后面的内容中把这一页的两条边正式命名为 **Partition**（对应 split）与 **Combine**（对应 merge）。\n\n2. **递归结构：**从 1 个 Problem 到 2 个 Subproblem 再到 4 个 Compute Subproblem，是**逐层二分**。实际的 MapReduce 分多少层都可以。\n\n3. **compute 的位置：**计算发生在**叶层**（Compute Subproblem），中间层只负责**拆与合**。这对应 MapReduce 的两个阶段：Map 在叶层干活，Reduce 负责合并。\n\n**分治法与前面各节的关系**",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 8.9587
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nHow does MapReduce divide and combine work?\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 6\\.3 MapReduce Pipeline\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n1. **限制通信**：旨在减少进程间的通信量。\n\n2. **独立处理**：每个记录由 Mapper 独立处理，互不干扰。\n\n3. **映射阶段 \\(Mapping\\)**：各节点对本地预加载的数据进行映射处理。\n\n4. **洗牌阶段 \\(Shuffle\\)**：节点间交换 Mapper 生成的中间数据。\n\n5. **归约阶段 \\(Reducing\\)**：Reducer 将不同 Mapper 的结果合并，生成最终输出并存储在本地。\n\n[R2] Topic: 6\\.5 MapReduce steps\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n|阶段|课件原文|要点|\n|---|---|---|\n|判断适用性|Determine if the problem is parallelizable and solvable using MapReduce|两个条件：可并行 \\+ 可用 MapReduce 解|\n|检查数据形态|Is the data Write Once Read Many \\(WORM\\)?|WORM 数据一次写入、多次读取，是并行的前提（无需锁）|\n|设计与实现|Design and implement Mapper class and Reducer class|两个函数|\n|配置、加载与运行|Configure the application \\(job\\) as to the number of mappers and reducers \\(tasks\\), input and output streams；Load the data；Launch the job and monitor|任务数可配置；数据加载；提交并监控<br>|\n\n[R3] Topic: part 5 MapReduce Workflow and Programming\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n分治法（Partition/Combine）→ 六类难题 → 负载均衡 → 自动化与三条设计立场 → 五段工作流 → 四步解题范式\n\n[R4] Topic: 4\\.5\\.2 Divide and Conquer 分治法\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n方法论层面的答案：**分治法**\n\n|标签|含义|MapReduce 术语|阶段|\n|---|---|---|---|\n|Partition|把一个巨大工作拆成三份子工作，分给三个 worker 各自计算，得到三个局部结果，最后合成 Result|输入切分（Split）\\+ 任务分配|Map 之前（由运行时完成）|\n|各 worker 独立计算||Map \\+ 本地聚合|Map 阶段|\n|（中间的通信）||Shuffle and Sort|Map 之后、Reduce 之前|\n|Combine|把分与合正式命名为两个阶段|Reduce|Reduce 合并阶段|\n\n1. **split 与 merge 成对出现：**每条边上都有 **split / merge**（split 用粉色箭头向下，merge 用蓝色箭头向上），在后面的内容中把这一页的两条边正式命名为 **Partition**（对应 split）与 **Combine**（对应 merge）。\n\n2. **递归结构：**从 1 个 Problem 到 2 个 Subproblem 再到 4 个 Compute Subproblem，是**逐层二分**。实际的 MapReduce 分多少层都可以。\n\n3. **compute 的位置：**计算发生在**叶层**（Compute Subproblem），中间层只负责**拆与合**。这对应 MapReduce 的两个阶段：Map 在叶层干活，Reduce 负责合并。\n\n**分治法与前面各节的关系**\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "MapReduce processes data in stages across a cluster. [R1]\nMappers process input records independently and produce intermediate results. [R1]\nShuffle moves those results to reducers, which combine them into final output. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n6.3 MapReduce Pipeline\nSource: 5434-Big-Data-Computing-1.md · Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6.3 MapReduce Pipeline\n1. 限制通信：旨在减少进程间的通信量。\n2. 独立处理：每个记录由 Mapper 独立处理，互不干扰。\n3. 映射阶段 Mapping：各节点对本地预加载的数据进行映射处理。\n4. 洗牌阶段 Shuffle：节点间交换 Mapper 生成的中间数据。\n5. 归约阶段 Reducing：Reducer 将不同 Mapper 的结果合并，生成最终输出并存储在本地。\n[R2]\n6.5 MapReduce steps\nSource: 5434-Big-Data-Computing-1.md · Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6.5 MapReduce steps\n阶段 · 课件原文 · 要点\n判断适用性 · Determine if the problem is parallelizable and solvable using MapReduce · 两个条件：可并行 + 可用 MapReduce 解\n检查数据形态 · Is the data Write Once Read Many WORM? · WORM 数据一次写入、多次读取，是并行的前提（无需锁）\n设计与实现 · Design and implement Mapper class and Reducer class · 两个函数\n配置、加载与运行 · Configure the application job as to the number of mappers and reducers tasks, input and output streams；Load the data；Launch the job and monitor · 任务数可配置；数据加载；提交并监控\n[R3]\npart 5 MapReduce Workflow and Programming\nSource: 5434-Big-Data-Computing-1.md · Lecture 4: Hadoop and MapReduce / part 5 MapReduce Workflow and Programming\n分治法（Partition/Combine）→ 六类难题 → 负载均衡 → 自动化与三条设计立场 → 五段工作流 → 四步解题范式\n[R4]\n4.5.2 Divide and Conquer 分治法\nSource: 5434-Big-Data-Computing-1.md · Lecture 4: Hadoop and MapReduce / part 4 MapReduce Technical Ideas / 4.5 For Memory and Storage Issues /…\n方法论层面的答案：分治法\n标签 · 含义 · MapReduce 术语 · 阶段\nPartition · 把一个巨大工作拆成三份子工作，分给三个 worker 各自计算，得到三个局部结果，最后合成 Result · 输入切分（Split）+ 任务分配 · Map 之前（由运行时完成）\n各 worker 独立计算 · · Map + 本地聚合 · Map 阶段\n（中间的通信） · · Shuffle and Sort · Map 之后、Reduce 之前\nCombine · 把分与合正式命名为两个阶段 · Reduce · Reduce 合并阶段\n1. split 与 merge 成对出现：每条边上都有 split / merge（split 用粉色箭头向下，merge 用蓝色箭头向上），在后面的内容中把这一页的两条边正式命名为 Partition（对应 split）与 Combine（对应 merge）。\n2. 递归结构：从 1 个 Problem 到 2 个 Subproblem 再到 4 个 Compute Subproblem，是逐层二分。实际的 MapReduce 分多少层都可以。\n3. compute 的位置：计算发生在叶层（Compute Subproblem），中间层只负责拆与合。这对应 MapReduce 的两个阶段：Map 在叶层干活，Reduce 负责合并。\n分治法与前面各节的关系"
+    },
+    {
+      "id": "Q03",
+      "category": "clear-topic",
+      "query": "How do I evaluate tool use by an LLM agent?",
+      "queryTokens": [
+        "evaluate",
+        "tool",
+        "use",
+        "llm",
+        "agent"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-8760–KB-8767",
+          "topic": "Part 7 Evaluating Tool Use",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 54.6547,
+          "queryCoverage": 0.6
+        },
+        {
+          "id": "KB-8912–KB-8921",
+          "topic": "7\\.7 总结",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 23.2347,
+          "queryCoverage": 0.2
+        },
+        {
+          "id": "KB-8904–KB-8911",
+          "topic": "7\\.6 Tool Use Is a Layered System",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 16.3824,
+          "queryCoverage": 0.8
+        },
+        {
+          "id": "KB-8790–KB-8799",
+          "topic": "7\\.1\\.2 Multi\\-turn：多轮工具调用",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 13.5964,
+          "queryCoverage": 0.4
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-8760–KB-8767",
+          "topic": "Part 7 Evaluating Tool Use",
+          "sectionPath": "Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use",
+          "originalParagraph": "前一章解决的是如何让 Agent 高效、正确地组织多个工具调用？这一章进一步讨论我们如何判断一个 Agent 的工具使用能力到底好不好？评估不能只看最终答案是否正确，还要检查它有没有选对工具、传对参数、安排好调用顺序，以及在真实运行环境中是否足够快、稳定、安全。\n\n本章知识框架\n\n1. Benchmark：考什么？BFCL 的四类测试场景\n\n2. Evaluation Levels：在哪一层判断对错？Selection → Arguments → Trajectory → Task\n\n3. Operational Quality：真实运行表现如何？Efficiency · Reliability · Safety\n\n4. Failure Attribution：错误来自哪里？Model · Harness · Provider / Tool\n\n5. Production Evaluation：真实数据怎么看？Provider Tool\\-call Error Rates\n\n6. Layered System：整讲知识 Capabilities → Mechanics → Constraints → Interfaces → Systems",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 54.6547
+        },
+        {
+          "id": "KB-8912–KB-8921",
+          "topic": "7\\.7 总结",
+          "sectionPath": "Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7\\.7 总结",
+          "originalParagraph": "假设用户要求 Agent 查询航班信息。\n\nAgent 调用了航班查询工具，最后给出航班状态。\n\n我们可以依次检查：\n\n1. Selection：是否选择了航班工具，而不是天气工具？\n\n2. Arguments：航班号、日期等参数是否正确？\n\n3. Trajectory：是否按照必要的依赖顺序执行？\n\n4. Task：最终航班信息是否正确？\n\n5. Efficiency：是否用了过多时间、Token 或工具调用？\n\n6. Reliability：超时、限流或部分失败时能否妥善处理？\n\n7. Safety：是否遵守权限与安全约束？",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 23.2347
+        },
+        {
+          "id": "KB-8904–KB-8911",
+          "topic": "7\\.6 Tool Use Is a Layered System",
+          "sectionPath": "Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7\\.6 Tool Use Is a Layered System",
+          "originalParagraph": "Tool Use for LLM Agents 五层内容：\n\n1. Capabilities 说明工具为模型扩展了哪些能力。Retrieval · Execution · Generation · Application Actions\n\n2. Mechanics 说明工具定义如何进入模型上下文，模型如何产生调用，Harness 如何执行并返回结果。Schemas · Model Protocols · Harness · Call IDs\n\n3. Constraints 说明 JSON Schema 和 Grammar Masks 可以约束输出形式，但不能保证语义正确。JSON Schema · Grammar Masks\n\n4. Interfaces 说明 REST API 与 MCP 如何向 Agent 暴露外部能力。Direct REST Calls · MCP\n\n对应：Part 6：如何组织多个工具调用，优化执行效率。\n\n5. Systems 则负责把前面所有部分组织成完整的系统：管理依赖、并发执行、评估正确性、控制成本并处理运行故障。Dependencies · Concurrency · Evaluation · Failures\n\n对应：Part 7：如何评估这些工具调用及其最终结果。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 16.3824
+        },
+        {
+          "id": "KB-8790–KB-8799",
+          "topic": "7\\.1\\.2 Multi\\-turn：多轮工具调用",
+          "sectionPath": "Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7\\.1 BFCL：工具调用能力的四类测试 / 7\\.1\\.2 Multi\\-turn：多轮工具调用",
+          "originalParagraph": "Multi\\-turn 评估模型在多个交互步骤中能否持续正确使用工具。\n\n课件列出四个子任务。\n\n1. Base：基本多轮任务\n\n评估模型能否利用上一轮工具返回的信息继续执行。例如：\n\n```Plain Text\nUser: 帮我查一下客户订单\nAgent → find_customer()\nTool  → customer_id\nAgent → get_orders(customer_id)\nTool  → order_list\nAgent → Final Answer\n```\n\n2. Missing Function：缺少必要工具\n\n例如用户要求：“帮我给客户退款。”但系统只提供：\n\n```Plain Text\nTOOLS = {    \n\"get_customer\": ...,    \n\"get_orders\": ...\n}\n```\n\n没有退款工具。模型不应该编造一个不存在的 `refund_order()` 调用。\n\n3. Missing Parameter：缺少必要参数",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 13.5964
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nHow do I evaluate tool use by an LLM agent?\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: Part 7 Evaluating Tool Use\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n前一章解决的是如何让 Agent 高效、正确地组织多个工具调用？这一章进一步讨论我们如何判断一个 Agent 的工具使用能力到底好不好？评估不能只看最终答案是否正确，还要检查它有没有选对工具、传对参数、安排好调用顺序，以及在真实运行环境中是否足够快、稳定、安全。\n\n本章知识框架\n\n1. Benchmark：考什么？BFCL 的四类测试场景\n\n2. Evaluation Levels：在哪一层判断对错？Selection → Arguments → Trajectory → Task\n\n3. Operational Quality：真实运行表现如何？Efficiency · Reliability · Safety\n\n4. Failure Attribution：错误来自哪里？Model · Harness · Provider / Tool\n\n5. Production Evaluation：真实数据怎么看？Provider Tool\\-call Error Rates\n\n6. Layered System：整讲知识 Capabilities → Mechanics → Constraints → Interfaces → Systems\n\n[R2] Topic: 7\\.7 总结\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n假设用户要求 Agent 查询航班信息。\n\nAgent 调用了航班查询工具，最后给出航班状态。\n\n我们可以依次检查：\n\n1. Selection：是否选择了航班工具，而不是天气工具？\n\n2. Arguments：航班号、日期等参数是否正确？\n\n3. Trajectory：是否按照必要的依赖顺序执行？\n\n4. Task：最终航班信息是否正确？\n\n5. Efficiency：是否用了过多时间、Token 或工具调用？\n\n6. Reliability：超时、限流或部分失败时能否妥善处理？\n\n7. Safety：是否遵守权限与安全约束？\n\n[R3] Topic: 7\\.6 Tool Use Is a Layered System\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\nTool Use for LLM Agents 五层内容：\n\n1. Capabilities 说明工具为模型扩展了哪些能力。Retrieval · Execution · Generation · Application Actions\n\n2. Mechanics 说明工具定义如何进入模型上下文，模型如何产生调用，Harness 如何执行并返回结果。Schemas · Model Protocols · Harness · Call IDs\n\n3. Constraints 说明 JSON Schema 和 Grammar Masks 可以约束输出形式，但不能保证语义正确。JSON Schema · Grammar Masks\n\n4. Interfaces 说明 REST API 与 MCP 如何向 Agent 暴露外部能力。Direct REST Calls · MCP\n\n对应：Part 6：如何组织多个工具调用，优化执行效率。\n\n5. Systems 则负责把前面所有部分组织成完整的系统：管理依赖、并发执行、评估正确性、控制成本并处理运行故障。Dependencies · Concurrency · Evaluation · Failures\n\n对应：Part 7：如何评估这些工具调用及其最终结果。\n\n[R4] Topic: 7\\.1\\.2 Multi\\-turn：多轮工具调用\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\nMulti\\-turn 评估模型在多个交互步骤中能否持续正确使用工具。\n\n课件列出四个子任务。\n\n1. Base：基本多轮任务\n\n评估模型能否利用上一轮工具返回的信息继续执行。例如：\n\n```Plain Text\nUser: 帮我查一下客户订单\nAgent → find_customer()\nTool  → customer_id\nAgent → get_orders(customer_id)\nTool  → order_list\nAgent → Final Answer\n```\n\n2. Missing Function：缺少必要工具\n\n例如用户要求：“帮我给客户退款。”但系统只提供：\n\n```Plain Text\nTOOLS = {    \n\"get_customer\": ...,    \n\"get_orders\": ...\n}\n```\n\n没有退款工具。模型不应该编造一个不存在的 `refund_order()` 调用。\n\n3. Missing Parameter：缺少必要参数\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Evaluate an agent’s tool use at several levels, not only by its final answer. [R1]\nCheck whether it selected the right tool, supplied suitable arguments, and followed a sound call sequence. [R1]\nAlso assess efficiency, reliability, and safety during execution. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\nPart 7 Evaluating Tool Use\nSource: 5584-LLM-for-Agent-2.md · Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use\n前一章解决的是如何让 Agent 高效、正确地组织多个工具调用？这一章进一步讨论我们如何判断一个 Agent 的工具使用能力到底好不好？评估不能只看最终答案是否正确，还要检查它有没有选对工具、传对参数、安排好调用顺序，以及在真实运行环境中是否足够快、稳定、安全。\n本章知识框架\n1. Benchmark：考什么？BFCL 的四类测试场景\n2. Evaluation Levels：在哪一层判断对错？Selection → Arguments → Trajectory → Task\n3. Operational Quality：真实运行表现如何？Efficiency · Reliability · Safety\n4. Failure Attribution：错误来自哪里？Model · Harness · Provider / Tool\n5. Production Evaluation：真实数据怎么看？Provider Tool-call Error Rates\n6. Layered System：整讲知识 Capabilities → Mechanics → Constraints → Interfaces → Systems\n[R2]\n7.7 总结\nSource: 5584-LLM-for-Agent-2.md · Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7.7 总结\n假设用户要求 Agent 查询航班信息。\nAgent 调用了航班查询工具，最后给出航班状态。\n我们可以依次检查：\n1. Selection：是否选择了航班工具，而不是天气工具？\n2. Arguments：航班号、日期等参数是否正确？\n3. Trajectory：是否按照必要的依赖顺序执行？\n4. Task：最终航班信息是否正确？\n5. Efficiency：是否用了过多时间、Token 或工具调用？\n6. Reliability：超时、限流或部分失败时能否妥善处理？\n7. Safety：是否遵守权限与安全约束？\n[R3]\n7.6 Tool Use Is a Layered System\nSource: 5584-LLM-for-Agent-2.md · Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7.6 Tool Use Is a Layered System\nTool Use for LLM Agents 五层内容：\n1. Capabilities 说明工具为模型扩展了哪些能力。Retrieval · Execution · Generation · Application Actions\n2. Mechanics 说明工具定义如何进入模型上下文，模型如何产生调用，Harness 如何执行并返回结果。Schemas · Model Protocols · Harness · Call IDs\n3. Constraints 说明 JSON Schema 和 Grammar Masks 可以约束输出形式，但不能保证语义正确。JSON Schema · Grammar Masks\n4. Interfaces 说明 REST API 与 MCP 如何向 Agent 暴露外部能力。Direct REST Calls · MCP\n对应：Part 6：如何组织多个工具调用，优化执行效率。\n5. Systems 则负责把前面所有部分组织成完整的系统：管理依赖、并发执行、评估正确性、控制成本并处理运行故障。Dependencies · Concurrency · Evaluation · Failures\n对应：Part 7：如何评估这些工具调用及其最终结果。\n[R4]\n7.1.2 Multi-turn：多轮工具调用\nSource: 5584-LLM-for-Agent-2.md · Lecture 6 Tool Use for LLM Agents / Part 7 Evaluating Tool Use / 7.1 BFCL：工具调用能力的四类测试 / 7.1.2 Multi-turn：…\nMulti-turn 评估模型在多个交互步骤中能否持续正确使用工具。\n课件列出四个子任务。\n1. Base：基本多轮任务\n评估模型能否利用上一轮工具返回的信息继续执行。例如：\nPlain Text\nUser: 帮我查一下客户订单\nAgent → find_customer()\nTool → customer_id\nAgent → get_orders(customer_id)\nTool → order_list\nAgent → Final Answer\n2. Missing Function：缺少必要工具\n例如用户要求：“帮我给客户退款。”但系统只提供：\nPlain Text\nTOOLS =\n\"get_customer\": ...,\n\"get_orders\": ...\n没有退款工具。模型不应该编造一个不存在的 refund_order() 调用。\n3. Missing Parameter：缺少必要参数"
+    },
+    {
+      "id": "Q04",
+      "category": "broad-query",
+      "query": "What did we discuss about memory?",
+      "queryTokens": [
+        "memory"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-9359–KB-9361",
+          "topic": "6\\.4 智能体长期记忆的分类",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 4.4338,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-2019–KB-2022",
+          "topic": "2\\.4\\.3 Metadata in Memory 元数据放内存",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 4.7116,
+          "queryCoverage": 1
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-9359–KB-9361",
+          "topic": "6\\.4 智能体长期记忆的分类",
+          "sectionPath": "Lecture 7  Agent Memory and RAG / Part 6 Agent Memory 智能体记忆 / 6\\.4 智能体长期记忆的分类",
+          "originalParagraph": "课件借鉴人类长期记忆体系，将 Agent Memory 按内容分为三类：\n\n|**记忆类型**|**英文**|**存储内容**|**代表系统**|\n|---|---|---|---|\n|情景记忆|Episodic Memory|经历、事件、交互记录|Generative Agents|\n|语义记忆|Semantic Memory|事实、概念、归纳知识|Generative Agents|\n|程序性记忆|Procedural Memory|技能、操作方法、可执行程序|Voyager|\n\n这一分类基于记忆内容，而非底层实现方式。例如，三类记忆都可以使用文本数据库或向量数据库保存，但其语义和用途不同。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 4.4338
+        },
+        {
+          "id": "KB-2019–KB-2022",
+          "topic": "2\\.4\\.3 Metadata in Memory 元数据放内存",
+          "sectionPath": "Lecture 5 HDFS and Spark / Part 2 HDFS Technical Details / 2\\.4 NameNode / 2\\.4\\.3 Metadata in Memory 元数据放内存",
+          "originalParagraph": "The entire metadata is in main memory\\. Memory read/write is faster than disk read/write\n\n为什么放内存：内存读写比磁盘快。元数据每次操作都要查，放磁盘会成为瓶颈。\n\n代价：Data in memory will be lost if the machine shuts down 机器一关，内存里的元数据全丢。\n\n于是需要持久化：In addition to metadata in memory, we need a persistent copy of metadata 所以除了内存中的元数据，还需要一份持久化副本。所以 引入FsImage 与 EditLog。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 4.7116
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nWhat did we discuss about memory?\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 6\\.4 智能体长期记忆的分类\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n课件借鉴人类长期记忆体系，将 Agent Memory 按内容分为三类：\n\n|**记忆类型**|**英文**|**存储内容**|**代表系统**|\n|---|---|---|---|\n|情景记忆|Episodic Memory|经历、事件、交互记录|Generative Agents|\n|语义记忆|Semantic Memory|事实、概念、归纳知识|Generative Agents|\n|程序性记忆|Procedural Memory|技能、操作方法、可执行程序|Voyager|\n\n这一分类基于记忆内容，而非底层实现方式。例如，三类记忆都可以使用文本数据库或向量数据库保存，但其语义和用途不同。\n\n[R2] Topic: 2\\.4\\.3 Metadata in Memory 元数据放内存\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\nThe entire metadata is in main memory\\. Memory read/write is faster than disk read/write\n\n为什么放内存：内存读写比磁盘快。元数据每次操作都要查，放磁盘会成为瓶颈。\n\n代价：Data in memory will be lost if the machine shuts down 机器一关，内存里的元数据全丢。\n\n于是需要持久化：In addition to metadata in memory, we need a persistent copy of metadata 所以除了内存中的元数据，还需要一份持久化副本。所以 引入FsImage 与 EditLog。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Do you mean agent memory or computer memory? Please include the topic in your question.",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n6.4 智能体长期记忆的分类\nSource: 5584-LLM-for-Agent-2.md · Lecture 7 Agent Memory and RAG / Part 6 Agent Memory 智能体记忆 / 6.4 智能体长期记忆的分类\n课件借鉴人类长期记忆体系，将 Agent Memory 按内容分为三类：\n记忆类型 · 英文 · 存储内容 · 代表系统\n情景记忆 · Episodic Memory · 经历、事件、交互记录 · Generative Agents\n语义记忆 · Semantic Memory · 事实、概念、归纳知识 · Generative Agents\n程序性记忆 · Procedural Memory · 技能、操作方法、可执行程序 · Voyager\n这一分类基于记忆内容，而非底层实现方式。例如，三类记忆都可以使用文本数据库或向量数据库保存，但其语义和用途不同。\n[R2]\n2.4.3 Metadata in Memory 元数据放内存\nSource: 5434-Big-Data-Computing-1.md · Lecture 5 HDFS and Spark / Part 2 HDFS Technical Details / 2.4 NameNode / 2.4.3 Metadata in Memory 元数据放内存\nThe entire metadata is in main memory. Memory read/write is faster than disk read/write\n为什么放内存：内存读写比磁盘快。元数据每次操作都要查，放磁盘会成为瓶颈。\n代价：Data in memory will be lost if the machine shuts down 机器一关，内存里的元数据全丢。\n于是需要持久化：In addition to metadata in memory, we need a persistent copy of metadata 所以除了内存中的元数据，还需要一份持久化副本。所以 引入FsImage 与 EditLog。"
+    },
+    {
+      "id": "Q05",
+      "category": "vague-query",
+      "query": "Tell me about that thing from class.",
+      "queryTokens": [],
+      "candidatePassages": [],
+      "retrievedPassages": [],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nTell me about that thing from class.\n\nRETRIEVED REFERENCE MATERIALS:\n[No reliable passages retrieved.]\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Insufficient reference materials to answer this question.",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "No matching reference materials."
+    },
+    {
+      "id": "Q06",
+      "category": "out-of-scope",
+      "query": "What is the best recipe for tiramisu?",
+      "queryTokens": [
+        "tiramisu"
+      ],
+      "candidatePassages": [],
+      "retrievedPassages": [],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nWhat is the best recipe for tiramisu?\n\nRETRIEVED REFERENCE MATERIALS:\n[No reliable passages retrieved.]\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Insufficient reference materials to answer this question.",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "No matching reference materials."
+    },
+    {
+      "id": "Q07",
+      "category": "reported-failure-retest",
+      "query": "agent是什么",
+      "queryTokens": [
+        "agent",
+        "智能",
+        "能体"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-6581–KB-6589",
+          "topic": "1\\.1 智能体（Agent）的定义",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 19.8553,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-6322–KB-6324",
+          "topic": "7\\.5 单个智能体角色的定义",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 17.7771,
+          "queryCoverage": 0.6667
+        },
+        {
+          "id": "KB-8113–KB-8118",
+          "topic": "8\\.5 Judge Agent by Agent",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 11.9543,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-5868–KB-5871",
+          "topic": "1\\.1\\.1 四个层次",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 9.7614,
+          "queryCoverage": 1
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-6581–KB-6589",
+          "topic": "1\\.1 智能体（Agent）的定义",
+          "sectionPath": "Lecture 1 大语言模型与智能体导论 Course Overview / Part 1 智能体与大语言模型的基本概念 / 1\\.1 智能体（Agent）的定义",
+          "originalParagraph": "An “intelligent” system that interacts with some “environment”\\.\n\n能够与环境进行交互的智能系统。\n\n这一定义包含三个基本要素：\n\n- Agent：负责决策与行动的主体；\n\n- Environment：Agent 所处并与之交互的环境；\n\n- Interaction：通过观察与行动形成的交互过程。\n\nAgent 通过 Observation（观察）获取环境信息，并通过 Action（行动）影响环境。\n\n由此，Agent 的基本运行模式可概括为：${ \\text{Observe}\\rightarrow \\text{Decide}\\rightarrow \\text{Act}\\rightarrow \\text{Observe} }$\n\n与一次性生成答案的系统相比，Agent 更强调持续交互、状态更新与行动反馈。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 19.8553
+        },
+        {
+          "id": "KB-6322–KB-6324",
+          "topic": "7\\.5 单个智能体角色的定义",
+          "sectionPath": "Lecture 8 智能体系统设计 Design of Agentic Systems / Part 7 多智能体系统基础 Multi\\-Agent Fundamentals / 7\\.5 单个智能体角色的定义",
+          "originalParagraph": "为了使多智能体系统具有明确的职责边界，课件提出六个角色描述字段。\n\n|**字段**|**需要回答的问题**|\n|---|---|\n|Name|如何标识该智能体？|\n|Inputs|可以使用哪些证据和上下文？|\n|Responsibilities|负责哪些决策？|\n|Tools|允许使用哪些工具和行动？|\n|Output|必须交付什么结果？|\n|Goal|应追求什么目标？|\n\n一个清晰的角色定义应将职责与可检查的行动和输出联系起来。这种结构有助于明确智能体的职责边界，避免多个角色重复执行相同任务或遗漏关键工作。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 17.7771
+        },
+        {
+          "id": "KB-8113–KB-8118",
+          "topic": "8\\.5 Judge Agent by Agent",
+          "sectionPath": "Lecture 5 Planning in LLM Agents / Part 8 Three Solutions / 8\\.5 Judge Agent by Agent",
+          "originalParagraph": "Metrics\\-based Judge 做的是绝对打分：两个模型 Accuracy 都是 10/10，差别只在 Instruct\\-Following（5/10 对 10/10）。A 的答案内容正确，但没按只输出答案的格式要求写，这一条只有指标裁判看得出来。\n\n中：Agent\\-as\\-a\\-Judge（智能体任务 Agentic Task）\n\n任务：Hi\\! Please follow the instruction and set up the script from the blog https://www\\.factsmachine\\.ai/p/hidden\\-in\\-plain\\-sight to generate 1080p images with hidden text \"FUTURE,\" in src/visualize\\.py\\. Save them in results/ and verify the text is embedded\\.\n\nAgent A 与 Agent B 各自有一个 Workspace；中间是共享的 Environment。两侧的 Act 箭头都指向 Environment。\n\nJudge Agent 的判词：B is better because it runs and generates the required files, fulfilling the user's request\\. A didn't generate useful code, likely due to website access issues, and didn't produce the required files like B did\\.下面同样分 Compare\\-based Judge 与 Metrics\\-based Judge 两层。\n\n右：Human\\-as\\-a\\-Judge（智能体任务 Agentic Task）",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 11.9543
+        },
+        {
+          "id": "KB-5868–KB-5871",
+          "topic": "1\\.1\\.1 四个层次",
+          "sectionPath": "Lecture 8 智能体系统设计 Design of Agentic Systems / Part 1 智能体系统基础 Agentic System Foundations / 1\\.1 从语言模型到智能体系统 / 1\\.1\\.1 四个层次",
+          "originalParagraph": "智能体的关键特征是 Goal\\-directed Action（目标导向的行动）。\n\n4. Multi\\-Agent System：多智能体系统\n\n多智能体系统由多个能够独立作出一定决策的智能体组成。不同智能体可以承担不同职责，例如：Research Agent：负责资料检索、Analysis Agent：负责信息分析、Writing Agent：负责内容生成、Review Agent：负责质量检查。\n\n多个智能体通过通信、任务分配和结果整合共同完成复杂任务。需要注意，增加智能体数量不一定提高系统性能。多智能体协作也可能引入通信开销、协调冲突及错误传播。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 9.7614
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nagent是什么\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 1\\.1 智能体（Agent）的定义\nSource: knowledge/5584-LLM-for-Agent-1.md — LLM for Agent · Part 1\nPassage:\nAn “intelligent” system that interacts with some “environment”\\.\n\n能够与环境进行交互的智能系统。\n\n这一定义包含三个基本要素：\n\n- Agent：负责决策与行动的主体；\n\n- Environment：Agent 所处并与之交互的环境；\n\n- Interaction：通过观察与行动形成的交互过程。\n\nAgent 通过 Observation（观察）获取环境信息，并通过 Action（行动）影响环境。\n\n由此，Agent 的基本运行模式可概括为：${ \\text{Observe}\\rightarrow \\text{Decide}\\rightarrow \\text{Act}\\rightarrow \\text{Observe} }$\n\n与一次性生成答案的系统相比，Agent 更强调持续交互、状态更新与行动反馈。\n\n[R2] Topic: 7\\.5 单个智能体角色的定义\nSource: knowledge/5583-Agentic-Computing-3.md — Agentic Computing · Part 3\nPassage:\n为了使多智能体系统具有明确的职责边界，课件提出六个角色描述字段。\n\n|**字段**|**需要回答的问题**|\n|---|---|\n|Name|如何标识该智能体？|\n|Inputs|可以使用哪些证据和上下文？|\n|Responsibilities|负责哪些决策？|\n|Tools|允许使用哪些工具和行动？|\n|Output|必须交付什么结果？|\n|Goal|应追求什么目标？|\n\n一个清晰的角色定义应将职责与可检查的行动和输出联系起来。这种结构有助于明确智能体的职责边界，避免多个角色重复执行相同任务或遗漏关键工作。\n\n[R3] Topic: 8\\.5 Judge Agent by Agent\nSource: knowledge/5584-LLM-for-Agent-1.md — LLM for Agent · Part 1\nPassage:\nMetrics\\-based Judge 做的是绝对打分：两个模型 Accuracy 都是 10/10，差别只在 Instruct\\-Following（5/10 对 10/10）。A 的答案内容正确，但没按只输出答案的格式要求写，这一条只有指标裁判看得出来。\n\n中：Agent\\-as\\-a\\-Judge（智能体任务 Agentic Task）\n\n任务：Hi\\! Please follow the instruction and set up the script from the blog https://www\\.factsmachine\\.ai/p/hidden\\-in\\-plain\\-sight to generate 1080p images with hidden text \"FUTURE,\" in src/visualize\\.py\\. Save them in results/ and verify the text is embedded\\.\n\nAgent A 与 Agent B 各自有一个 Workspace；中间是共享的 Environment。两侧的 Act 箭头都指向 Environment。\n\nJudge Agent 的判词：B is better because it runs and generates the required files, fulfilling the user's request\\. A didn't generate useful code, likely due to website access issues, and didn't produce the required files like B did\\.下面同样分 Compare\\-based Judge 与 Metrics\\-based Judge 两层。\n\n右：Human\\-as\\-a\\-Judge（智能体任务 Agentic Task）\n\n[R4] Topic: 1\\.1\\.1 四个层次\nSource: knowledge/5583-Agentic-Computing-3.md — Agentic Computing · Part 3\nPassage:\n智能体的关键特征是 Goal\\-directed Action（目标导向的行动）。\n\n4. Multi\\-Agent System：多智能体系统\n\n多智能体系统由多个能够独立作出一定决策的智能体组成。不同智能体可以承担不同职责，例如：Research Agent：负责资料检索、Analysis Agent：负责信息分析、Writing Agent：负责内容生成、Review Agent：负责质量检查。\n\n多个智能体通过通信、任务分配和结果整合共同完成复杂任务。需要注意，增加智能体数量不一定提高系统性能。多智能体协作也可能引入通信开销、协调冲突及错误传播。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "An agent is an intelligent system that interacts with an environment. [R1]\nThe agent observes its surroundings and chooses actions that affect them. [R1]\nThis creates an ongoing observe–decide–act cycle. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n1.1 智能体（Agent）的定义\nSource: 5584-LLM-for-Agent-1.md · Lecture 1 大语言模型与智能体导论 Course Overview / Part 1 智能体与大语言模型的基本概念 / 1.1 智能体（Agent）的定义\nAn “intelligent” system that interacts with some “environment”.\n能够与环境进行交互的智能系统。\n这一定义包含三个基本要素：\nAgent：负责决策与行动的主体；\nEnvironment：Agent 所处并与之交互的环境；\nInteraction：通过观察与行动形成的交互过程。\nAgent 通过 Observation（观察）获取环境信息，并通过 Action（行动）影响环境。\n由此，Agent 的基本运行模式可概括为： Observe → Decide → Act → Observe\n与一次性生成答案的系统相比，Agent 更强调持续交互、状态更新与行动反馈。\n[R2]\n7.5 单个智能体角色的定义\nSource: 5583-Agentic-Computing-3.md · Lecture 8 智能体系统设计 Design of Agentic Systems / Part 7 多智能体系统基础 Multi-Agent Fundamentals / 7.5 单个智能体角色的定义\n为了使多智能体系统具有明确的职责边界，课件提出六个角色描述字段。\n字段 · 需要回答的问题\nName · 如何标识该智能体？\nInputs · 可以使用哪些证据和上下文？\nResponsibilities · 负责哪些决策？\nTools · 允许使用哪些工具和行动？\nOutput · 必须交付什么结果？\nGoal · 应追求什么目标？\n一个清晰的角色定义应将职责与可检查的行动和输出联系起来。这种结构有助于明确智能体的职责边界，避免多个角色重复执行相同任务或遗漏关键工作。\n[R3]\n8.5 Judge Agent by Agent\nSource: 5584-LLM-for-Agent-1.md · Lecture 5 Planning in LLM Agents / Part 8 Three Solutions / 8.5 Judge Agent by Agent\nMetrics-based Judge 做的是绝对打分：两个模型 Accuracy 都是 10/10，差别只在 Instruct-Following（5/10 对 10/10）。A 的答案内容正确，但没按只输出答案的格式要求写，这一条只有指标裁判看得出来。\n中：Agent-as-a-Judge（智能体任务 Agentic Task）\n任务：Hi! Please follow the instruction and set up the script from the blog to generate 1080p images with hidden text \"FUTURE,\" in src/visualize.py. Save them in results/ and verify the text is embedded.\nAgent A 与 Agent B 各自有一个 Workspace；中间是共享的 Environment。两侧的 Act 箭头都指向 Environment。\nJudge Agent 的判词：B is better because it runs and generates the required files, fulfilling the user's request. A didn't generate useful code, likely due to website access issues, and didn't produce the required files like B…\n[R4]\n1.1.1 四个层次\nSource: 5583-Agentic-Computing-3.md · Lecture 8 智能体系统设计 Design of Agentic Systems / Part 1 智能体系统基础 Agentic System Foundations / 1.1 从语言模型到智能体系统…\n智能体的关键特征是 Goal-directed Action（目标导向的行动）。\n4. Multi-Agent System：多智能体系统\n多智能体系统由多个能够独立作出一定决策的智能体组成。不同智能体可以承担不同职责，例如：Research Agent：负责资料检索、Analysis Agent：负责信息分析、Writing Agent：负责内容生成、Review Agent：负责质量检查。\n多个智能体通过通信、任务分配和结果整合共同完成复杂任务。需要注意，增加智能体数量不一定提高系统性能。多智能体协作也可能引入通信开销、协调冲突及错误传播。"
+    },
+    {
+      "id": "Q08",
+      "category": "bilingual-paraphrase",
+      "query": "什么是智能体",
+      "queryTokens": [
+        "智能",
+        "能体",
+        "agent"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-6581–KB-6589",
+          "topic": "1\\.1 智能体（Agent）的定义",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 19.8553,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-6322–KB-6324",
+          "topic": "7\\.5 单个智能体角色的定义",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 17.7771,
+          "queryCoverage": 0.6667
+        },
+        {
+          "id": "KB-8113–KB-8118",
+          "topic": "8\\.5 Judge Agent by Agent",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 11.9543,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-5868–KB-5871",
+          "topic": "1\\.1\\.1 四个层次",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 9.7614,
+          "queryCoverage": 1
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-6581–KB-6589",
+          "topic": "1\\.1 智能体（Agent）的定义",
+          "sectionPath": "Lecture 1 大语言模型与智能体导论 Course Overview / Part 1 智能体与大语言模型的基本概念 / 1\\.1 智能体（Agent）的定义",
+          "originalParagraph": "An “intelligent” system that interacts with some “environment”\\.\n\n能够与环境进行交互的智能系统。\n\n这一定义包含三个基本要素：\n\n- Agent：负责决策与行动的主体；\n\n- Environment：Agent 所处并与之交互的环境；\n\n- Interaction：通过观察与行动形成的交互过程。\n\nAgent 通过 Observation（观察）获取环境信息，并通过 Action（行动）影响环境。\n\n由此，Agent 的基本运行模式可概括为：${ \\text{Observe}\\rightarrow \\text{Decide}\\rightarrow \\text{Act}\\rightarrow \\text{Observe} }$\n\n与一次性生成答案的系统相比，Agent 更强调持续交互、状态更新与行动反馈。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 19.8553
+        },
+        {
+          "id": "KB-6322–KB-6324",
+          "topic": "7\\.5 单个智能体角色的定义",
+          "sectionPath": "Lecture 8 智能体系统设计 Design of Agentic Systems / Part 7 多智能体系统基础 Multi\\-Agent Fundamentals / 7\\.5 单个智能体角色的定义",
+          "originalParagraph": "为了使多智能体系统具有明确的职责边界，课件提出六个角色描述字段。\n\n|**字段**|**需要回答的问题**|\n|---|---|\n|Name|如何标识该智能体？|\n|Inputs|可以使用哪些证据和上下文？|\n|Responsibilities|负责哪些决策？|\n|Tools|允许使用哪些工具和行动？|\n|Output|必须交付什么结果？|\n|Goal|应追求什么目标？|\n\n一个清晰的角色定义应将职责与可检查的行动和输出联系起来。这种结构有助于明确智能体的职责边界，避免多个角色重复执行相同任务或遗漏关键工作。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 17.7771
+        },
+        {
+          "id": "KB-8113–KB-8118",
+          "topic": "8\\.5 Judge Agent by Agent",
+          "sectionPath": "Lecture 5 Planning in LLM Agents / Part 8 Three Solutions / 8\\.5 Judge Agent by Agent",
+          "originalParagraph": "Metrics\\-based Judge 做的是绝对打分：两个模型 Accuracy 都是 10/10，差别只在 Instruct\\-Following（5/10 对 10/10）。A 的答案内容正确，但没按只输出答案的格式要求写，这一条只有指标裁判看得出来。\n\n中：Agent\\-as\\-a\\-Judge（智能体任务 Agentic Task）\n\n任务：Hi\\! Please follow the instruction and set up the script from the blog https://www\\.factsmachine\\.ai/p/hidden\\-in\\-plain\\-sight to generate 1080p images with hidden text \"FUTURE,\" in src/visualize\\.py\\. Save them in results/ and verify the text is embedded\\.\n\nAgent A 与 Agent B 各自有一个 Workspace；中间是共享的 Environment。两侧的 Act 箭头都指向 Environment。\n\nJudge Agent 的判词：B is better because it runs and generates the required files, fulfilling the user's request\\. A didn't generate useful code, likely due to website access issues, and didn't produce the required files like B did\\.下面同样分 Compare\\-based Judge 与 Metrics\\-based Judge 两层。\n\n右：Human\\-as\\-a\\-Judge（智能体任务 Agentic Task）",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 11.9543
+        },
+        {
+          "id": "KB-5868–KB-5871",
+          "topic": "1\\.1\\.1 四个层次",
+          "sectionPath": "Lecture 8 智能体系统设计 Design of Agentic Systems / Part 1 智能体系统基础 Agentic System Foundations / 1\\.1 从语言模型到智能体系统 / 1\\.1\\.1 四个层次",
+          "originalParagraph": "智能体的关键特征是 Goal\\-directed Action（目标导向的行动）。\n\n4. Multi\\-Agent System：多智能体系统\n\n多智能体系统由多个能够独立作出一定决策的智能体组成。不同智能体可以承担不同职责，例如：Research Agent：负责资料检索、Analysis Agent：负责信息分析、Writing Agent：负责内容生成、Review Agent：负责质量检查。\n\n多个智能体通过通信、任务分配和结果整合共同完成复杂任务。需要注意，增加智能体数量不一定提高系统性能。多智能体协作也可能引入通信开销、协调冲突及错误传播。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 9.7614
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\n什么是智能体\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 1\\.1 智能体（Agent）的定义\nSource: knowledge/5584-LLM-for-Agent-1.md — LLM for Agent · Part 1\nPassage:\nAn “intelligent” system that interacts with some “environment”\\.\n\n能够与环境进行交互的智能系统。\n\n这一定义包含三个基本要素：\n\n- Agent：负责决策与行动的主体；\n\n- Environment：Agent 所处并与之交互的环境；\n\n- Interaction：通过观察与行动形成的交互过程。\n\nAgent 通过 Observation（观察）获取环境信息，并通过 Action（行动）影响环境。\n\n由此，Agent 的基本运行模式可概括为：${ \\text{Observe}\\rightarrow \\text{Decide}\\rightarrow \\text{Act}\\rightarrow \\text{Observe} }$\n\n与一次性生成答案的系统相比，Agent 更强调持续交互、状态更新与行动反馈。\n\n[R2] Topic: 7\\.5 单个智能体角色的定义\nSource: knowledge/5583-Agentic-Computing-3.md — Agentic Computing · Part 3\nPassage:\n为了使多智能体系统具有明确的职责边界，课件提出六个角色描述字段。\n\n|**字段**|**需要回答的问题**|\n|---|---|\n|Name|如何标识该智能体？|\n|Inputs|可以使用哪些证据和上下文？|\n|Responsibilities|负责哪些决策？|\n|Tools|允许使用哪些工具和行动？|\n|Output|必须交付什么结果？|\n|Goal|应追求什么目标？|\n\n一个清晰的角色定义应将职责与可检查的行动和输出联系起来。这种结构有助于明确智能体的职责边界，避免多个角色重复执行相同任务或遗漏关键工作。\n\n[R3] Topic: 8\\.5 Judge Agent by Agent\nSource: knowledge/5584-LLM-for-Agent-1.md — LLM for Agent · Part 1\nPassage:\nMetrics\\-based Judge 做的是绝对打分：两个模型 Accuracy 都是 10/10，差别只在 Instruct\\-Following（5/10 对 10/10）。A 的答案内容正确，但没按只输出答案的格式要求写，这一条只有指标裁判看得出来。\n\n中：Agent\\-as\\-a\\-Judge（智能体任务 Agentic Task）\n\n任务：Hi\\! Please follow the instruction and set up the script from the blog https://www\\.factsmachine\\.ai/p/hidden\\-in\\-plain\\-sight to generate 1080p images with hidden text \"FUTURE,\" in src/visualize\\.py\\. Save them in results/ and verify the text is embedded\\.\n\nAgent A 与 Agent B 各自有一个 Workspace；中间是共享的 Environment。两侧的 Act 箭头都指向 Environment。\n\nJudge Agent 的判词：B is better because it runs and generates the required files, fulfilling the user's request\\. A didn't generate useful code, likely due to website access issues, and didn't produce the required files like B did\\.下面同样分 Compare\\-based Judge 与 Metrics\\-based Judge 两层。\n\n右：Human\\-as\\-a\\-Judge（智能体任务 Agentic Task）\n\n[R4] Topic: 1\\.1\\.1 四个层次\nSource: knowledge/5583-Agentic-Computing-3.md — Agentic Computing · Part 3\nPassage:\n智能体的关键特征是 Goal\\-directed Action（目标导向的行动）。\n\n4. Multi\\-Agent System：多智能体系统\n\n多智能体系统由多个能够独立作出一定决策的智能体组成。不同智能体可以承担不同职责，例如：Research Agent：负责资料检索、Analysis Agent：负责信息分析、Writing Agent：负责内容生成、Review Agent：负责质量检查。\n\n多个智能体通过通信、任务分配和结果整合共同完成复杂任务。需要注意，增加智能体数量不一定提高系统性能。多智能体协作也可能引入通信开销、协调冲突及错误传播。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "An agent is an intelligent system that interacts with an environment. [R1]\nThe agent observes its surroundings and chooses actions that affect them. [R1]\nThis creates an ongoing observe–decide–act cycle. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n1.1 智能体（Agent）的定义\nSource: 5584-LLM-for-Agent-1.md · Lecture 1 大语言模型与智能体导论 Course Overview / Part 1 智能体与大语言模型的基本概念 / 1.1 智能体（Agent）的定义\nAn “intelligent” system that interacts with some “environment”.\n能够与环境进行交互的智能系统。\n这一定义包含三个基本要素：\nAgent：负责决策与行动的主体；\nEnvironment：Agent 所处并与之交互的环境；\nInteraction：通过观察与行动形成的交互过程。\nAgent 通过 Observation（观察）获取环境信息，并通过 Action（行动）影响环境。\n由此，Agent 的基本运行模式可概括为： Observe → Decide → Act → Observe\n与一次性生成答案的系统相比，Agent 更强调持续交互、状态更新与行动反馈。\n[R2]\n7.5 单个智能体角色的定义\nSource: 5583-Agentic-Computing-3.md · Lecture 8 智能体系统设计 Design of Agentic Systems / Part 7 多智能体系统基础 Multi-Agent Fundamentals / 7.5 单个智能体角色的定义\n为了使多智能体系统具有明确的职责边界，课件提出六个角色描述字段。\n字段 · 需要回答的问题\nName · 如何标识该智能体？\nInputs · 可以使用哪些证据和上下文？\nResponsibilities · 负责哪些决策？\nTools · 允许使用哪些工具和行动？\nOutput · 必须交付什么结果？\nGoal · 应追求什么目标？\n一个清晰的角色定义应将职责与可检查的行动和输出联系起来。这种结构有助于明确智能体的职责边界，避免多个角色重复执行相同任务或遗漏关键工作。\n[R3]\n8.5 Judge Agent by Agent\nSource: 5584-LLM-for-Agent-1.md · Lecture 5 Planning in LLM Agents / Part 8 Three Solutions / 8.5 Judge Agent by Agent\nMetrics-based Judge 做的是绝对打分：两个模型 Accuracy 都是 10/10，差别只在 Instruct-Following（5/10 对 10/10）。A 的答案内容正确，但没按只输出答案的格式要求写，这一条只有指标裁判看得出来。\n中：Agent-as-a-Judge（智能体任务 Agentic Task）\n任务：Hi! Please follow the instruction and set up the script from the blog to generate 1080p images with hidden text \"FUTURE,\" in src/visualize.py. Save them in results/ and verify the text is embedded.\nAgent A 与 Agent B 各自有一个 Workspace；中间是共享的 Environment。两侧的 Act 箭头都指向 Environment。\nJudge Agent 的判词：B is better because it runs and generates the required files, fulfilling the user's request. A didn't generate useful code, likely due to website access issues, and didn't produce the required files like B…\n[R4]\n1.1.1 四个层次\nSource: 5583-Agentic-Computing-3.md · Lecture 8 智能体系统设计 Design of Agentic Systems / Part 1 智能体系统基础 Agentic System Foundations / 1.1 从语言模型到智能体系统…\n智能体的关键特征是 Goal-directed Action（目标导向的行动）。\n4. Multi-Agent System：多智能体系统\n多智能体系统由多个能够独立作出一定决策的智能体组成。不同智能体可以承担不同职责，例如：Research Agent：负责资料检索、Analysis Agent：负责信息分析、Writing Agent：负责内容生成、Review Agent：负责质量检查。\n多个智能体通过通信、任务分配和结果整合共同完成复杂任务。需要注意，增加智能体数量不一定提高系统性能。多智能体协作也可能引入通信开销、协调冲突及错误传播。"
+    },
+    {
+      "id": "Q09",
+      "category": "bilingual-paraphrase",
+      "query": "What is an agent?",
+      "queryTokens": [
+        "agent",
+        "智能",
+        "能体"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-6581–KB-6589",
+          "topic": "1\\.1 智能体（Agent）的定义",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 19.8553,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-6322–KB-6324",
+          "topic": "7\\.5 单个智能体角色的定义",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 17.7771,
+          "queryCoverage": 0.6667
+        },
+        {
+          "id": "KB-8113–KB-8118",
+          "topic": "8\\.5 Judge Agent by Agent",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 11.9543,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-5868–KB-5871",
+          "topic": "1\\.1\\.1 四个层次",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 9.7614,
+          "queryCoverage": 1
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-6581–KB-6589",
+          "topic": "1\\.1 智能体（Agent）的定义",
+          "sectionPath": "Lecture 1 大语言模型与智能体导论 Course Overview / Part 1 智能体与大语言模型的基本概念 / 1\\.1 智能体（Agent）的定义",
+          "originalParagraph": "An “intelligent” system that interacts with some “environment”\\.\n\n能够与环境进行交互的智能系统。\n\n这一定义包含三个基本要素：\n\n- Agent：负责决策与行动的主体；\n\n- Environment：Agent 所处并与之交互的环境；\n\n- Interaction：通过观察与行动形成的交互过程。\n\nAgent 通过 Observation（观察）获取环境信息，并通过 Action（行动）影响环境。\n\n由此，Agent 的基本运行模式可概括为：${ \\text{Observe}\\rightarrow \\text{Decide}\\rightarrow \\text{Act}\\rightarrow \\text{Observe} }$\n\n与一次性生成答案的系统相比，Agent 更强调持续交互、状态更新与行动反馈。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 19.8553
+        },
+        {
+          "id": "KB-6322–KB-6324",
+          "topic": "7\\.5 单个智能体角色的定义",
+          "sectionPath": "Lecture 8 智能体系统设计 Design of Agentic Systems / Part 7 多智能体系统基础 Multi\\-Agent Fundamentals / 7\\.5 单个智能体角色的定义",
+          "originalParagraph": "为了使多智能体系统具有明确的职责边界，课件提出六个角色描述字段。\n\n|**字段**|**需要回答的问题**|\n|---|---|\n|Name|如何标识该智能体？|\n|Inputs|可以使用哪些证据和上下文？|\n|Responsibilities|负责哪些决策？|\n|Tools|允许使用哪些工具和行动？|\n|Output|必须交付什么结果？|\n|Goal|应追求什么目标？|\n\n一个清晰的角色定义应将职责与可检查的行动和输出联系起来。这种结构有助于明确智能体的职责边界，避免多个角色重复执行相同任务或遗漏关键工作。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 17.7771
+        },
+        {
+          "id": "KB-8113–KB-8118",
+          "topic": "8\\.5 Judge Agent by Agent",
+          "sectionPath": "Lecture 5 Planning in LLM Agents / Part 8 Three Solutions / 8\\.5 Judge Agent by Agent",
+          "originalParagraph": "Metrics\\-based Judge 做的是绝对打分：两个模型 Accuracy 都是 10/10，差别只在 Instruct\\-Following（5/10 对 10/10）。A 的答案内容正确，但没按只输出答案的格式要求写，这一条只有指标裁判看得出来。\n\n中：Agent\\-as\\-a\\-Judge（智能体任务 Agentic Task）\n\n任务：Hi\\! Please follow the instruction and set up the script from the blog https://www\\.factsmachine\\.ai/p/hidden\\-in\\-plain\\-sight to generate 1080p images with hidden text \"FUTURE,\" in src/visualize\\.py\\. Save them in results/ and verify the text is embedded\\.\n\nAgent A 与 Agent B 各自有一个 Workspace；中间是共享的 Environment。两侧的 Act 箭头都指向 Environment。\n\nJudge Agent 的判词：B is better because it runs and generates the required files, fulfilling the user's request\\. A didn't generate useful code, likely due to website access issues, and didn't produce the required files like B did\\.下面同样分 Compare\\-based Judge 与 Metrics\\-based Judge 两层。\n\n右：Human\\-as\\-a\\-Judge（智能体任务 Agentic Task）",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 1",
+            "file": "knowledge/5584-LLM-for-Agent-1.md"
+          },
+          "score": 11.9543
+        },
+        {
+          "id": "KB-5868–KB-5871",
+          "topic": "1\\.1\\.1 四个层次",
+          "sectionPath": "Lecture 8 智能体系统设计 Design of Agentic Systems / Part 1 智能体系统基础 Agentic System Foundations / 1\\.1 从语言模型到智能体系统 / 1\\.1\\.1 四个层次",
+          "originalParagraph": "智能体的关键特征是 Goal\\-directed Action（目标导向的行动）。\n\n4. Multi\\-Agent System：多智能体系统\n\n多智能体系统由多个能够独立作出一定决策的智能体组成。不同智能体可以承担不同职责，例如：Research Agent：负责资料检索、Analysis Agent：负责信息分析、Writing Agent：负责内容生成、Review Agent：负责质量检查。\n\n多个智能体通过通信、任务分配和结果整合共同完成复杂任务。需要注意，增加智能体数量不一定提高系统性能。多智能体协作也可能引入通信开销、协调冲突及错误传播。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 9.7614
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nWhat is an agent?\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 1\\.1 智能体（Agent）的定义\nSource: knowledge/5584-LLM-for-Agent-1.md — LLM for Agent · Part 1\nPassage:\nAn “intelligent” system that interacts with some “environment”\\.\n\n能够与环境进行交互的智能系统。\n\n这一定义包含三个基本要素：\n\n- Agent：负责决策与行动的主体；\n\n- Environment：Agent 所处并与之交互的环境；\n\n- Interaction：通过观察与行动形成的交互过程。\n\nAgent 通过 Observation（观察）获取环境信息，并通过 Action（行动）影响环境。\n\n由此，Agent 的基本运行模式可概括为：${ \\text{Observe}\\rightarrow \\text{Decide}\\rightarrow \\text{Act}\\rightarrow \\text{Observe} }$\n\n与一次性生成答案的系统相比，Agent 更强调持续交互、状态更新与行动反馈。\n\n[R2] Topic: 7\\.5 单个智能体角色的定义\nSource: knowledge/5583-Agentic-Computing-3.md — Agentic Computing · Part 3\nPassage:\n为了使多智能体系统具有明确的职责边界，课件提出六个角色描述字段。\n\n|**字段**|**需要回答的问题**|\n|---|---|\n|Name|如何标识该智能体？|\n|Inputs|可以使用哪些证据和上下文？|\n|Responsibilities|负责哪些决策？|\n|Tools|允许使用哪些工具和行动？|\n|Output|必须交付什么结果？|\n|Goal|应追求什么目标？|\n\n一个清晰的角色定义应将职责与可检查的行动和输出联系起来。这种结构有助于明确智能体的职责边界，避免多个角色重复执行相同任务或遗漏关键工作。\n\n[R3] Topic: 8\\.5 Judge Agent by Agent\nSource: knowledge/5584-LLM-for-Agent-1.md — LLM for Agent · Part 1\nPassage:\nMetrics\\-based Judge 做的是绝对打分：两个模型 Accuracy 都是 10/10，差别只在 Instruct\\-Following（5/10 对 10/10）。A 的答案内容正确，但没按只输出答案的格式要求写，这一条只有指标裁判看得出来。\n\n中：Agent\\-as\\-a\\-Judge（智能体任务 Agentic Task）\n\n任务：Hi\\! Please follow the instruction and set up the script from the blog https://www\\.factsmachine\\.ai/p/hidden\\-in\\-plain\\-sight to generate 1080p images with hidden text \"FUTURE,\" in src/visualize\\.py\\. Save them in results/ and verify the text is embedded\\.\n\nAgent A 与 Agent B 各自有一个 Workspace；中间是共享的 Environment。两侧的 Act 箭头都指向 Environment。\n\nJudge Agent 的判词：B is better because it runs and generates the required files, fulfilling the user's request\\. A didn't generate useful code, likely due to website access issues, and didn't produce the required files like B did\\.下面同样分 Compare\\-based Judge 与 Metrics\\-based Judge 两层。\n\n右：Human\\-as\\-a\\-Judge（智能体任务 Agentic Task）\n\n[R4] Topic: 1\\.1\\.1 四个层次\nSource: knowledge/5583-Agentic-Computing-3.md — Agentic Computing · Part 3\nPassage:\n智能体的关键特征是 Goal\\-directed Action（目标导向的行动）。\n\n4. Multi\\-Agent System：多智能体系统\n\n多智能体系统由多个能够独立作出一定决策的智能体组成。不同智能体可以承担不同职责，例如：Research Agent：负责资料检索、Analysis Agent：负责信息分析、Writing Agent：负责内容生成、Review Agent：负责质量检查。\n\n多个智能体通过通信、任务分配和结果整合共同完成复杂任务。需要注意，增加智能体数量不一定提高系统性能。多智能体协作也可能引入通信开销、协调冲突及错误传播。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "An agent is an intelligent system that interacts with an environment. [R1]\nThe agent observes its surroundings and chooses actions that affect them. [R1]\nThis creates an ongoing observe–decide–act cycle. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n1.1 智能体（Agent）的定义\nSource: 5584-LLM-for-Agent-1.md · Lecture 1 大语言模型与智能体导论 Course Overview / Part 1 智能体与大语言模型的基本概念 / 1.1 智能体（Agent）的定义\nAn “intelligent” system that interacts with some “environment”.\n能够与环境进行交互的智能系统。\n这一定义包含三个基本要素：\nAgent：负责决策与行动的主体；\nEnvironment：Agent 所处并与之交互的环境；\nInteraction：通过观察与行动形成的交互过程。\nAgent 通过 Observation（观察）获取环境信息，并通过 Action（行动）影响环境。\n由此，Agent 的基本运行模式可概括为： Observe → Decide → Act → Observe\n与一次性生成答案的系统相比，Agent 更强调持续交互、状态更新与行动反馈。\n[R2]\n7.5 单个智能体角色的定义\nSource: 5583-Agentic-Computing-3.md · Lecture 8 智能体系统设计 Design of Agentic Systems / Part 7 多智能体系统基础 Multi-Agent Fundamentals / 7.5 单个智能体角色的定义\n为了使多智能体系统具有明确的职责边界，课件提出六个角色描述字段。\n字段 · 需要回答的问题\nName · 如何标识该智能体？\nInputs · 可以使用哪些证据和上下文？\nResponsibilities · 负责哪些决策？\nTools · 允许使用哪些工具和行动？\nOutput · 必须交付什么结果？\nGoal · 应追求什么目标？\n一个清晰的角色定义应将职责与可检查的行动和输出联系起来。这种结构有助于明确智能体的职责边界，避免多个角色重复执行相同任务或遗漏关键工作。\n[R3]\n8.5 Judge Agent by Agent\nSource: 5584-LLM-for-Agent-1.md · Lecture 5 Planning in LLM Agents / Part 8 Three Solutions / 8.5 Judge Agent by Agent\nMetrics-based Judge 做的是绝对打分：两个模型 Accuracy 都是 10/10，差别只在 Instruct-Following（5/10 对 10/10）。A 的答案内容正确，但没按只输出答案的格式要求写，这一条只有指标裁判看得出来。\n中：Agent-as-a-Judge（智能体任务 Agentic Task）\n任务：Hi! Please follow the instruction and set up the script from the blog to generate 1080p images with hidden text \"FUTURE,\" in src/visualize.py. Save them in results/ and verify the text is embedded.\nAgent A 与 Agent B 各自有一个 Workspace；中间是共享的 Environment。两侧的 Act 箭头都指向 Environment。\nJudge Agent 的判词：B is better because it runs and generates the required files, fulfilling the user's request. A didn't generate useful code, likely due to website access issues, and didn't produce the required files like B…\n[R4]\n1.1.1 四个层次\nSource: 5583-Agentic-Computing-3.md · Lecture 8 智能体系统设计 Design of Agentic Systems / Part 1 智能体系统基础 Agentic System Foundations / 1.1 从语言模型到智能体系统…\n智能体的关键特征是 Goal-directed Action（目标导向的行动）。\n4. Multi-Agent System：多智能体系统\n多智能体系统由多个能够独立作出一定决策的智能体组成。不同智能体可以承担不同职责，例如：Research Agent：负责资料检索、Analysis Agent：负责信息分析、Writing Agent：负责内容生成、Review Agent：负责质量检查。\n多个智能体通过通信、任务分配和结果整合共同完成复杂任务。需要注意，增加智能体数量不一定提高系统性能。多智能体协作也可能引入通信开销、协调冲突及错误传播。"
+    },
+    {
+      "id": "Q10",
+      "category": "Chinese-definition",
+      "query": "什么是RAG",
+      "queryTokens": [
+        "rag"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-4343–KB-4352",
+          "topic": "1\\.8 RAG Definition",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 18.9033,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-4328–KB-4329",
+          "topic": "1\\.6 Key Idea in RAG",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 5.6113,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-4682–KB-4688",
+          "topic": "2\\.12 RAG 的改进",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 5.5044,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-5599–KB-5608",
+          "topic": "3\\.2\\.2 Self\\-RAG 的核心机制: Reflection Tokens",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 4.9515,
+          "queryCoverage": 1
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-4343–KB-4352",
+          "topic": "1\\.8 RAG Definition",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 1 Why RAG? / 1\\.8 RAG Definition",
+          "originalParagraph": "RAG combines a pretrained LLM with external knowledge retrieved at inference time to support generation\\.\n\nRAG 将预训练语言模型与推理时检索到的外部知识结合起来，以支持答案生成。\n\nRAG 的关键特征是在推理阶段检索外部知识，并利用检索结果支持生成，而不是要求模型事先记住全部知识。\n\n**Pretrained LLM：预训练语言模型**\n\n表示系统已经拥有一个经过训练的模型。它可以具备：语言理解能力、通用知识、文本生成能力、一定的推理能力。RAG 通常不需要从头训练一个新的语言模型。\n\n**External knowledge：外部知识**\n\n课件明确列举: Local documents, knowledge base, web search, APIs \\.\\.\\. 即本地文档、知识库、网页搜索和 API 等。\n\n这些来源有一个共同点：信息不必全部编码在语言模型参数中。\n\n**Retrieved at inference time：推理时检索**\n\nInference time 指模型实际处理用户请求、生成回答的阶段。在典型 RAG 中，系统会根据当前问题，从外部来源寻找相关信息。这与训练阶段学习知识不同。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 18.9033
+        },
+        {
+          "id": "KB-4328–KB-4329",
+          "topic": "1\\.6 Key Idea in RAG",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 1 Why RAG? / 1\\.6 Key Idea in RAG",
+          "originalParagraph": "OR 表示知识库是可插拔的：回答酒店问题需要网页，回答中国菜谱需要菜谱库，回答课程问题需要课程文档。工程含义是RAG 系统的检索器要对着一个特定的知识库来配。换库就要重建索引。\n\nRAG 不是替代 LLM：LLM 已有大量知识，但在需要的时候可以通过检索获得额外帮助。因此，RAG 应被理解为增强机制，而不是完全替代模型原有能力。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 5.6113
+        },
+        {
+          "id": "KB-4682–KB-4688",
+          "topic": "2\\.12 RAG 的改进",
+          "sectionPath": "Lecture 6:  Retrieval\\-Augmented Generation \\(RAG\\) / Part 2 RAG Architecture / 2\\.12 RAG 的改进",
+          "originalParagraph": "**RAG 继承了哪些经典技术？**\n\n|**技术**|**主要作用**|**与 RAG 的关系**|\n|---|---|---|\n|TF\\-IDF|词项重要性加权|关键词检索|\n|BM25|文档相关性排序|稀疏检索|\n|Inverted Index|快速定位包含词项的文档|检索索引|\n|Cosine Similarity|比较向量方向相似性|稀疏与稠密向量检索|\n|Precision|衡量返回结果的准确程度|检索评估|\n|Recall|衡量相关结果覆盖程度|检索评估|\n|MAP / MRR|衡量排序检索表现|排序评估|\n\n需要区分，向量相似度方法可以与经典信息检索技术结合，但现代神经嵌入模型的发展也引入了新的检索能力。\n\n**RAG 真正增加了什么？**\n\n传统搜索引擎主要返回：相关文档或网页。\n\nRAG 在此基础上进一步执行：将检索结果提供给生成模型，让模型综合信息生成自然语言答案。\n\nRAG 的创新重点不是从零发明检索，而是将检索机制与语言生成系统结合。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 5.5044
+        },
+        {
+          "id": "KB-5599–KB-5608",
+          "topic": "3\\.2\\.2 Self\\-RAG 的核心机制: Reflection Tokens",
+          "sectionPath": "Lecture 7 Retrieval Optimization and Agentic RAG Systems 检索优化与智能体 RAG / Part 3 Advanced RAG Architectures 进阶 RAG 架构 / 3\\.2 Self\\-RAG：Retrieval and Self\\-Critique 检索与自我批判 / 3\\.2\\.2 Self\\-RAG 的核心机制: Reflection Tokens",
+          "originalParagraph": "传统 RAG 通常使用固定的两阶段流程：\n\n$\\text{Input}\\rightarrow\\text{Retrieve}\\rightarrow\\text{Generate} $\n\nSelf\\-RAG（Self\\-Reflective Retrieval\\-Augmented Generation）引入可学习的反思 Token（Learned Reflection Tokens），使模型能够在检索和生成过程中进行自主判断。\n\n三个判断：\n\n|**Reflection Token**|**核心问题**|**判断阶段**|**作用**|\n|---|---|---|---|\n|Retrieve?|Is retrieval needed?|检索之前|判断是否需要外部知识|\n|Relevant?|Are documents relevant?|检索之后|判断检索证据是否相关|\n|Supported?|Is generation supported?|生成之后|判断生成内容是否受到证据支持|\n\n这三个判断分别对应：\n\n1. Retrieval Decision：是否检索。\n\n2. Evidence Relevance：证据是否相关。\n\n3. Generation Grounding：生成内容是否有依据。\n\n与固定检索流程相比，Self\\-RAG 的关键变化是将检索与证据评估纳入模型学习的决策过程。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 2",
+            "file": "knowledge/5583-Agentic-Computing-2.md"
+          },
+          "score": 4.9515
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\n什么是RAG\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 1\\.8 RAG Definition\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\nRAG combines a pretrained LLM with external knowledge retrieved at inference time to support generation\\.\n\nRAG 将预训练语言模型与推理时检索到的外部知识结合起来，以支持答案生成。\n\nRAG 的关键特征是在推理阶段检索外部知识，并利用检索结果支持生成，而不是要求模型事先记住全部知识。\n\n**Pretrained LLM：预训练语言模型**\n\n表示系统已经拥有一个经过训练的模型。它可以具备：语言理解能力、通用知识、文本生成能力、一定的推理能力。RAG 通常不需要从头训练一个新的语言模型。\n\n**External knowledge：外部知识**\n\n课件明确列举: Local documents, knowledge base, web search, APIs \\.\\.\\. 即本地文档、知识库、网页搜索和 API 等。\n\n这些来源有一个共同点：信息不必全部编码在语言模型参数中。\n\n**Retrieved at inference time：推理时检索**\n\nInference time 指模型实际处理用户请求、生成回答的阶段。在典型 RAG 中，系统会根据当前问题，从外部来源寻找相关信息。这与训练阶段学习知识不同。\n\n[R2] Topic: 1\\.6 Key Idea in RAG\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\nOR 表示知识库是可插拔的：回答酒店问题需要网页，回答中国菜谱需要菜谱库，回答课程问题需要课程文档。工程含义是RAG 系统的检索器要对着一个特定的知识库来配。换库就要重建索引。\n\nRAG 不是替代 LLM：LLM 已有大量知识，但在需要的时候可以通过检索获得额外帮助。因此，RAG 应被理解为增强机制，而不是完全替代模型原有能力。\n\n[R3] Topic: 2\\.12 RAG 的改进\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\n**RAG 继承了哪些经典技术？**\n\n|**技术**|**主要作用**|**与 RAG 的关系**|\n|---|---|---|\n|TF\\-IDF|词项重要性加权|关键词检索|\n|BM25|文档相关性排序|稀疏检索|\n|Inverted Index|快速定位包含词项的文档|检索索引|\n|Cosine Similarity|比较向量方向相似性|稀疏与稠密向量检索|\n|Precision|衡量返回结果的准确程度|检索评估|\n|Recall|衡量相关结果覆盖程度|检索评估|\n|MAP / MRR|衡量排序检索表现|排序评估|\n\n需要区分，向量相似度方法可以与经典信息检索技术结合，但现代神经嵌入模型的发展也引入了新的检索能力。\n\n**RAG 真正增加了什么？**\n\n传统搜索引擎主要返回：相关文档或网页。\n\nRAG 在此基础上进一步执行：将检索结果提供给生成模型，让模型综合信息生成自然语言答案。\n\nRAG 的创新重点不是从零发明检索，而是将检索机制与语言生成系统结合。\n\n[R4] Topic: 3\\.2\\.2 Self\\-RAG 的核心机制: Reflection Tokens\nSource: knowledge/5583-Agentic-Computing-2.md — Agentic Computing · Part 2\nPassage:\n传统 RAG 通常使用固定的两阶段流程：\n\n$\\text{Input}\\rightarrow\\text{Retrieve}\\rightarrow\\text{Generate} $\n\nSelf\\-RAG（Self\\-Reflective Retrieval\\-Augmented Generation）引入可学习的反思 Token（Learned Reflection Tokens），使模型能够在检索和生成过程中进行自主判断。\n\n三个判断：\n\n|**Reflection Token**|**核心问题**|**判断阶段**|**作用**|\n|---|---|---|---|\n|Retrieve?|Is retrieval needed?|检索之前|判断是否需要外部知识|\n|Relevant?|Are documents relevant?|检索之后|判断检索证据是否相关|\n|Supported?|Is generation supported?|生成之后|判断生成内容是否受到证据支持|\n\n这三个判断分别对应：\n\n1. Retrieval Decision：是否检索。\n\n2. Evidence Relevance：证据是否相关。\n\n3. Generation Grounding：生成内容是否有依据。\n\n与固定检索流程相比，Self\\-RAG 的关键变化是将检索与证据评估纳入模型学习的决策过程。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Retrieval-augmented generation (RAG) combines a pretrained language model with external knowledge. [R1]\nThe system retrieves relevant material when it handles a question, then uses that material as context for its answer. [R1]\nThe model does not need to store every fact in its parameters. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n1.8 RAG Definition\nSource: 5583-Agentic-Computing-2.md · Lecture 6: Retrieval-Augmented Generation RAG / Part 1 Why RAG? / 1.8 RAG Definition\nRAG combines a pretrained LLM with external knowledge retrieved at inference time to support generation.\nRAG 将预训练语言模型与推理时检索到的外部知识结合起来，以支持答案生成。\nRAG 的关键特征是在推理阶段检索外部知识，并利用检索结果支持生成，而不是要求模型事先记住全部知识。\nPretrained LLM：预训练语言模型\n表示系统已经拥有一个经过训练的模型。它可以具备：语言理解能力、通用知识、文本生成能力、一定的推理能力。RAG 通常不需要从头训练一个新的语言模型。\nExternal knowledge：外部知识\n课件明确列举: Local documents, knowledge base, web search, APIs ... 即本地文档、知识库、网页搜索和 API 等。\n这些来源有一个共同点：信息不必全部编码在语言模型参数中。\nRetrieved at inference time：推理时检索\nInference time 指模型实际处理用户请求、生成回答的阶段。在典型 RAG 中，系统会根据当前问题，从外部来源寻找相关信息。这与训练阶段学习知识不同。\n[R2]\n1.6 Key Idea in RAG\nSource: 5583-Agentic-Computing-2.md · Lecture 6: Retrieval-Augmented Generation RAG / Part 1 Why RAG? / 1.6 Key Idea in RAG\nOR 表示知识库是可插拔的：回答酒店问题需要网页，回答中国菜谱需要菜谱库，回答课程问题需要课程文档。工程含义是RAG 系统的检索器要对着一个特定的知识库来配。换库就要重建索引。\nRAG 不是替代 LLM：LLM 已有大量知识，但在需要的时候可以通过检索获得额外帮助。因此，RAG 应被理解为增强机制，而不是完全替代模型原有能力。\n[R3]\n2.12 RAG 的改进\nSource: 5583-Agentic-Computing-2.md · Lecture 6: Retrieval-Augmented Generation RAG / Part 2 RAG Architecture / 2.12 RAG 的改进\nRAG 继承了哪些经典技术？\n技术 · 主要作用 · 与 RAG 的关系\nTF-IDF · 词项重要性加权 · 关键词检索\nBM25 · 文档相关性排序 · 稀疏检索\nInverted Index · 快速定位包含词项的文档 · 检索索引\nCosine Similarity · 比较向量方向相似性 · 稀疏与稠密向量检索\nPrecision · 衡量返回结果的准确程度 · 检索评估\nRecall · 衡量相关结果覆盖程度 · 检索评估\nMAP / MRR · 衡量排序检索表现 · 排序评估\n需要区分，向量相似度方法可以与经典信息检索技术结合，但现代神经嵌入模型的发展也引入了新的检索能力。\nRAG 真正增加了什么？\n传统搜索引擎主要返回：相关文档或网页。\nRAG 在此基础上进一步执行：将检索结果提供给生成模型，让模型综合信息生成自然语言答案。\nRAG 的创新重点不是从零发明检索，而是将检索机制与语言生成系统结合。\n[R4]\n3.2.2 Self-RAG 的核心机制: Reflection Tokens\nSource: 5583-Agentic-Computing-2.md · Lecture 7 Retrieval Optimization and Agentic RAG Systems 检索优化与智能体 RAG / Part 3 Advanced RAG Architectures…\n传统 RAG 通常使用固定的两阶段流程：\nInput\nSelf-RAG（Self-Reflective Retrieval-Augmented Generation）引入可学习的反思 Token（Learned Reflection Tokens），使模型能够在检索和生成过程中进行自主判断。\n三个判断：\nReflection Token · 核心问题 · 判断阶段 · 作用\nRetrieve? · Is retrieval needed? · 检索之前 · 判断是否需要外部知识\nRelevant? · Are documents relevant? · 检索之后 · 判断检索证据是否相关\nSupported? · Is generation supported? · 生成之后 · 判断生成内容是否受到证据支持\n这三个判断分别对应：\n1. Retrieval Decision：是否检索。\n2. Evidence Relevance：证据是否相关。\n3. Generation Grounding：生成内容是否有依据。\n与固定检索流程相比，Self-RAG 的关键变化是将检索与证据评估纳入模型学习的决策过程。"
+    },
+    {
+      "id": "Q11",
+      "category": "confounder-control",
+      "query": "什么是图神经网络",
+      "queryTokens": [
+        "图神",
+        "神经",
+        "经网",
+        "网络",
+        "gnn"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-1319–KB-1328",
+          "topic": "5\\.5 图神经网络 What is a Graph Neural Network?",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Introduction to AI",
+            "file": "knowledge/5205-Introduction-to-AI.md"
+          },
+          "score": 39.1551,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-2476–KB-2479",
+          "topic": "1\\.1 神经网络  Neural Networks for Classification",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 18.388,
+          "queryCoverage": 0.6
+        },
+        {
+          "id": "KB-1144–KB-1146",
+          "topic": "Part 0 Introduction",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Introduction to AI",
+            "file": "knowledge/5205-Introduction-to-AI.md"
+          },
+          "score": 17.4295,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-1313–KB-1317",
+          "topic": "5\\.4 图数据上用深度神经网络的挑战Challenges of Using Graphs in DNN",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Introduction to AI",
+            "file": "knowledge/5205-Introduction-to-AI.md"
+          },
+          "score": 15.7957,
+          "queryCoverage": 0.8
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-1319–KB-1328",
+          "topic": "5\\.5 图神经网络 What is a Graph Neural Network?",
+          "sectionPath": "Lecture 5 / Part 5 GNNs I: From Graphs to GNNs / 5\\.5 图神经网络 What is a Graph Neural Network?",
+          "originalParagraph": "Define:\n\nA GNN is an optimizable transformation on all attributes of the graph \\(nodes, edges, global\\-context, connectivity\\) that preserves graph symmetries\\.\n\nGNN 是作用在图的全部属性（节点、边、全局上下文、连接关系）上的可优化变换，并且保持图的对称性。\n\nMain Idea:\n\nPass messages between nodes to refine node \\(and possibly edge\\) representation\\.\n\n在节点之间传递消息，以此来精修节点（可能还有边）的表示。\n\n1. 节点V、边E、全局上下文U、连接关系这四个属性全都要处理。\n\n2. 可优化变换：GNN 不是一套固定规则，不是人为设定，它的参数是通过训练学的（与 CNN、MLP 同源）。\n\n3. 保持图的对称性：节点换编号后结果不能变，这就是要保持的对称性。\n\n4. 传递消息：这是 GNN 的工作方式，也是消息传递网络（Message Passing）每个节点从邻居那里收消息，更新自己的表示，然后进入下一层。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Introduction to AI",
+            "file": "knowledge/5205-Introduction-to-AI.md"
+          },
+          "score": 39.1551
+        },
+        {
+          "id": "KB-2476–KB-2479",
+          "topic": "1\\.1 神经网络  Neural Networks for Classification",
+          "sectionPath": "Lecture 6 神经网络 / Part 1 Neural Network：神经网络 / 1\\.1 神经网络  Neural Networks for Classification",
+          "originalParagraph": "Neural Networks for Classification are very powerful, but have been dumped for decades because of their complexity and large computational resources\n\n神经网络被弃用，因为复杂性和算力需求赶不上。\nResurrected a few years ago because of cheaper CPU, RAM, GPU, large clusters with many machines, high\\-speed networks, and many more training examples \\(big data\\)\\. Now, like Deep Learning\\.\n\n复兴原因：算力条件（更便宜的CPU / RAM / GPU 处理器、更大的集群large clusters with many machines、更快的网络 high\\-speed network）；数据条件（样本更多、就是大数据many more training examples, big data）。\n\n深度学习是神经网络复兴后的名字，不是另起炉灶的新方法。神经网络是方法，深度学习是它复兴后的名字，图像识别是它最典型的任务。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 18.388
+        },
+        {
+          "id": "KB-1144–KB-1146",
+          "topic": "Part 0 Introduction",
+          "sectionPath": "Lecture 5 / Part 0 Introduction",
+          "originalParagraph": "|**周 Week**|**主题 Topic**|**核心内容 Key Content**|\n|---|---|---|\n|Week 1|An Introduction AI 导论|AI 定义 / 机器学习三大范式 / ANI\\-AGI\\-ASI / 学术技能|\n|Week 2|Searching \\& Optimization 搜索与优化|BFS / DFS / Hill Climbing / Best\\-First / A\\* / SA / GA|\n|Week 3|Evolutionary Computation 进化计算|EA 总览 / PSO / DE / MA / MOEA / ETO / NAS|\n|Week 4|Artificial Neural Network 人工神经网络|神经元模型 / 激活函数 / 感知机 / MLP / 反向传播 / 过拟合引言|\n|**Week 5**<br>|**Deep Learning \\& Applications 深度学习与应用**|**CNN 卷积网络 / RNN\\-LSTM 序列网络 / GNN 图网络 / 生成模型与扩散模型**|\n\n本周回答了：同样一套反向传播，为什么堆得更深反而更强？面对图像、序列、图这三种完全不同的数据，网络结构要怎么改？\n\n学习路线：深度学习总览 → CNN → 序列神经网络 → 图神经网络 → 生成模型与扩散模型 → 过拟合与欠拟合。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Introduction to AI",
+            "file": "knowledge/5205-Introduction-to-AI.md"
+          },
+          "score": 17.4295
+        },
+        {
+          "id": "KB-1313–KB-1317",
+          "topic": "5\\.4 图数据上用深度神经网络的挑战Challenges of Using Graphs in DNN",
+          "sectionPath": "Lecture 5 / Part 5 GNNs I: From Graphs to GNNs / 5\\.4 图数据上用深度神经网络的挑战Challenges of Using Graphs in DNN",
+          "originalParagraph": "为什么不能使用DNN？图的特征对应CNN的前提不成立。\n\n1. **Graph\\-Structured Data（图结构的数据）**：Neural networks have been traditionally used to operate on fixed\\-size and/or regular\\-structured inputs \\(such as sentences, images and video\\)\\. 神经网络传统上都用来处理**固定尺寸、规则结构**的输入，例如句子、图像和视频。**图两者都不是。**\n\n2. **Lack of Consistent Structure（缺乏一致结构）**：Graphs are extremely flexible mathematical models; but this means they lack consistent structure across instances\\.  图是**极其灵活**的数学模型，但这也意味着**不同样本之间结构不一致**：每个图的节点数、连边数、度数分布都可能不同。\n\n3. **Node\\-Order Equivariance（节点顺序等变）**：Graphs often have no inherent ordering present amongst the nodes\\.  图的节点之间往往没有固有的顺序。任何 GNN 的输出不能依赖于节点的编号顺序。把输入节点重排一遍，输出的对应关系应该跟着重排，而数值不变。所以Invariance to permutations（置换不变）\n\nTips：CNN 靠平移不变来适应图像的位移，GNN 靠置换不变来适应图的重新编号。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Introduction to AI",
+            "file": "knowledge/5205-Introduction-to-AI.md"
+          },
+          "score": 15.7957
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\n什么是图神经网络\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 5\\.5 图神经网络 What is a Graph Neural Network?\nSource: knowledge/5205-Introduction-to-AI.md — Introduction to AI\nPassage:\nDefine:\n\nA GNN is an optimizable transformation on all attributes of the graph \\(nodes, edges, global\\-context, connectivity\\) that preserves graph symmetries\\.\n\nGNN 是作用在图的全部属性（节点、边、全局上下文、连接关系）上的可优化变换，并且保持图的对称性。\n\nMain Idea:\n\nPass messages between nodes to refine node \\(and possibly edge\\) representation\\.\n\n在节点之间传递消息，以此来精修节点（可能还有边）的表示。\n\n1. 节点V、边E、全局上下文U、连接关系这四个属性全都要处理。\n\n2. 可优化变换：GNN 不是一套固定规则，不是人为设定，它的参数是通过训练学的（与 CNN、MLP 同源）。\n\n3. 保持图的对称性：节点换编号后结果不能变，这就是要保持的对称性。\n\n4. 传递消息：这是 GNN 的工作方式，也是消息传递网络（Message Passing）每个节点从邻居那里收消息，更新自己的表示，然后进入下一层。\n\n[R2] Topic: 1\\.1 神经网络  Neural Networks for Classification\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\nNeural Networks for Classification are very powerful, but have been dumped for decades because of their complexity and large computational resources\n\n神经网络被弃用，因为复杂性和算力需求赶不上。\nResurrected a few years ago because of cheaper CPU, RAM, GPU, large clusters with many machines, high\\-speed networks, and many more training examples \\(big data\\)\\. Now, like Deep Learning\\.\n\n复兴原因：算力条件（更便宜的CPU / RAM / GPU 处理器、更大的集群large clusters with many machines、更快的网络 high\\-speed network）；数据条件（样本更多、就是大数据many more training examples, big data）。\n\n深度学习是神经网络复兴后的名字，不是另起炉灶的新方法。神经网络是方法，深度学习是它复兴后的名字，图像识别是它最典型的任务。\n\n[R3] Topic: Part 0 Introduction\nSource: knowledge/5205-Introduction-to-AI.md — Introduction to AI\nPassage:\n|**周 Week**|**主题 Topic**|**核心内容 Key Content**|\n|---|---|---|\n|Week 1|An Introduction AI 导论|AI 定义 / 机器学习三大范式 / ANI\\-AGI\\-ASI / 学术技能|\n|Week 2|Searching \\& Optimization 搜索与优化|BFS / DFS / Hill Climbing / Best\\-First / A\\* / SA / GA|\n|Week 3|Evolutionary Computation 进化计算|EA 总览 / PSO / DE / MA / MOEA / ETO / NAS|\n|Week 4|Artificial Neural Network 人工神经网络|神经元模型 / 激活函数 / 感知机 / MLP / 反向传播 / 过拟合引言|\n|**Week 5**<br>|**Deep Learning \\& Applications 深度学习与应用**|**CNN 卷积网络 / RNN\\-LSTM 序列网络 / GNN 图网络 / 生成模型与扩散模型**|\n\n本周回答了：同样一套反向传播，为什么堆得更深反而更强？面对图像、序列、图这三种完全不同的数据，网络结构要怎么改？\n\n学习路线：深度学习总览 → CNN → 序列神经网络 → 图神经网络 → 生成模型与扩散模型 → 过拟合与欠拟合。\n\n[R4] Topic: 5\\.4 图数据上用深度神经网络的挑战Challenges of Using Graphs in DNN\nSource: knowledge/5205-Introduction-to-AI.md — Introduction to AI\nPassage:\n为什么不能使用DNN？图的特征对应CNN的前提不成立。\n\n1. **Graph\\-Structured Data（图结构的数据）**：Neural networks have been traditionally used to operate on fixed\\-size and/or regular\\-structured inputs \\(such as sentences, images and video\\)\\. 神经网络传统上都用来处理**固定尺寸、规则结构**的输入，例如句子、图像和视频。**图两者都不是。**\n\n2. **Lack of Consistent Structure（缺乏一致结构）**：Graphs are extremely flexible mathematical models; but this means they lack consistent structure across instances\\.  图是**极其灵活**的数学模型，但这也意味着**不同样本之间结构不一致**：每个图的节点数、连边数、度数分布都可能不同。\n\n3. **Node\\-Order Equivariance（节点顺序等变）**：Graphs often have no inherent ordering present amongst the nodes\\.  图的节点之间往往没有固有的顺序。任何 GNN 的输出不能依赖于节点的编号顺序。把输入节点重排一遍，输出的对应关系应该跟着重排，而数值不变。所以Invariance to permutations（置换不变）\n\nTips：CNN 靠平移不变来适应图像的位移，GNN 靠置换不变来适应图的重新编号。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "A graph neural network (GNN) learns transformations of graph data. [R1]\nIt can work with nodes, edges, connectivity, and global context while respecting graph structure. [R1]\nMessage passing lets neighboring nodes exchange information and update their representations. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n5.5 图神经网络 What is a Graph Neural Network?\nSource: 5205-Introduction-to-AI.md · Lecture 5 / Part 5 GNNs I: From Graphs to GNNs / 5.5 图神经网络 What is a Graph Neural Network?\nDefine:\nA GNN is an optimizable transformation on all attributes of the graph nodes, edges, global-context, connectivity that preserves graph symmetries.\nGNN 是作用在图的全部属性（节点、边、全局上下文、连接关系）上的可优化变换，并且保持图的对称性。\nMain Idea:\nPass messages between nodes to refine node and possibly edge representation.\n在节点之间传递消息，以此来精修节点（可能还有边）的表示。\n1. 节点V、边E、全局上下文U、连接关系这四个属性全都要处理。\n2. 可优化变换：GNN 不是一套固定规则，不是人为设定，它的参数是通过训练学的（与 CNN、MLP 同源）。\n3. 保持图的对称性：节点换编号后结果不能变，这就是要保持的对称性。\n4. 传递消息：这是 GNN 的工作方式，也是消息传递网络（Message Passing）每个节点从邻居那里收消息，更新自己的表示，然后进入下一层。\n[R2]\n1.1 神经网络 Neural Networks for Classification\nSource: 5434-Big-Data-Computing-1.md · Lecture 6 神经网络 / Part 1 Neural Network：神经网络 / 1.1 神经网络 Neural Networks for Classification\nNeural Networks for Classification are very powerful, but have been dumped for decades because of their complexity and large computational resources\n神经网络被弃用，因为复杂性和算力需求赶不上。\nResurrected a few years ago because of cheaper CPU, RAM, GPU, large clusters with many machines, high-speed networks, and many more training examples big data. Now, like Deep Learning.\n复兴原因：算力条件（更便宜的CPU / RAM / GPU 处理器、更大的集群large clusters with many machines、更快的网络 high-speed network）；数据条件（样本更多、就是大数据many more training examples, big data）。\n深度学习是神经网络复兴后的名字，不是另起炉灶的新方法。神经网络是方法，深度学习是它复兴后的名字，图像识别是它最典型的任务。\n[R3]\nPart 0 Introduction\nSource: 5205-Introduction-to-AI.md · Lecture 5 / Part 0 Introduction\n周 Week · 主题 Topic · 核心内容 Key Content\nWeek 1 · An Introduction AI 导论 · AI 定义 / 机器学习三大范式 / ANI-AGI-ASI / 学术技能\nWeek 2 · Searching & Optimization 搜索与优化 · BFS / DFS / Hill Climbing / Best-First / A* / SA / GA\nWeek 3 · Evolutionary Computation 进化计算 · EA 总览 / PSO / DE / MA / MOEA / ETO / NAS\nWeek 4 · Artificial Neural Network 人工神经网络 · 神经元模型 / 激活函数 / 感知机 / MLP / 反向传播 / 过拟合引言\nWeek 5 · Deep Learning & Applications 深度学习与应用 · CNN 卷积网络 / RNN-LSTM 序列网络 / GNN 图网络 / 生成模型与扩散模型\n本周回答了：同样一套反向传播，为什么堆得更深反而更强？面对图像、序列、图这三种完全不同的数据，网络结构要怎么改？\n学习路线：深度学习总览 → CNN → 序列神经网络 → 图神经网络 → 生成模型与扩散模型 → 过拟合与欠拟合。\n[R4]\n5.4 图数据上用深度神经网络的挑战Challenges of Using Graphs in DNN\nSource: 5205-Introduction-to-AI.md · Lecture 5 / Part 5 GNNs I: From Graphs to GNNs / 5.4 图数据上用深度神经网络的挑战Challenges of Using Graphs in DNN\n为什么不能使用DNN？图的特征对应CNN的前提不成立。\n1. Graph-Structured Data（图结构的数据）：Neural networks have been traditionally used to operate on fixed-size and/or regular-structured inputs such as sentences, images and video. 神经网络传统上都用来处理固定尺寸、规则结构的输入，例如句子、图像和视频。图两者都不是。\n2. Lack of Consistent Structure（缺乏一致结构）：Graphs are extremely flexible mathematical models; but this means they lack consistent structure across instances. 图是极其灵活的数学模型，但这也意味着不同样本之间结构不一致：每个图的节点数、连边数、度数分布都可能不同。\n3. Node-Order Equivariance（节点顺序等变）：Graphs often have no inherent ordering present amongst the nodes. 图的节点之间往往没有固有的顺序。任何 GNN 的输出不能依赖于节点的编号顺序。把输入节点重排一遍，输出的对应关系应该跟着重排，而数值不变。所以Invariance to permutations（置换不变）\nTips：CNN…"
+    },
+    {
+      "id": "Q12",
+      "category": "Chinese-definition",
+      "query": "什么是MapReduce",
+      "queryTokens": [
+        "mapreduce",
+        "mapper",
+        "reducer"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-1701–KB-1706",
+          "topic": "part 3 MapReduce Introduction",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 23.0743,
+          "queryCoverage": 0.3333
+        },
+        {
+          "id": "KB-1929",
+          "topic": "6\\.5 MapReduce steps",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 18.5332,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-1921–KB-1925",
+          "topic": "6\\.3 MapReduce Pipeline",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 15.0088,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-1681–KB-1683",
+          "topic": "1\\.4 Hadoop and MapReduce",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 8.7879,
+          "queryCoverage": 0.3333
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-1701–KB-1706",
+          "topic": "part 3 MapReduce Introduction",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 3 MapReduce Introduction",
+          "originalParagraph": "3\\.1 Definition\n\n1. MapReduce is a programming model Google has used successfully for processing its \"big\\-data\" sets\\. 它是一个Google 成功用于处理其大数据集的编程模型。\n\n2. A framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models\\. 它是一个允许用简单编程模型在计算机集群间分布式处理大数据集的框架。\n\n3. It is not a program, but an idea\\. MapReduce 是方法论层面的东西，不是一份可以下载运行的软件。\n\n4. Hadoop MapReduce is an implementation of MapReduce\\. Hadoop MapReduce 是它的实现。\n\nMapReduce 是什么？它是 Google 提出的编程模型（不是程序），是允许在计算机集群上分布式处理大数据集的框架；Hadoop MapReduce 是它的开源实现，其底层运行时自动完成并行化、容错与通信。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 23.0743
+        },
+        {
+          "id": "KB-1929",
+          "topic": "6\\.5 MapReduce steps",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6\\.5 MapReduce steps",
+          "originalParagraph": "|阶段|课件原文|要点|\n|---|---|---|\n|判断适用性|Determine if the problem is parallelizable and solvable using MapReduce|两个条件：可并行 \\+ 可用 MapReduce 解|\n|检查数据形态|Is the data Write Once Read Many \\(WORM\\)?|WORM 数据一次写入、多次读取，是并行的前提（无需锁）|\n|设计与实现|Design and implement Mapper class and Reducer class|两个函数|\n|配置、加载与运行|Configure the application \\(job\\) as to the number of mappers and reducers \\(tasks\\), input and output streams；Load the data；Launch the job and monitor|任务数可配置；数据加载；提交并监控<br>|",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 18.5332
+        },
+        {
+          "id": "KB-1921–KB-1925",
+          "topic": "6\\.3 MapReduce Pipeline",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6\\.3 MapReduce Pipeline",
+          "originalParagraph": "1. **限制通信**：旨在减少进程间的通信量。\n\n2. **独立处理**：每个记录由 Mapper 独立处理，互不干扰。\n\n3. **映射阶段 \\(Mapping\\)**：各节点对本地预加载的数据进行映射处理。\n\n4. **洗牌阶段 \\(Shuffle\\)**：节点间交换 Mapper 生成的中间数据。\n\n5. **归约阶段 \\(Reducing\\)**：Reducer 将不同 Mapper 的结果合并，生成最终输出并存储在本地。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 15.0088
+        },
+        {
+          "id": "KB-1681–KB-1683",
+          "topic": "1\\.4 Hadoop and MapReduce",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 1 Hadoop Introduction / 1\\.4 Hadoop and MapReduce",
+          "originalParagraph": "1. MapReduce是一个计算模型（a Computational Model/Program）\n\n2. Apache Hadoop是MapReduce这一思想的开源实现（an open\\-source implementation of the MapReduce idea）\n\nMapReduce这个思想不只Hadoop一个实现，它是 Google 提出的编程模型；Hadoop 只是Apache基金会把它工程化、开源化的产物。It is not a program, but an idea。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 8.7879
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\n什么是MapReduce\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: part 3 MapReduce Introduction\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n3\\.1 Definition\n\n1. MapReduce is a programming model Google has used successfully for processing its \"big\\-data\" sets\\. 它是一个Google 成功用于处理其大数据集的编程模型。\n\n2. A framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models\\. 它是一个允许用简单编程模型在计算机集群间分布式处理大数据集的框架。\n\n3. It is not a program, but an idea\\. MapReduce 是方法论层面的东西，不是一份可以下载运行的软件。\n\n4. Hadoop MapReduce is an implementation of MapReduce\\. Hadoop MapReduce 是它的实现。\n\nMapReduce 是什么？它是 Google 提出的编程模型（不是程序），是允许在计算机集群上分布式处理大数据集的框架；Hadoop MapReduce 是它的开源实现，其底层运行时自动完成并行化、容错与通信。\n\n[R2] Topic: 6\\.5 MapReduce steps\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n|阶段|课件原文|要点|\n|---|---|---|\n|判断适用性|Determine if the problem is parallelizable and solvable using MapReduce|两个条件：可并行 \\+ 可用 MapReduce 解|\n|检查数据形态|Is the data Write Once Read Many \\(WORM\\)?|WORM 数据一次写入、多次读取，是并行的前提（无需锁）|\n|设计与实现|Design and implement Mapper class and Reducer class|两个函数|\n|配置、加载与运行|Configure the application \\(job\\) as to the number of mappers and reducers \\(tasks\\), input and output streams；Load the data；Launch the job and monitor|任务数可配置；数据加载；提交并监控<br>|\n\n[R3] Topic: 6\\.3 MapReduce Pipeline\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n1. **限制通信**：旨在减少进程间的通信量。\n\n2. **独立处理**：每个记录由 Mapper 独立处理，互不干扰。\n\n3. **映射阶段 \\(Mapping\\)**：各节点对本地预加载的数据进行映射处理。\n\n4. **洗牌阶段 \\(Shuffle\\)**：节点间交换 Mapper 生成的中间数据。\n\n5. **归约阶段 \\(Reducing\\)**：Reducer 将不同 Mapper 的结果合并，生成最终输出并存储在本地。\n\n[R4] Topic: 1\\.4 Hadoop and MapReduce\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n1. MapReduce是一个计算模型（a Computational Model/Program）\n\n2. Apache Hadoop是MapReduce这一思想的开源实现（an open\\-source implementation of the MapReduce idea）\n\nMapReduce这个思想不只Hadoop一个实现，它是 Google 提出的编程模型；Hadoop 只是Apache基金会把它工程化、开源化的产物。It is not a program, but an idea。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "MapReduce is a programming model for distributed processing of large data sets. [R1]\nIt separates the work into map and reduce stages that can run across a cluster. [R1]\nHadoop MapReduce is an implementation of the model. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\npart 3 MapReduce Introduction\nSource: 5434-Big-Data-Computing-1.md · Lecture 4: Hadoop and MapReduce / part 3 MapReduce Introduction\n3.1 Definition\n1. MapReduce is a programming model Google has used successfully for processing its \"big-data\" sets. 它是一个Google 成功用于处理其大数据集的编程模型。\n2. A framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models. 它是一个允许用简单编程模型在计算机集群间分布式处理大数据集的框架。\n3. It is not a program, but an idea. MapReduce 是方法论层面的东西，不是一份可以下载运行的软件。\n4. Hadoop MapReduce is an implementation of MapReduce. Hadoop MapReduce 是它的实现。\nMapReduce 是什么？它是 Google 提出的编程模型（不是程序），是允许在计算机集群上分布式处理大数据集的框架；Hadoop MapReduce 是它的开源实现，其底层运行时自动完成并行化、容错与通信。\n[R2]\n6.5 MapReduce steps\nSource: 5434-Big-Data-Computing-1.md · Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6.5 MapReduce steps\n阶段 · 课件原文 · 要点\n判断适用性 · Determine if the problem is parallelizable and solvable using MapReduce · 两个条件：可并行 + 可用 MapReduce 解\n检查数据形态 · Is the data Write Once Read Many WORM? · WORM 数据一次写入、多次读取，是并行的前提（无需锁）\n设计与实现 · Design and implement Mapper class and Reducer class · 两个函数\n配置、加载与运行 · Configure the application job as to the number of mappers and reducers tasks, input and output streams；Load the data；Launch the job and monitor · 任务数可配置；数据加载；提交并监控\n[R3]\n6.3 MapReduce Pipeline\nSource: 5434-Big-Data-Computing-1.md · Lecture 4: Hadoop and MapReduce / part 6 Tutorial: Hadoop / 6.3 MapReduce Pipeline\n1. 限制通信：旨在减少进程间的通信量。\n2. 独立处理：每个记录由 Mapper 独立处理，互不干扰。\n3. 映射阶段 Mapping：各节点对本地预加载的数据进行映射处理。\n4. 洗牌阶段 Shuffle：节点间交换 Mapper 生成的中间数据。\n5. 归约阶段 Reducing：Reducer 将不同 Mapper 的结果合并，生成最终输出并存储在本地。\n[R4]\n1.4 Hadoop and MapReduce\nSource: 5434-Big-Data-Computing-1.md · Lecture 4: Hadoop and MapReduce / part 1 Hadoop Introduction / 1.4 Hadoop and MapReduce\n1. MapReduce是一个计算模型（a Computational Model/Program）\n2. Apache Hadoop是MapReduce这一思想的开源实现（an open-source implementation of the MapReduce idea）\nMapReduce这个思想不只Hadoop一个实现，它是 Google 提出的编程模型；Hadoop 只是Apache基金会把它工程化、开源化的产物。It is not a program, but an idea。"
+    },
+    {
+      "id": "Q13",
+      "category": "qualified-memory",
+      "query": "agent memory是什么",
+      "queryTokens": [
+        "agent",
+        "memory",
+        "智能",
+        "能体"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-9359–KB-9361",
+          "topic": "6\\.4 智能体长期记忆的分类",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 18.8339,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-6354–KB-6358",
+          "topic": "7\\.7\\.1 生成式智能体的记忆与交互机制",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 18.8232,
+          "queryCoverage": 0.75
+        },
+        {
+          "id": "KB-9503–KB-9507",
+          "topic": "6\\.9\\.2 Agent Memory 的完整工作循环",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 16.0178,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-9284–KB-9291",
+          "topic": "Part 6 Agent Memory 智能体记忆",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 12.096,
+          "queryCoverage": 1
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-9359–KB-9361",
+          "topic": "6\\.4 智能体长期记忆的分类",
+          "sectionPath": "Lecture 7  Agent Memory and RAG / Part 6 Agent Memory 智能体记忆 / 6\\.4 智能体长期记忆的分类",
+          "originalParagraph": "课件借鉴人类长期记忆体系，将 Agent Memory 按内容分为三类：\n\n|**记忆类型**|**英文**|**存储内容**|**代表系统**|\n|---|---|---|---|\n|情景记忆|Episodic Memory|经历、事件、交互记录|Generative Agents|\n|语义记忆|Semantic Memory|事实、概念、归纳知识|Generative Agents|\n|程序性记忆|Procedural Memory|技能、操作方法、可执行程序|Voyager|\n\n这一分类基于记忆内容，而非底层实现方式。例如，三类记忆都可以使用文本数据库或向量数据库保存，但其语义和用途不同。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 18.8339
+        },
+        {
+          "id": "KB-6354–KB-6358",
+          "topic": "7\\.7\\.1 生成式智能体的记忆与交互机制",
+          "sectionPath": "Lecture 8 智能体系统设计 Design of Agentic Systems / Part 7 多智能体系统基础 Multi\\-Agent Fundamentals / 7\\.7 多智能体交互、记忆 / 7\\.7\\.1 生成式智能体的记忆与交互机制",
+          "originalParagraph": "智能体根据当前目标、环境状态和相关记忆制定行动计划。\n\n5. Social Interaction：社会交互\n\n智能体的行动和对话会改变共享环境，并成为其他智能体的新观察。\n\n因此，系统形成持续循环： $\\text{Perceive} \\rightarrow \\text{Store Memory} \\rightarrow \\text{Retrieve} \\rightarrow \\text{Reflect / Plan} \\rightarrow \\text{Act} \\rightarrow \\text{New Observations}$\n\n记忆使智能体能够保持行为连续性，交互则使多个智能体之间产生动态影响。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Agentic Computing · Part 3",
+            "file": "knowledge/5583-Agentic-Computing-3.md"
+          },
+          "score": 18.8232
+        },
+        {
+          "id": "KB-9503–KB-9507",
+          "topic": "6\\.9\\.2 Agent Memory 的完整工作循环",
+          "sectionPath": "Lecture 7  Agent Memory and RAG / Part 6 Agent Memory 智能体记忆 / 6\\.9 智能体记忆的整体架构与总结 / 6\\.9\\.2 Agent Memory 的完整工作循环",
+          "originalParagraph": "综合本章内容，智能体的持续学习过程可以抽象为：\n\n这一过程包含两个相互关联的循环：\n\n任务执行循环 $\\text{Reason} \\rightarrow \\text{Act} \\rightarrow \\text{Observe}$\n\n记忆学习循环 $\\text{Experience} \\rightarrow \\text{Store} \\rightarrow \\text{Retrieve} \\rightarrow \\text{Reflect} \\rightarrow \\text{Update}$\n\n前者使智能体能够完成当前任务，后者使智能体能够积累经验并改善未来表现。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 16.0178
+        },
+        {
+          "id": "KB-9284–KB-9291",
+          "topic": "Part 6 Agent Memory 智能体记忆",
+          "sectionPath": "Lecture 7  Agent Memory and RAG / Part 6 Agent Memory 智能体记忆",
+          "originalParagraph": "本章围绕智能体如何存储、检索、更新和利用历史信息展开。\n\n核心问题：如何突破大语言模型有限上下文窗口与静态参数知识的限制，使智能体能够在持续交互中积累经验、形成知识、复用技能，并实现长期学习。\n\n本章的知识体系可以归纳为五个层次：\n\n1. 记忆的必要性：LLM 的参数记忆与上下文记忆存在局限，传统 RAG 不能完全替代智能体记忆。\n\n2. 记忆的认知基础：借鉴人类长期记忆的海马体索引理论、模式分离与模式补全机制。\n\n3. 记忆的内容分类：情景记忆（Episodic）、语义记忆（Semantic）和程序性记忆（Procedural）。\n\n4. 记忆的实现与学习：从外部文本存储到参数微调、提示优化、代码库改进及自我反思。\n\n5. 记忆的管理机制：有限上下文下的外部记忆读写、召回、更新与冲突消解。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "LLM for Agent · Part 2",
+            "file": "knowledge/5584-LLM-for-Agent-2.md"
+          },
+          "score": 12.096
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nagent memory是什么\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 6\\.4 智能体长期记忆的分类\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n课件借鉴人类长期记忆体系，将 Agent Memory 按内容分为三类：\n\n|**记忆类型**|**英文**|**存储内容**|**代表系统**|\n|---|---|---|---|\n|情景记忆|Episodic Memory|经历、事件、交互记录|Generative Agents|\n|语义记忆|Semantic Memory|事实、概念、归纳知识|Generative Agents|\n|程序性记忆|Procedural Memory|技能、操作方法、可执行程序|Voyager|\n\n这一分类基于记忆内容，而非底层实现方式。例如，三类记忆都可以使用文本数据库或向量数据库保存，但其语义和用途不同。\n\n[R2] Topic: 7\\.7\\.1 生成式智能体的记忆与交互机制\nSource: knowledge/5583-Agentic-Computing-3.md — Agentic Computing · Part 3\nPassage:\n智能体根据当前目标、环境状态和相关记忆制定行动计划。\n\n5. Social Interaction：社会交互\n\n智能体的行动和对话会改变共享环境，并成为其他智能体的新观察。\n\n因此，系统形成持续循环： $\\text{Perceive} \\rightarrow \\text{Store Memory} \\rightarrow \\text{Retrieve} \\rightarrow \\text{Reflect / Plan} \\rightarrow \\text{Act} \\rightarrow \\text{New Observations}$\n\n记忆使智能体能够保持行为连续性，交互则使多个智能体之间产生动态影响。\n\n[R3] Topic: 6\\.9\\.2 Agent Memory 的完整工作循环\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n综合本章内容，智能体的持续学习过程可以抽象为：\n\n这一过程包含两个相互关联的循环：\n\n任务执行循环 $\\text{Reason} \\rightarrow \\text{Act} \\rightarrow \\text{Observe}$\n\n记忆学习循环 $\\text{Experience} \\rightarrow \\text{Store} \\rightarrow \\text{Retrieve} \\rightarrow \\text{Reflect} \\rightarrow \\text{Update}$\n\n前者使智能体能够完成当前任务，后者使智能体能够积累经验并改善未来表现。\n\n[R4] Topic: Part 6 Agent Memory 智能体记忆\nSource: knowledge/5584-LLM-for-Agent-2.md — LLM for Agent · Part 2\nPassage:\n本章围绕智能体如何存储、检索、更新和利用历史信息展开。\n\n核心问题：如何突破大语言模型有限上下文窗口与静态参数知识的限制，使智能体能够在持续交互中积累经验、形成知识、复用技能，并实现长期学习。\n\n本章的知识体系可以归纳为五个层次：\n\n1. 记忆的必要性：LLM 的参数记忆与上下文记忆存在局限，传统 RAG 不能完全替代智能体记忆。\n\n2. 记忆的认知基础：借鉴人类长期记忆的海马体索引理论、模式分离与模式补全机制。\n\n3. 记忆的内容分类：情景记忆（Episodic）、语义记忆（Semantic）和程序性记忆（Procedural）。\n\n4. 记忆的实现与学习：从外部文本存储到参数微调、提示优化、代码库改进及自我反思。\n\n5. 记忆的管理机制：有限上下文下的外部记忆读写、召回、更新与冲突消解。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "Agent memory stores information that can help an agent across interactions. [R1]\nEpisodic memory records experiences and events. [R1]\nSemantic memory stores facts and concepts; procedural memory stores skills and methods. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n6.4 智能体长期记忆的分类\nSource: 5584-LLM-for-Agent-2.md · Lecture 7 Agent Memory and RAG / Part 6 Agent Memory 智能体记忆 / 6.4 智能体长期记忆的分类\n课件借鉴人类长期记忆体系，将 Agent Memory 按内容分为三类：\n记忆类型 · 英文 · 存储内容 · 代表系统\n情景记忆 · Episodic Memory · 经历、事件、交互记录 · Generative Agents\n语义记忆 · Semantic Memory · 事实、概念、归纳知识 · Generative Agents\n程序性记忆 · Procedural Memory · 技能、操作方法、可执行程序 · Voyager\n这一分类基于记忆内容，而非底层实现方式。例如，三类记忆都可以使用文本数据库或向量数据库保存，但其语义和用途不同。\n[R2]\n7.7.1 生成式智能体的记忆与交互机制\nSource: 5583-Agentic-Computing-3.md · Lecture 8 智能体系统设计 Design of Agentic Systems / Part 7 多智能体系统基础 Multi-Agent Fundamentals / 7.7 多智能体交互、记忆 /…\n智能体根据当前目标、环境状态和相关记忆制定行动计划。\n5. Social Interaction：社会交互\n智能体的行动和对话会改变共享环境，并成为其他智能体的新观察。\n因此，系统形成持续循环： Perceive → Store Memory → Retrieve → Reflect / Plan → Act → New Observations\n记忆使智能体能够保持行为连续性，交互则使多个智能体之间产生动态影响。\n[R3]\n6.9.2 Agent Memory 的完整工作循环\nSource: 5584-LLM-for-Agent-2.md · Lecture 7 Agent Memory and RAG / Part 6 Agent Memory 智能体记忆 / 6.9 智能体记忆的整体架构与总结 / 6.9.2 Agent Memory 的完整工作…\n综合本章内容，智能体的持续学习过程可以抽象为：\n这一过程包含两个相互关联的循环：\n任务执行循环 Reason → Act → Observe\n记忆学习循环 Experience → Store → Retrieve → Reflect → Update\n前者使智能体能够完成当前任务，后者使智能体能够积累经验并改善未来表现。\n[R4]\nPart 6 Agent Memory 智能体记忆\nSource: 5584-LLM-for-Agent-2.md · Lecture 7 Agent Memory and RAG / Part 6 Agent Memory 智能体记忆\n本章围绕智能体如何存储、检索、更新和利用历史信息展开。\n核心问题：如何突破大语言模型有限上下文窗口与静态参数知识的限制，使智能体能够在持续交互中积累经验、形成知识、复用技能，并实现长期学习。\n本章的知识体系可以归纳为五个层次：\n1. 记忆的必要性：LLM 的参数记忆与上下文记忆存在局限，传统 RAG 不能完全替代智能体记忆。\n2. 记忆的认知基础：借鉴人类长期记忆的海马体索引理论、模式分离与模式补全机制。\n3. 记忆的内容分类：情景记忆（Episodic）、语义记忆（Semantic）和程序性记忆（Procedural）。\n4. 记忆的实现与学习：从外部文本存储到参数微调、提示优化、代码库改进及自我反思。\n5. 记忆的管理机制：有限上下文下的外部记忆读写、召回、更新与冲突消解。"
+    },
+    {
+      "id": "Q14",
+      "category": "qualified-memory",
+      "query": "HDFS memory是什么",
+      "queryTokens": [
+        "hdf",
+        "memory"
+      ],
+      "candidatePassages": [
+        {
+          "id": "KB-2019–KB-2022",
+          "topic": "2\\.4\\.3 Metadata in Memory 元数据放内存",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 11.7789,
+          "queryCoverage": 0.5
+        },
+        {
+          "id": "KB-2385–KB-2394",
+          "topic": "6\\.2 Apache Spark",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 5.9413,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-2473",
+          "topic": "8\\.4 Summary",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 4.8065,
+          "queryCoverage": 1
+        },
+        {
+          "id": "KB-1733–KB-1735",
+          "topic": "4\\.3 ** **Three Single Machine Problems",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 3.5565,
+          "queryCoverage": 1
+        }
+      ],
+      "retrievedPassages": [
+        {
+          "id": "KB-2019–KB-2022",
+          "topic": "2\\.4\\.3 Metadata in Memory 元数据放内存",
+          "sectionPath": "Lecture 5 HDFS and Spark / Part 2 HDFS Technical Details / 2\\.4 NameNode / 2\\.4\\.3 Metadata in Memory 元数据放内存",
+          "originalParagraph": "The entire metadata is in main memory\\. Memory read/write is faster than disk read/write\n\n为什么放内存：内存读写比磁盘快。元数据每次操作都要查，放磁盘会成为瓶颈。\n\n代价：Data in memory will be lost if the machine shuts down 机器一关，内存里的元数据全丢。\n\n于是需要持久化：In addition to metadata in memory, we need a persistent copy of metadata 所以除了内存中的元数据，还需要一份持久化副本。所以 引入FsImage 与 EditLog。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 11.7789
+        },
+        {
+          "id": "KB-2385–KB-2394",
+          "topic": "6\\.2 Apache Spark",
+          "sectionPath": "Lecture 5 HDFS and Spark / Part 6  Spark Motivation / 6\\.2 Apache Spark",
+          "originalParagraph": "**5\\. Native Scala, Java, Python, and R support**\n\n原生支持 Scala、Java、Python、R 四种开发语言。适配不同岗位需求，后端高性能开发优先使用 Scala，数据分析人员常用 PySpark，统计分析可使用 SparkR，受众更广。\n\n**6\\. Supports interactive shells for exploratory data analysis**\n\n支持交互式命令行，可用于探索性数据分析。通过 spark\\-shell、pyspark 可实现逐行代码执行、即时出结果，适合临时数据分析、代码调试、数据探索，完美弥补 MapReduce 无法交互的缺陷。\n\n**7\\. Spark API is extremely simple to use**\n\nSpark API 简洁易用，封装度高。高层API屏蔽了分布式底层细节，开发者无需关注集群调度、节点通信、数据分片，专注业务逻辑即可。\n\nSpark 与 MapReduce 核心机制对比\n\n|方案|流程|每轮之间|\n|---|---|---|\n|Hadoop: Use Disk for Data Sharing|HDFS read → Iteration1 → HDFS Write → HDFS read → Iteration2 → HDFS Write|落盘（每次交接都是一次 HDFS 读 \\+ 一次 HDFS 写）|\n|Spark: In\\-Memory Data Sharing|HDFS read → Iteration1 →（内存）→ Iteration2 →（内存）|留在内存（只有最开始一次 HDFS read）|\n\nHadoop MapReduce：依靠磁盘共享中间数据，每轮计算结束强制落盘，迭代任务反复读写磁盘，IO开销巨大。\n\nSpark：依靠内存共享中间数据，计算结果常驻内存，多轮迭代直接读取内存数据，跳过磁盘IO，性能大幅提升。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 5.9413
+        },
+        {
+          "id": "KB-2473",
+          "topic": "8\\.4 Summary",
+          "sectionPath": "Lecture 5 HDFS and Spark / Part 8 Spark Application / 8\\.4 Summary",
+          "originalParagraph": "|块|课件原文|\n|---|---|\n|Hadoop \\(HDFS, MapReduce\\)|Provides an easy solution for processing Big Data；Brings a paradigm shift in programming distributed system<br>为大数据处理提供简单的解决方案；带来了分布式系统编程的范式转变。|\n|Spark|Has extended MapReduce for memory computations；for streaming, interactive, iterative and machine learning tasks<br>为内存计算扩展了 MapReduce；四类任务：流式 / 交互式 / 迭代式 / 机器学习。|\n|Changing the World|Made data processing cheaper and more efficient and scalable；It is the foundation of many other tools and software<br>让数据处理变得更便宜、更高效、更可扩展；是许多其他工具与软件的基础。|",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 4.8065
+        },
+        {
+          "id": "KB-1733–KB-1735",
+          "topic": "4\\.3 ** **Three Single Machine Problems",
+          "sectionPath": "Lecture 4: Hadoop and MapReduce / part 4 MapReduce Technical Ideas / 4\\.3 ** **Three Single Machine Problems",
+          "originalParagraph": "词频统计在单机上的三个瓶颈及MapReduce的解决：\n\n|**瓶颈**|**具体含义**|**MapReduce 的解法**|\n|---|---|---|\n|**Efficiency issue** 效率问题|单机串行扫描 100 PB 需要天文数字的时间；CPU 与磁盘带宽是上限|**并行化：**多 worker 同时处理不同分片|\n|**Storage issue** 存储问题|一台机器装不下 100 PB；即使装下也无法可靠维护|**HDFS：**切块 \\+ 多副本存在集群上|\n|**Memory issue** 内存问题|词表本身可能大到装不进内存（不同词的个数也可以是上亿级）|**局部聚合：**每个 worker 只维护自己分片的局部计数表，最后再合并|\n\n三个问题的独立性：三者不能互相替代，加 CPU 不能解决存储（数据还是装不下）；加磁盘不能解决效率（单机 I/O 带宽有限）；加内存不能解决前者（100 PB 远超任何单机内存上限）。必须同时换三套方案。",
+          "source": {
+            "type": "Course lecture notes",
+            "course": "Big Data Computing · Part 1",
+            "file": "knowledge/5434-Big-Data-Computing-1.md"
+          },
+          "score": 3.5565
+        }
+      ],
+      "assembledPrompt": "SYSTEM: You are a course-notes assistant. Answer only from the reference passages. Preserve uncertainty. If the passages do not support an answer, say exactly: \"Insufficient reference materials to answer this question.\" Cite supporting passages as [R1], [R2], etc.\n\nUSER QUESTION:\nHDFS memory是什么\n\nRETRIEVED REFERENCE MATERIALS:\n[R1] Topic: 2\\.4\\.3 Metadata in Memory 元数据放内存\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\nThe entire metadata is in main memory\\. Memory read/write is faster than disk read/write\n\n为什么放内存：内存读写比磁盘快。元数据每次操作都要查，放磁盘会成为瓶颈。\n\n代价：Data in memory will be lost if the machine shuts down 机器一关，内存里的元数据全丢。\n\n于是需要持久化：In addition to metadata in memory, we need a persistent copy of metadata 所以除了内存中的元数据，还需要一份持久化副本。所以 引入FsImage 与 EditLog。\n\n[R2] Topic: 6\\.2 Apache Spark\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n**5\\. Native Scala, Java, Python, and R support**\n\n原生支持 Scala、Java、Python、R 四种开发语言。适配不同岗位需求，后端高性能开发优先使用 Scala，数据分析人员常用 PySpark，统计分析可使用 SparkR，受众更广。\n\n**6\\. Supports interactive shells for exploratory data analysis**\n\n支持交互式命令行，可用于探索性数据分析。通过 spark\\-shell、pyspark 可实现逐行代码执行、即时出结果，适合临时数据分析、代码调试、数据探索，完美弥补 MapReduce 无法交互的缺陷。\n\n**7\\. Spark API is extremely simple to use**\n\nSpark API 简洁易用，封装度高。高层API屏蔽了分布式底层细节，开发者无需关注集群调度、节点通信、数据分片，专注业务逻辑即可。\n\nSpark 与 MapReduce 核心机制对比\n\n|方案|流程|每轮之间|\n|---|---|---|\n|Hadoop: Use Disk for Data Sharing|HDFS read → Iteration1 → HDFS Write → HDFS read → Iteration2 → HDFS Write|落盘（每次交接都是一次 HDFS 读 \\+ 一次 HDFS 写）|\n|Spark: In\\-Memory Data Sharing|HDFS read → Iteration1 →（内存）→ Iteration2 →（内存）|留在内存（只有最开始一次 HDFS read）|\n\nHadoop MapReduce：依靠磁盘共享中间数据，每轮计算结束强制落盘，迭代任务反复读写磁盘，IO开销巨大。\n\nSpark：依靠内存共享中间数据，计算结果常驻内存，多轮迭代直接读取内存数据，跳过磁盘IO，性能大幅提升。\n\n[R3] Topic: 8\\.4 Summary\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n|块|课件原文|\n|---|---|\n|Hadoop \\(HDFS, MapReduce\\)|Provides an easy solution for processing Big Data；Brings a paradigm shift in programming distributed system<br>为大数据处理提供简单的解决方案；带来了分布式系统编程的范式转变。|\n|Spark|Has extended MapReduce for memory computations；for streaming, interactive, iterative and machine learning tasks<br>为内存计算扩展了 MapReduce；四类任务：流式 / 交互式 / 迭代式 / 机器学习。|\n|Changing the World|Made data processing cheaper and more efficient and scalable；It is the foundation of many other tools and software<br>让数据处理变得更便宜、更高效、更可扩展；是许多其他工具与软件的基础。|\n\n[R4] Topic: 4\\.3 ** **Three Single Machine Problems\nSource: knowledge/5434-Big-Data-Computing-1.md — Big Data Computing · Part 1\nPassage:\n词频统计在单机上的三个瓶颈及MapReduce的解决：\n\n|**瓶颈**|**具体含义**|**MapReduce 的解法**|\n|---|---|---|\n|**Efficiency issue** 效率问题|单机串行扫描 100 PB 需要天文数字的时间；CPU 与磁盘带宽是上限|**并行化：**多 worker 同时处理不同分片|\n|**Storage issue** 存储问题|一台机器装不下 100 PB；即使装下也无法可靠维护|**HDFS：**切块 \\+ 多副本存在集群上|\n|**Memory issue** 内存问题|词表本身可能大到装不进内存（不同词的个数也可以是上亿级）|**局部聚合：**每个 worker 只维护自己分片的局部计数表，最后再合并|\n\n三个问题的独立性：三者不能互相替代，加 CPU 不能解决存储（数据还是装不下）；加磁盘不能解决效率（单机 I/O 带宽有限）；加内存不能解决前者（100 PB 远超任何单机内存上限）。必须同时换三套方案。\n\nTASK:\nCompose a concise answer grounded only in the retrieved materials, and include inline source citations. Do not add outside facts.",
+      "pageAnswer": "HDFS keeps its metadata in main memory for faster access. [R1]\nMemory is faster to read and write than disk for frequent metadata lookups. [R1]\nBecause memory is volatile, HDFS also needs a persistent metadata copy. [R1]",
+      "referenceDisclosureOpen": false,
+      "visitorReferenceText": "[R1]\n2.4.3 Metadata in Memory 元数据放内存\nSource: 5434-Big-Data-Computing-1.md · Lecture 5 HDFS and Spark / Part 2 HDFS Technical Details / 2.4 NameNode / 2.4.3 Metadata in Memory 元数据放内存\nThe entire metadata is in main memory. Memory read/write is faster than disk read/write\n为什么放内存：内存读写比磁盘快。元数据每次操作都要查，放磁盘会成为瓶颈。\n代价：Data in memory will be lost if the machine shuts down 机器一关，内存里的元数据全丢。\n于是需要持久化：In addition to metadata in memory, we need a persistent copy of metadata 所以除了内存中的元数据，还需要一份持久化副本。所以 引入FsImage 与 EditLog。\n[R2]\n6.2 Apache Spark\nSource: 5434-Big-Data-Computing-1.md · Lecture 5 HDFS and Spark / Part 6 Spark Motivation / 6.2 Apache Spark\n5. Native Scala, Java, Python, and R support\n原生支持 Scala、Java、Python、R 四种开发语言。适配不同岗位需求，后端高性能开发优先使用 Scala，数据分析人员常用 PySpark，统计分析可使用 SparkR，受众更广。\n6. Supports interactive shells for exploratory data analysis\n支持交互式命令行，可用于探索性数据分析。通过 spark-shell、pyspark 可实现逐行代码执行、即时出结果，适合临时数据分析、代码调试、数据探索，完美弥补 MapReduce 无法交互的缺陷。\n7. Spark API is extremely simple to use\nSpark API 简洁易用，封装度高。高层API屏蔽了分布式底层细节，开发者无需关注集群调度、节点通信、数据分片，专注业务逻辑即可。\nSpark 与 MapReduce 核心机制对比\n方案 · 流程 · 每轮之间\nHadoop: Use Disk for Data Sharing · HDFS read → Iteration1 → HDFS Write → HDFS read → Iteration2 → HDFS Write · 落盘（每次交接都是一次 HDFS 读 + 一次 HDFS 写）\nSpark: In-Memory Data Sharing · HDFS read → Iteration1 →（内存）→ Iteration2…\n[R3]\n8.4 Summary\nSource: 5434-Big-Data-Computing-1.md · Lecture 5 HDFS and Spark / Part 8 Spark Application / 8.4 Summary\n块 · 课件原文\nHadoop HDFS, MapReduce · Provides an easy solution for processing Big Data；Brings a paradigm shift in programming distributed system为大数据处理提供简单的解决方案；带来了分布式系统编程的范式转变。\nSpark · Has extended MapReduce for memory computations；for streaming, interactive, iterative and machine learning tasks为内存计算扩展了 MapReduce；四类任务：流式 / 交互式 / 迭代式 / 机器学习。\nChanging the World · Made data processing cheaper and more efficient and scalable；It is the foundation of many other tools and software让数据处理变得更便宜、更高效、更可扩展；是许多其他工具与软件的基础。\n[R4]\n4.3 Three Single Machine Problems\nSource: 5434-Big-Data-Computing-1.md · Lecture 4: Hadoop and MapReduce / part 4 MapReduce Technical Ideas / 4.3 Three Single Machine Problems\n词频统计在单机上的三个瓶颈及MapReduce的解决：\n瓶颈 · 具体含义 · MapReduce 的解法\nEfficiency issue 效率问题 · 单机串行扫描 100 PB 需要天文数字的时间；CPU 与磁盘带宽是上限 · 并行化：多 worker 同时处理不同分片\nStorage issue 存储问题 · 一台机器装不下 100 PB；即使装下也无法可靠维护 · HDFS：切块 + 多副本存在集群上\nMemory issue 内存问题 · 词表本身可能大到装不进内存（不同词的个数也可以是上亿级） · 局部聚合：每个 worker 只维护自己分片的局部计数表，最后再合并\n三个问题的独立性：三者不能互相替代，加 CPU 不能解决存储（数据还是装不下）；加磁盘不能解决效率（单机 I/O 带宽有限）；加内存不能解决前者（100 PB 远超任何单机内存上限）。必须同时换三套方案。"
+    }
+  ]
+}

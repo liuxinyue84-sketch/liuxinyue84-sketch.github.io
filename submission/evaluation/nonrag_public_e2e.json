@@ -1,0 +1,90 @@
+{
+  "version": "V2-public-non-RAG",
+  "date": "2026-10-28T13:01:45.594Z",
+  "url": "https://liuxinyue84-sketch.github.io/V2/",
+  "viewport": "1512x1000",
+  "checks": [
+    {
+      "id": "NR1",
+      "name": "Home loads",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-highlights",
+      "name": "Navigate highlights",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-projects",
+      "name": "Navigate projects",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-life",
+      "name": "Navigate life",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-guestbook",
+      "name": "Navigate guestbook",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-edu",
+      "name": "Education disclosure opens",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-projects",
+      "name": "Four projects present",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-detail",
+      "name": "One project expands",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-filter",
+      "name": "Research filter works",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-save",
+      "name": "Project can be saved",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-life",
+      "name": "Life gallery has media",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-media",
+      "name": "Photo preview opens",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "NR-guestbook",
+      "name": "Guestbook form exists",
+      "status": "PASS",
+      "note": ""
+    }
+  ],
+  "passed": true,
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ]
+}

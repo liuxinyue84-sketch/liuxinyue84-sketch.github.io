@@ -1,0 +1,65 @@
+{
+  "version": "V2-RAG",
+  "kind": "generic semantic-pipeline invariants, not per-query hard-coded assertions and not browser E2E",
+  "date": "2026-10-28T11:40:33.866Z",
+  "evaluationQueries": 28,
+  "genericRules": 10,
+  "suggestedQueries": [
+    "What is RAG?",
+    "How does MapReduce work?",
+    "How do agents use tools?"
+  ],
+  "passed": true,
+  "checks": [
+    {
+      "rule": "visitor-controls",
+      "passed": true,
+      "detail": "shortcuts: What is RAG? | How does MapReduce work? | How do agents use tools?"
+    },
+    {
+      "rule": "reference-disclosure",
+      "passed": true,
+      "detail": "default disclosure title is present"
+    },
+    {
+      "rule": "answer-totality",
+      "passed": true,
+      "detail": "every evaluation query produces visible text"
+    },
+    {
+      "rule": "semantic-branch",
+      "passed": true,
+      "detail": "zero relevant chunks always abstain"
+    },
+    {
+      "rule": "relevant-only-citations",
+      "passed": true,
+      "detail": "every citation points to a chunk accepted by the generic semantic filter"
+    },
+    {
+      "rule": "retrieval-evidence-preserved",
+      "passed": true,
+      "detail": "all BM25 hits remain in the folded reference panel"
+    },
+    {
+      "rule": "visitor-output-clean",
+      "passed": true,
+      "detail": "no internal prompt/debug identifiers or placeholder directions are rendered"
+    },
+    {
+      "rule": "answer-format",
+      "passed": true,
+      "detail": "answers contain one to five concise source-grounded statements with citations"
+    },
+    {
+      "rule": "coherent-source-extracts",
+      "passed": true,
+      "detail": "no identify/describe filler; every line is a substantive cleaned source extract"
+    },
+    {
+      "rule": "formula-provenance",
+      "passed": true,
+      "detail": "formula clauses cannot be extracted from ambiguous multi-formula comparison tables"
+    }
+  ]
+}

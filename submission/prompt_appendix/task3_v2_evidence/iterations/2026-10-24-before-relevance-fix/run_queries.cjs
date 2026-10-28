@@ -1,0 +1,36 @@
+'use strict';
+const fs = require('node:fs');
+const vm = require('node:vm');
+const path = require('node:path');
+class Element {
+  constructor() { this.children=[]; this.listeners={}; this.dataset={}; this.className=''; this.textContent=''; this.value=''; this.open=false; this.innerHTML=''; }
+  append(...els) { this.children.push(...els); }
+  appendChild(el) { this.children.push(el); return el; }
+  replaceChildren(...els) { this.children=els; this.textContent=''; }
+  addEventListener(name, fn) { this.listeners[name]=fn; }
+  setAttribute() {}
+  get innerText() { return [this.textContent,...this.children.map(x=>x.innerText||x.textContent||'')].filter(Boolean).join('\n'); }
+}
+const els = new Map();
+const form = new Element();
+const document = {
+  getElementById(id) { if (!els.has(id)) els.set(id,new Element()); return els.get(id); },
+  querySelectorAll() { return []; },
+  createElement() { return new Element(); },
+  createTextNode(text) { return {textContent:text,innerText:text}; }
+};
+const window = {};
+const ctx = {window, document, console, Set, Map, Math, Array, Number, String};
+const base=path.resolve(__dirname,'../website');
+vm.runInNewContext(fs.readFileSync(path.join(base,'rag-knowledge.js'),'utf8'),ctx);
+vm.runInNewContext(fs.readFileSync(path.join(base,'rag-v2.js'),'utf8'),ctx);
+const cases = [
+ {id:'Q01', class:'clear-topic', query:'What is retrieval-augmented generation and how does it use retrieved context?'},
+ {id:'Q02', class:'clear-topic', query:'How does MapReduce divide and combine work?'},
+ {id:'Q03', class:'clear-topic', query:'How do I evaluate tool use by an LLM agent?'},
+ {id:'Q04', class:'broad-query', query:'What did we discuss about memory?'},
+ {id:'Q05', class:'vague-query', query:'Tell me about that thing from class.'},
+ {id:'Q06', class:'out-of-scope', query:'What is the best recipe for tiramisu?'}
+];
+const results=cases.map(test=>({id:test.id,category:test.class,...window.V2RAG.runQuery(test.query)}));
+process.stdout.write(JSON.stringify({version:'V2-RAG',method:'client-side BM25 paragraph retrieval + deterministic extractive answer assembly',knowledgeRecords:window.V2RAG.recordCount,tests:results},null,2));

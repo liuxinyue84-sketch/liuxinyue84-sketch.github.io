@@ -1,0 +1,821 @@
+/* 【V1迭代新增】Few-shot 结构示例引导的学术拼贴板与微交互。 */
+.v1-highlight-board{
+ position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(260px,.82fr) minmax(0,1.18fr);
+ grid-template-areas:"skills undergraduate" "skills postgraduate";gap:30px 52px;align-items:start;
+ padding:42px 48px 46px;min-height:660px;overflow:hidden;border:1px solid #fff9;border-radius:30px 18px 34px 22px;
+ background:radial-gradient(circle,#80969a4d 1.2px,transparent 1.8px) 0 0/22px 22px,#eee7d7e8;
+ box-shadow:inset 0 1px 0 #fff9,0 12px 34px #4d71801c;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)
+}
+.v1-highlight-board::before{content:"A FEW PINNED MILESTONES";position:absolute;top:16px;left:25px;color:#71868a;font:10px/1.2 Georgia,serif;letter-spacing:1.5px;opacity:.72}
+.v1-highlight-board::after{content:"✿";position:absolute;right:24px;bottom:18px;color:#c5ad9e;font-size:28px;transform:rotate(-12deg);pointer-events:none}
+.v1-highlight-board .study-thread{position:absolute;z-index:-1;left:20%;top:26%;width:64%;height:54%;overflow:visible;color:#c99fac;opacity:.7;pointer-events:none}
+.study-thread path{stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke-dasharray:580;stroke-dashoffset:580;animation:thread-draw 1.4s .25s ease-out forwards}
+@keyframes thread-draw{to{stroke-dashoffset:0}}
+.v1-highlight-board .school-grid{display:contents}
+.v1-highlight-board>.school-grid>.school-card:nth-child(1){grid-area:undergraduate;--angle:-1.1deg}
+.v1-highlight-board>.school-grid>.school-card:nth-child(2){grid-area:postgraduate;--angle:1.1deg}
+.v1-highlight-board>.skill-paper{grid-area:skills;align-self:center;margin:12px 0 0;--angle:1.4deg;background:#e8e0efd9}
+.v1-highlight-board .school-card{position:relative;z-index:1;padding:18px 22px 22px;background:#f8f3e9ed;border-radius:7px 5px 9px 4px;box-shadow:3px 8px 18px #536e7024}
+.v1-highlight-board .school-card.sky-school{background:#e7f0f0ee}
+.v1-highlight-board .school-photo{display:block;width:100%;height:148px;object-fit:cover;object-position:center 42%;margin:0 0 14px;border:5px solid #fffc;box-shadow:0 3px 12px #334e5a22;filter:saturate(.82);transition:filter .55s ease-out,transform .55s ease-out}
+.v1-highlight-board .school-card:hover .school-photo{filter:saturate(.96);transform:scale(1.015)}
+.v1-highlight-board .school-title{margin:0}
+.v1-highlight-board .school-head{padding:0 28px 0 0;min-height:88px}
+.v1-highlight-board .school-year{font-size:10px;letter-spacing:1.3px}
+.v1-highlight-board .school-name{font-size:19px;line-height:1.4}
+.v1-highlight-board .school-sub{font-size:12px;line-height:1.7}
+.v1-highlight-board .school-detail{margin-top:5px}
+.v1-highlight-board .skill-paper h3{font-size:21px;line-height:1.45}
+.v1-highlight-board .skill-notes{grid-template-columns:1fr;gap:0}
+.v1-highlight-board .skill-notes li{padding:13px 0}
+.v1-highlight-board .skill-notes small{font-size:12px}
+.v1-highlight-board .skill-beads{color:#899eb1;letter-spacing:4px}
+.v1-highlight-board .skill-chip{transition:background .45s ease-out,color .45s ease-out,transform .45s ease-out}
+.v1-highlight-board .skill-chip:hover{transform:translateY(-2px) rotate(-1deg)}
+.study-thread{color:#bc91a4}
+.contribution-label{display:block;margin-top:11px;color:#728890;font-size:9px;letter-spacing:1.35px}
+.contribution-copy{display:block;margin-top:3px;color:#496777}
+.rag-msg.bot{max-width:min(86%,760px)}
+.rag-msg.bot .rag-evidence-label{display:block;margin-bottom:5px;color:#718a8e;font-size:9px;font-weight:600;letter-spacing:1.2px}
+.rag-msg.bot .rag-src{padding-top:7px;border-top:1px dashed #bfd0c6}
+.rag-msg.bot .rag-confidence{display:inline-block;margin-top:9px;padding:3px 8px;border:1px solid #d6e1d9;border-radius:12px;color:#6c8585;font-size:10px}
+.rag-suggest button,.rag-input input,.rag-input .primary,.filter,.primary,.row-toggle,.save-project{transition-duration:.42s}
+.project-row.paper-project{transition-duration:.55s}
+.project-row.paper-project .project-detail{transition-duration:.55s}
+.project-row.paper-project .contribution-copy{font-size:13.5px;line-height:1.75}
+.pill-nav a,.nav-indicator,.music-pill,#sound-toggle{transition-duration:.42s}
+@media(max-width:900px){
+ .v1-highlight-board{grid-template-columns:minmax(220px,.78fr) minmax(0,1.22fr);gap:24px 32px;padding:40px 30px 38px}
+ .v1-highlight-board .school-photo{height:128px}
+}
+@media(max-width:680px){
+ .v1-highlight-board{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"undergraduate" "postgraduate" "skills";gap:25px;padding:38px 18px 34px;border-radius:23px 15px 25px 18px}
+ .v1-highlight-board .study-thread{display:none}
+ .v1-highlight-board>.school-grid>.school-card:nth-child(1){grid-area:undergraduate}
+ .v1-highlight-board>.school-grid>.school-card:nth-child(2){grid-area:postgraduate}
+ .v1-highlight-board>.skill-paper{grid-area:skills;margin:4px 0 0}
+ .v1-highlight-board .school-photo{height:160px}
+ .v1-highlight-board::before{left:18px;font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .study-thread path{animation:none;stroke-dashoffset:0}
+ .v1-highlight-board .school-photo{transition:none}
+}
+
+/* 【V1迭代新增】Original, low-saturation line drawings as quiet journal margin notes. */
+.life-section .section-heading{position:relative}
+.life-sprig{width:72px;height:52px;margin:0 auto 0 14px;flex:0 0 auto;color:#829d91;opacity:.82;transform:rotate(-5deg)}
+.gallery-margin-note{display:flex;align-items:center;justify-content:flex-end;gap:7px;margin:3px 4px 5px;color:#829b91}
+.gallery-margin-note svg{width:42px;height:19px;overflow:visible}
+.gallery-margin-note span{font:italic 12px/1.2 Georgia,serif;letter-spacing:.035em;opacity:.92}
+
+/* 【V1迭代新增】Asymmetric paper-photo wall; the existing images and videos stay intact. */
+.media-gallery.media-wall{grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:27px;gap:11px;margin-top:10px;align-items:stretch}
+.media-wall .media-item{grid-column:span 3;grid-row:span 6;aspect-ratio:auto;min-height:0;border:5px solid #fbfaf3;border-radius:3px 13px 4px 9px;box-shadow:0 5px 15px #526d7620;transform:rotate(-.65deg);transition:transform .55s ease-out,box-shadow .55s ease-out,filter .55s ease-out}
+.media-wall .media-item:nth-child(1){grid-column:1/span 4;grid-row:1/span 7;transform:rotate(-1.1deg)}
+.media-wall .media-item:nth-child(2){grid-column:5/span 2;grid-row:1/span 5;transform:rotate(1deg)}
+.media-wall .media-item:nth-child(3){grid-column:5/span 2;grid-row:6/span 6;transform:rotate(.55deg)}
+.media-wall .media-item:nth-child(4){grid-column:1/span 3;grid-row:8/span 5;transform:rotate(.65deg)}
+.media-wall .media-item:nth-child(5){grid-column:4/span 3;grid-row:13/span 6;transform:rotate(-.75deg)}
+.media-wall .media-item:nth-child(6){grid-column:1/span 3;grid-row:14/span 5;transform:rotate(-.45deg)}
+.media-wall .media-item:nth-child(7){grid-column:1/span 2;grid-row:20/span 5;transform:rotate(-.8deg)}
+.media-wall .media-item:nth-child(8){grid-column:3/span 2;grid-row:20/span 5;transform:rotate(.7deg)}
+.media-wall .media-item:nth-child(9){grid-column:5/span 2;grid-row:20/span 5;transform:rotate(.5deg)}
+.media-wall .media-item:hover,.media-wall .media-item:focus-visible{z-index:2;filter:saturate(1.04);transform:translateY(-4px) rotate(0deg) scale(1.012);box-shadow:0 13px 25px #526d7630}
+.media-wall .media-item img,.media-wall .media-item video{border-radius:1px;object-fit:cover}
+.media-wall .media-item[data-media-kind="video"]:after{content:"▶";position:absolute;top:11px;right:11px;width:25px;height:25px;display:grid;place-items:center;border:1px solid #ffffffbb;border-radius:50%;background:#f7f7efcc;color:#557486;font-size:10px;box-shadow:0 2px 8px #233b4418}
+.media-wall .media-item>span{font-size:11px;padding:25px 10px 8px;background:linear-gradient(transparent,#203b46a8)}
+@media(max-width:860px){
+ .media-gallery.media-wall{grid-auto-rows:24px;gap:9px}
+ .life-sprig{width:58px;height:43px;margin-left:0}
+}
+@media(max-width:540px){
+ .media-gallery.media-wall{grid-auto-rows:26px;gap:9px}
+ .life-sprig{width:46px;height:36px;margin-left:auto}
+ .media-wall .media-item{border-width:4px}
+ .media-wall .media-item:nth-child(1){grid-column:1/span 4;grid-row:1/span 6}
+ .media-wall .media-item:nth-child(2){grid-column:5/span 2;grid-row:1/span 4}
+ .media-wall .media-item:nth-child(3){grid-column:5/span 2;grid-row:5/span 5}
+ .media-wall .media-item:nth-child(4){grid-column:1/span 3;grid-row:7/span 4}
+ .media-wall .media-item:nth-child(5){grid-column:4/span 3;grid-row:10/span 5}
+ .media-wall .media-item:nth-child(6){grid-column:1/span 3;grid-row:11/span 4}
+ .media-wall .media-item:nth-child(7){grid-column:1/span 2;grid-row:15/span 4}
+ .media-wall .media-item:nth-child(8){grid-column:3/span 2;grid-row:16/span 4}
+ .media-wall .media-item:nth-child(9){grid-column:5/span 2;grid-row:15/span 4}
+}
+
+/* 【V1迭代新增】Few-shot transformation: chapter-led Home and semantic project story atlas. */
+.hero-art{margin:0 1vw 0 0}
+.chapter-rail{position:relative;z-index:3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;width:100%;max-width:1030px;margin:0 auto 62px;padding:7px 12px;border:1px solid #ffffffb5;border-radius:24px;background:#edf7f1b8;backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px)}
+.chapter-rail a{display:grid;grid-template-columns:32px 1fr 20px;align-items:center;gap:12px;padding:9px 17px;border:0;border-radius:17px;background:transparent;transition:transform .48s ease-out,background .48s ease-out,color .48s ease-out}
+.chapter-rail a+a{border-left:1px solid #7593a124;border-radius:0 17px 17px 0}
+.chapter-rail a:hover{transform:translateY(-2px);background:#ffffffa8}
+.chapter-rail-number{font:italic 17px Georgia,serif;color:#7391a0}
+.chapter-rail a strong,.chapter-rail a small{display:block}
+.chapter-rail a strong{font-size:12px;font-weight:500;letter-spacing:.35px}
+.chapter-rail a small{margin-top:2px;font-size:9px;letter-spacing:1.3px;color:#78909b;text-transform:uppercase}
+.chapter-rail-arrow{justify-self:end;color:#809ca5;transition:transform .48s ease-out}
+.chapter-rail a:hover .chapter-rail-arrow{transform:translate(2px,2px)}
+/* 【V1迭代新增·R11】the thumbnail strip that used to float on the photograph is
+   gone; scene switching now lives on the hairline under the picture. */
+
+.project-atlas-index{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:24px 0 20px;padding:9px 0;border-top:1px solid #ffffffa6;border-bottom:1px solid #7896a029}
+.project-atlas-index a{min-height:66px;position:relative;display:grid;grid-template-columns:30px 1fr;grid-template-rows:1fr auto;align-items:end;gap:3px 10px;padding:9px 16px;border:0;border-radius:0;background:transparent;box-shadow:none;transition:transform .5s ease-out,background .5s ease-out,color .5s ease-out}
+.project-atlas-index a+a{border-left:1px solid #7896a029}
+.project-atlas-index a:hover{transform:translateY(-2px);background:#ffffff62}
+.project-atlas-index a>span{grid-row:1/3;align-self:start;font:italic 19px Georgia,serif;color:#7897a3}
+.project-atlas-index strong{font-size:12px;font-weight:500;align-self:end}
+.project-atlas-index small{font-size:9px;letter-spacing:1.2px;color:#81959a;text-transform:uppercase}
+.projects-atlas.project-list{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(145px,auto);align-items:stretch;gap:24px 22px;margin:34px 4px 0;padding:12px 8px 25px;min-height:0;list-style:none;transition:none}
+.project-entry{min-width:0;transition:transform .58s cubic-bezier(.22,.72,.2,1)}
+.project-entry[hidden]{display:none!important}
+.project-entry-0{grid-column:1/span 7}
+.project-entry-1{grid-column:8/span 5}
+.project-entry-2{grid-column:2/span 5}
+.project-entry-3{grid-column:7/span 6}
+.projects-atlas .project-row.paper-project{position:relative!important;inset:auto!important;display:flex;flex-direction:column;width:auto!important;height:100%;min-height:100%;margin:0;padding:29px 29px 24px;border:1px solid #ffffffc7;border-radius:7px 22px 8px 18px;background:#f7f4e9;box-shadow:0 9px 22px #3e647318;transform:rotate(var(--paper-angle));transform-origin:center;overflow:visible;transition:transform .55s ease-out,box-shadow .55s ease-out,background-color .55s ease-out}
+.projects-atlas .project-entry-0 .project-row{--paper-angle:-.7deg}
+.projects-atlas .project-entry-1 .project-row{--paper-angle:.8deg;background:#edf1e7}
+.projects-atlas .project-entry-2 .project-row{--paper-angle:-.6deg;background:#f1e8e5}
+.projects-atlas .project-entry-3 .project-row{--paper-angle:.45deg;background:#e9f0f1}
+.projects-atlas .project-row:hover,.projects-atlas .project-row.open{z-index:2;transform:translateY(-5px) rotate(0deg);box-shadow:0 16px 30px #3e647329}
+.projects-atlas .project-row::after{content:"";position:absolute;right:0;bottom:0;width:26px;height:26px;background:linear-gradient(135deg,transparent 49%,#d4d0c18c 50%,#fffaf0 86%);border-radius:0 0 7px 0;pointer-events:none;transition:width .45s ease-out,height .45s ease-out}
+.projects-atlas .project-row:hover::after{width:33px;height:33px}
+.project-card-heading{display:flex;align-items:start;justify-content:space-between;gap:16px;padding-bottom:15px;border-bottom:1px dashed #829aa04d}
+.project-heading-copy{min-width:0}
+.projects-atlas .project-row .row-type{display:block;margin:0 0 8px;font-size:9px;line-height:1.6;letter-spacing:1.45px;color:#7e9299;text-transform:uppercase}
+.project-heading-copy h3{margin:0;font-size:clamp(17px,1.7vw,22px);font-weight:500;line-height:1.42;letter-spacing:.15px}
+.projects-atlas .project-entry-0 h3{font-size:clamp(22px,2.3vw,31px);max-width:510px}
+.projects-atlas .row-number{flex:none;margin:0;font:italic 30px Georgia,serif;color:#6e8d9b;opacity:.7}
+.project-purpose{margin:16px 0 17px;font-size:14px;line-height:1.8;color:#526d7c}
+.project-contribution{padding:13px 15px;border-left:2px solid #8eabb1;background:#ffffff82}
+.contribution-label{display:block;font-size:8px;letter-spacing:1.6px;color:#778e96}
+.project-contribution .contribution-copy{margin:5px 0 0;font-size:12.5px;line-height:1.7;color:#4d6b79}
+.project-tags{display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:15px}
+.project-tags>span,.detail-kicker{flex:none;font-size:8px;letter-spacing:1.4px;color:#86989c}
+.project-tags p{margin:0;font-size:10.5px;line-height:1.65;color:#667f88}
+.projects-atlas .project-tape{left:44%;width:76px;height:23px}
+.projects-atlas .project-entry-1 .project-tape{left:57%;background:#d4c0bcbb;transform:rotate(5deg)}
+.projects-atlas .project-entry-2 .project-tape{left:18%;background:#d5d1b8bb}
+.projects-atlas .project-entry-3 .project-tape{left:68%;background:#d8dfcad9;transform:rotate(3deg)}
+.projects-atlas .paper-actions{display:flex;align-items:center;gap:10px;margin-top:15px;padding-top:12px;border-top:1px solid #859ba02b}
+.projects-atlas .paper-actions .row-toggle,.projects-atlas .paper-actions .save-project{width:auto;height:36px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:0 12px;border:1px solid #7695a277;border-radius:22px;background:#fff9;font-size:10px;transition:transform .45s ease-out,background .45s ease-out,color .45s ease-out,box-shadow .45s ease-out}
+.projects-atlas .paper-actions .row-toggle:hover,.projects-atlas .paper-actions .save-project:hover{transform:translateY(-2px);background:#fff;box-shadow:0 4px 11px #3e64731b}
+.projects-atlas .paper-actions .project-open-label,.projects-atlas .paper-actions .save-project>span:last-child{font-size:10px;color:#657d86}
+.projects-atlas .paper-actions .save-project{margin-left:auto}
+.projects-atlas .project-row.open .row-toggle{transform:none;background:#edf4f3}
+.projects-atlas .heart-icon{font-size:14px;color:#597887}
+.projects-atlas .save-project.saved .heart-icon{color:#b05262}
+.projects-atlas .project-detail{grid-template-rows:0fr;transition:grid-template-rows .62s ease-out}
+.projects-atlas .project-row.open .project-detail{grid-template-rows:1fr}
+.projects-atlas .project-detail .detail-inner{padding:17px 2px 3px;font-size:12px;line-height:1.8}
+.projects-atlas .detail-kicker{display:block}
+.projects-atlas .project-detail ul{margin:7px 0 13px;padding-left:18px}
+.projects-atlas .project-detail li{padding:3px 0}
+.projects-atlas .paper-source-link{display:inline-block;padding:5px 0;border-bottom:1px solid #7695a277;font-size:11px}
+.projects-atlas .project-row.filter-leaving{opacity:0;transform:translateY(9px) rotate(calc(var(--paper-angle) * .7))}
+.projects-atlas .project-row[hidden]{display:none!important}
+#projects-empty{margin-top:20px}
+@media(max-width:900px){
+ .project-atlas-index{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .projects-atlas.project-list{grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:minmax(140px,auto)}
+ .project-entry-0{grid-column:1/span 4}.project-entry-1{grid-column:5/span 2}.project-entry-2{grid-column:2/span 3}.project-entry-3{grid-column:5/span 2}
+}
+@media(max-width:600px){
+ .chapter-rail{grid-template-columns:1fr;gap:8px;width:calc(100% - 40px);margin:0 auto 42px;max-width:420px}.chapter-rail a{grid-template-columns:24px 1fr 14px;padding:8px 10px;gap:8px}.chapter-rail a strong{font-size:11px}
+ .project-atlas-index{gap:8px}.project-atlas-index a{min-height:72px;padding:10px}
+ .projects-atlas.project-list{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto;gap:19px;margin:26px 6px 0;padding:8px 4px 20px}
+ .project-entry-0,.project-entry-1,.project-entry-2,.project-entry-3{grid-column:1;grid-row:auto}
+ .projects-atlas .project-row.paper-project,.projects-atlas .project-row.paper-project:hover,.projects-atlas .project-row.paper-project.open{min-height:0;padding:25px 22px}
+ .projects-atlas .project-entry-0 h3{font-size:22px}.project-purpose{font-size:13px}.project-contribution .contribution-copy{font-size:12px}
+}
+
+/* 【V1迭代新增】Few-shot architecture pass: rebuild each page module around its source copy. */
+.hero-section{display:block;height:auto;min-height:0;padding-top:155px;padding-bottom:46px}
+.journal-cover{position:relative;display:grid;grid-template-columns:minmax(390px,1.08fr) minmax(0,.92fr);gap:30px;align-items:center;padding:34px;border:1px solid #ffffffb8;border-radius:34px 18px 28px 16px;background:#e9f5f0a8;box-shadow:0 18px 52px #35586b15,inset 0 1px #ffffffb9;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.cover-letter{position:relative;z-index:1;padding:35px 30px 27px 24px;border:1px solid #ffffffb0;border-radius:5px 21px 6px 20px;background:#f8f5e8d9;box-shadow:0 10px 25px #48657713;transform:rotate(-.55deg)}
+.cover-letter .handwritten{margin-top:4px}
+.cover-letter h1{max-width:480px;font-size:clamp(36px,3vw,42px)}
+.cover-letter .hero-caption{margin-top:30px}
+.journal-cover .hero-art{height:clamp(390px,42vw,550px);margin:0 7px 0 0}
+.journal-cover .hero-art>img{border-radius:48% 48% 8px 8px}
+.journal-cover .photo-stamp{left:-18px}
+.chapter-rail{margin:26px auto 0;max-width:860px;padding:5px 16px;border-radius:28px;background:#f2f8f6b8;box-shadow:0 7px 22px #34566b10}
+.chapter-rail a{grid-template-columns:30px minmax(28px,1fr) 18px;min-height:45px;gap:12px}
+.chapter-rail-number{font-size:15px}
+.chapter-rail-line{height:1px;background:linear-gradient(90deg,#7896a355,#7896a311);transition:height .45s ease-out,background .45s ease-out}
+.chapter-rail a:hover .chapter-rail-line{height:2px;background:#7896a377}
+
+/* Highlights becomes a two-page academic folio with a distinct skills ledger. */
+.academic-spread{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(245px,.72fr);grid-template-areas:"journey ledger";gap:clamp(25px,4vw,58px);align-items:start;padding:28px 0 38px}
+.academic-spread .study-thread{left:9%;top:23%;width:63%;height:46%;opacity:.56}
+.education-journey{grid-area:journey;position:relative;display:grid;gap:28px;margin:0;padding:5px 0 5px 24px;list-style:none}
+.education-journey:before{content:"";position:absolute;left:8px;top:32px;bottom:32px;width:1px;background:linear-gradient(#a7b9a3,#c1a8a855,#a7b9a3)}
+.education-stop{position:relative;min-width:0}
+.education-stop:before{content:"";position:absolute;z-index:2;left:-22px;top:42px;width:11px;height:11px;border:2px solid #f6f3e8;border-radius:50%;background:#8ca49c;box-shadow:0 0 0 1px #8ca49c88}
+.education-leaf{position:relative;display:grid;grid-template-columns:minmax(148px,.72fr) minmax(0,1.28fr);grid-template-rows:auto 1fr;gap:0 23px;min-height:0;padding:20px 22px 20px 18px;border:1px solid #fffdf1d9;border-radius:7px 22px 8px 16px;background:#f7f3e7eb;box-shadow:0 11px 28px #3f617215;transform:rotate(-.45deg);transition:transform .55s ease-out,box-shadow .55s ease-out}
+.education-stop-postgraduate .education-leaf{background:#eaf2f1ed;transform:rotate(.4deg)}
+.education-leaf:hover{transform:translateY(-3px) rotate(0);box-shadow:0 16px 32px #3f61721c}
+.education-leaf>.paper-tape{z-index:2;top:-10px;left:42%;width:73px;height:22px}
+.education-leaf .school-photo-frame{grid-column:1;grid-row:1/3;align-self:stretch;min-height:210px;margin:0;padding:5px;background:#fffdf6;border:1px solid #fff;box-shadow:0 5px 13px #415b6417;transform:rotate(-.7deg)}
+.education-leaf .school-photo{display:block;width:100%;height:100%;min-height:200px;object-fit:cover;object-position:center 42%;filter:saturate(.82)}
+.education-leaf .school-title{grid-column:2;grid-row:1;align-self:center}
+.education-leaf .school-head{min-height:0;padding:0 38px 0 0}
+.education-leaf .school-year{font-size:9px;letter-spacing:1.5px}
+.education-leaf .school-name{font-size:clamp(17px,1.55vw,22px)}
+.education-leaf .school-sub{font-size:12px;line-height:1.7}
+.education-leaf .school-detail{grid-column:2;grid-row:2;align-self:start;margin-top:8px}
+.education-leaf .school-detail-inner{padding-top:15px;border-top:1px dashed #82999a55}
+.education-leaf .school-columns{grid-template-columns:1fr 1fr;gap:17px}
+.education-leaf .school-block .eyebrow{font-size:8px;letter-spacing:1px}
+.skill-ledger{grid-area:ledger;position:relative;align-self:stretch;margin:23px 0 0;padding:29px 25px 23px;border:1px solid #fffdf6c7;border-radius:6px 25px 8px 19px;background:#e9e4efdb;box-shadow:0 12px 30px #445a6718;transform:rotate(.75deg)}
+.skill-ledger:before{content:"";position:absolute;left:15px;right:15px;top:47px;height:1px;background:#8ca1a036}
+.skill-ledger .paper-pin{top:10px;left:50%;right:auto}
+.skill-ledger>.eyebrow{display:block;margin:10px 0 21px}
+.skill-ledger h3{font-size:22px;line-height:1.4}
+.skill-ledger .skill-notes{display:grid;grid-template-columns:1fr;gap:0;margin-top:13px}
+.skill-ledger .skill-notes li{padding:14px 0;border-bottom:1px dashed #7d929633}
+.skill-ledger .skill-notes li:last-child{border-bottom:0}
+.skill-ledger .skill-strip{margin-top:12px;padding-top:15px;border-top:1px solid #7d929633}
+.skill-ledger .skill-strip>.eyebrow{font-size:8px;line-height:1.6}
+.skill-ledger .skill-chip{margin:5px 3px 0 0}
+.knowledge-workbench{display:grid;grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr);gap:30px;margin-top:30px;padding:30px 34px;border:1px solid #fffdf0d9;border-radius:25px 8px 28px 12px;background:#f2f4e9df;box-shadow:0 13px 32px #35586b16;align-items:center}
+.knowledge-intro{align-self:start}
+.knowledge-intro h3{margin:15px 0 10px;font-size:25px;font-weight:500;line-height:1.4}
+.knowledge-intro p{font-size:13px;line-height:1.85}
+.knowledge-workbench .rag-chat{margin:0;padding:17px;border:1px dashed #8ba6a977;border-radius:19px;background:#fbfcf7d9}
+
+/* Projects is a story atlas; its visible labels are drawn from the frozen V0 project data. */
+.project-atlas-index{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:23px 0 12px;padding:0;border:0}
+.project-atlas-index a{min-height:32px;display:flex;align-items:center;justify-content:center;padding:0;border:1px solid #ffffffb5;border-radius:20px;background:#eaf4f2ad;box-shadow:0 4px 12px #34566b0b}
+.project-atlas-index a+a{border-left:1px solid #ffffffb5}
+.project-atlas-index a>span{font:italic 13px Georgia,serif;color:#6f8b99}
+.project-atlas-index a:hover{background:#fbfcf4e8}
+.projects-atlas .project-contribution{margin:0;padding:11px 13px;border-left:2px solid #8eabb1;background:#ffffff82;font-size:13px;line-height:1.75}
+.projects-atlas .project-open-label{font-size:10px}
+.projects-atlas .paper-actions .save-project{width:36px;min-width:36px;padding:0}
+.projects-atlas .project-detail .detail-inner>p{padding-top:12px;border-top:1px dashed #82999a55}
+
+/* Life is a letter beside an image atlas, not the former copy/gallery column pair. */
+.life-spread{display:grid;grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr);gap:clamp(30px,5vw,68px);align-items:start}
+.life-letter{position:sticky;top:115px;padding:28px 27px 25px;border-left:1px solid #ffffffb7;border-top:1px solid #ffffffb7;border-radius:4px 22px 8px 4px;background:#eff7f0a6;box-shadow:0 10px 26px #35586b12;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.life-letter p{font-size:14px;line-height:1.95}
+.life-atlas{min-width:0;margin:0;padding:10px 2px 20px}
+.life-atlas .local-note{max-width:430px;margin:11px 0 13px}
+
+/* Guestbook is laid out like an opened letter: introduction, writing desk, and notes. */
+.guestbook-postcard{position:relative;display:grid;grid-template-columns:minmax(230px,.72fr) minmax(0,1.28fr);grid-template-areas:"letter writing" "signature notes";gap:18px 38px;max-width:1040px;margin:0 auto;padding:52px 52px 39px;border:1px solid #ffffffc7;border-radius:9px 33px 12px 27px;background:#edf5ecdc;box-shadow:0 18px 42px #35586b16;transform:rotate(.18deg);text-align:left}
+.guestbook-letterhead{grid-area:letter;align-self:start;position:relative;z-index:1;padding:18px 12px 18px 4px}
+.guestbook-letterhead h2{font:500 clamp(31px,3vw,42px)/1.2 "Avenir Next","Helvetica Neue",sans-serif}
+.guestbook-letterhead .guestbook-intro{font-size:14px;line-height:1.9}
+.guestbook-writing-desk{grid-area:writing;position:relative;z-index:1;padding:17px 21px 11px;border:1px solid #ffffffd2;border-radius:5px 18px 6px 13px;background:#f9f7eddb;box-shadow:0 7px 19px #49617010}
+.guestbook-writing-desk .guestbook-form{grid-template-columns:1fr;gap:13px;margin:0;max-width:none}
+.guestbook-writing-desk .field-wide{grid-column:auto}
+.guestbook-writing-desk .guestbook-form .primary{grid-column:auto;justify-self:start;min-width:0;margin:3px 0 0}
+.guestbook-notes{grid-area:notes;position:relative;z-index:1;min-width:0}
+.guestbook-notes .guestbook-list{margin-top:0}
+.guestbook-sign{grid-area:signature;align-self:end;position:relative;z-index:1;margin:0 0 5px 4px;text-align:left}
+.guestbook-postcard .guestbook-stars{z-index:0}
+
+@media(max-width:900px){
+ .journal-cover{gap:30px;padding:30px}
+ .academic-spread{grid-template-columns:minmax(0,1.25fr) minmax(220px,.75fr);gap:25px}
+ .education-leaf{grid-template-columns:minmax(120px,.62fr) minmax(0,1.38fr);gap:0 16px;padding:18px 16px}
+ .knowledge-workbench{gap:20px;padding:25px}
+ .life-spread{gap:28px}
+ .guestbook-postcard{gap:18px 25px;padding:42px 35px 33px}
+}
+@media(max-width:680px){
+ .hero-section{padding-top:105px}
+ .journal-cover{grid-template-columns:1fr;gap:30px;padding:22px}
+ .cover-letter{padding:27px 22px 23px}
+ .journal-cover .hero-art{height:370px;margin:0 8px 16px}
+ .chapter-rail{margin-top:19px}
+ .chapter-rail a{grid-template-columns:24px 1fr 14px;min-height:36px;padding:7px 8px;gap:7px}
+ .academic-spread{grid-template-columns:1fr;grid-template-areas:"journey" "ledger";gap:22px;padding-top:22px}
+ .education-journey{padding-left:21px}
+ .education-leaf{grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:0;padding:17px}
+ .education-leaf .school-photo-frame{grid-column:1;grid-row:1;min-height:190px;margin-bottom:12px}
+ .education-leaf .school-photo{min-height:180px}
+ .education-leaf .school-title{grid-column:1;grid-row:2}
+ .education-leaf .school-detail{grid-column:1;grid-row:3}
+ .knowledge-workbench{grid-template-columns:1fr;padding:23px 20px}
+ .life-spread{grid-template-columns:1fr;gap:22px}
+ .life-letter{position:relative;top:auto}
+ .life-atlas{padding:0}
+ .guestbook-postcard{grid-template-columns:1fr;grid-template-areas:"letter" "writing" "notes" "signature";gap:14px;padding:34px 22px 28px}
+ .guestbook-sign{justify-self:start;margin-top:-8px}
+ .guestbook-writing-desk{padding:15px}
+}
+@media(prefers-reduced-motion:reduce){
+ .education-leaf,.chapter-rail-line{transition:none}
+}
+
+/* 【V1迭代新增】Usability fixes from screenshot review: name destinations, expose card actions, and separate artwork controls. */
+.chapter-rail a{grid-template-columns:30px minmax(0,1fr) 18px}
+.chapter-rail-label{font-size:12px;font-weight:500;letter-spacing:.25px;color:#557383}
+.journal-cover .hero-art{margin-bottom:78px}
+.education-leaf .school-head{cursor:pointer}
+.education-leaf{cursor:pointer}
+.education-leaf .school-action-hint{display:block;margin-top:8px;font-size:10px;line-height:1.4;letter-spacing:.35px;color:#68818b}
+.education-leaf.open .school-toggle{transform:rotate(45deg);background:#fff}
+.education-leaf.open .school-detail{grid-template-rows:1fr}
+.education-leaf .school-detail{grid-template-rows:0fr;transition:grid-template-rows .55s ease-out}
+.education-leaf.open .school-columns{grid-template-columns:minmax(0,1fr);gap:12px}
+.project-atlas-index a{grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto;align-items:center;min-height:70px}
+.project-atlas-index a strong{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;align-self:center;font-size:10px;line-height:1.45;font-weight:500;color:#557383}
+.projects-atlas.project-list{align-items:start}
+.projects-atlas .project-row.paper-project{align-self:start;height:auto!important;min-height:300px}
+.projects-atlas .project-entry-0 .project-row{min-height:320px}
+@media(max-width:680px){
+ .journal-cover .hero-art{margin-bottom:78px}
+ .chapter-rail a{grid-template-columns:24px minmax(0,1fr) 14px}
+ .project-atlas-index a{min-height:68px}
+ .projects-atlas .project-row.paper-project{min-height:0}
+ .projects-atlas .project-entry-0 .project-row{min-height:0}
+}
+
+/* ============================================================
+   【V1迭代新增·R9】Full-bleed editorial
+   No frame, no side rail, no boxed cards. Content runs the full
+   viewport width on a single hairline grid, with oversized display
+   type and edge-to-edge imagery doing the structural work instead
+   of borders, rounded containers and drop shadows.
+   ============================================================ */
+:root{
+ --ed-gutter:clamp(22px,4.6vw,88px);
+ --ed-rule:#6f8f9e2b;
+ --ed-rule-strong:#52788a45;
+ --ed-display:clamp(40px,6.6vw,96px);
+ --ed-h2:clamp(32px,4.6vw,64px);
+}
+
+/* ---------- one-line top bar, no pill and no container ---------- */
+main{max-width:none;padding:0}
+.section{padding-left:var(--ed-gutter);padding-right:var(--ed-gutter);scroll-margin-top:76px}
+html{scroll-padding-top:76px}
+
+.ed-topbar{position:sticky;top:0;z-index:26;display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+ align-items:center;gap:clamp(14px,3vw,44px);
+ padding:17px var(--ed-gutter) 15px;background:#d9edf2c4;
+ backdrop-filter:blur(16px) saturate(1.08);-webkit-backdrop-filter:blur(16px) saturate(1.08);
+ border-bottom:1px solid var(--ed-rule-strong)}
+.ed-topbar .wordmark{font-size:16px;letter-spacing:.2px}
+.ed-topbar .wordmark span{font-size:13px}
+.pill-nav{position:relative;flex:0 1 auto;justify-self:end;display:flex;align-items:center;gap:clamp(12px,2.2vw,34px);
+ height:auto;padding:0;border:0;border-radius:0;background:none;box-shadow:none;
+ backdrop-filter:none;-webkit-backdrop-filter:none}
+.pill-nav a{flex:0 0 auto;height:auto;display:block;padding:7px 1px 5px;font-size:11.5px;letter-spacing:1.5px;
+ text-transform:uppercase;border-radius:0;color:#4f6f7d;transition:color .3s ease-out}
+.pill-nav a:hover,.pill-nav a.active{color:#22414f}
+.nav-indicator{position:absolute;left:0;bottom:0;top:auto;width:0;height:2px;border-radius:0;
+ background:#41697b;box-shadow:none;transform:translateX(0);
+ transition:transform .44s cubic-bezier(.22,.72,.2,1),width .44s cubic-bezier(.22,.72,.2,1)}
+.music-pill{height:auto;padding:0;border:0;border-radius:0;background:none;box-shadow:none;
+ backdrop-filter:none;-webkit-backdrop-filter:none}
+.music-pill button{border:1px solid var(--ed-rule-strong);background:#ffffff5c}
+.music-pill-text{font-size:13px}
+.music-pill-text small{font-size:8.5px}
+
+/* ---------- Home: a cover spread, image bleeding off the right edge ---------- */
+.hero-section{display:block;min-height:0;padding-top:clamp(30px,6vh,74px);padding-bottom:0;overflow:clip}
+.journal-cover{position:relative;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
+ gap:clamp(22px,4.5vw,68px);align-items:center;padding:0;border:0;border-radius:0;
+ background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.cover-letter{position:relative;z-index:1;padding:0;border:0;border-radius:0;background:none;
+ box-shadow:none;transform:none}
+.cover-letter .eyebrow{font-size:10px;letter-spacing:2.6px}
+.cover-letter .handwritten{margin:14px 0 0;font-size:clamp(17px,1.6vw,21px)}
+.cover-letter h1{max-width:15ch;margin:clamp(14px,2vw,24px) 0 0;font-size:var(--ed-display);
+ line-height:.98;letter-spacing:-.025em;font-weight:400}
+.cover-letter .hero-description{max-width:44ch;margin-top:clamp(18px,2.4vw,30px);font-size:clamp(14px,1.35vw,17px);line-height:1.85}
+.cover-letter .text-link{margin-top:clamp(20px,2.6vw,32px)}
+.cover-letter .hero-caption{margin-top:clamp(26px,5vh,54px);padding-top:12px;border-top:1px solid var(--ed-rule)}
+.journal-cover .hero-art{height:clamp(420px,64vh,660px);margin:0 calc(-1 * var(--ed-gutter)) 0 0}
+.journal-cover .hero-art>img{width:100%;height:100%;border-radius:0;object-fit:cover;object-position:center 38%}
+.journal-cover .photo-stamp{left:auto;right:18px;top:18px}
+.home-stickers .sticker-note,.home-stickers .sticker-plane{opacity:.5}
+
+/* chapter strip: a hairline index under the cover, not a rounded bar */
+.chapter-rail{max-width:none;margin:clamp(26px,5vh,52px) calc(-1 * var(--ed-gutter)) 0 0;
+ padding:0;border:0;border-top:1px solid var(--ed-rule-strong);border-radius:0;
+ background:none;box-shadow:none;backdrop-filter:none;gap:0}
+.chapter-rail a{grid-template-columns:38px minmax(0,1fr) 20px;min-height:0;gap:16px;
+ padding:clamp(16px,2.4vh,26px) clamp(14px,2vw,28px) clamp(16px,2.4vh,26px) 0;border-radius:0}
+.chapter-rail a+a{border-left:1px solid var(--ed-rule);border-radius:0;padding-left:clamp(14px,2vw,28px)}
+.chapter-rail a:hover{transform:none;background:#ffffff33}
+.chapter-rail-number{font-size:14px;color:#5f8494}
+.chapter-rail a strong{font-size:12.5px;letter-spacing:.4px}
+.chapter-rail a small{font-size:8.5px;letter-spacing:1.5px}
+
+/* ---------- section headings ride the same hairline ---------- */
+.section-heading{align-items:baseline;margin:clamp(48px,9vh,110px) 0 clamp(22px,4vh,44px);
+ padding-top:clamp(16px,2.4vh,26px);border-top:1px solid var(--ed-rule-strong)}
+.section-heading .eyebrow{font-size:9.5px;letter-spacing:2.4px}
+.section-heading h2{margin:clamp(10px,1.6vw,18px) 0 0;font-size:var(--ed-h2);line-height:1.02;
+ letter-spacing:-.02em;font-weight:400}
+.section-heading h2 em{color:#4a7387}
+.section-number{font-size:10px;letter-spacing:2.4px;color:#587c8b}
+.margin-doodle{opacity:.5}
+
+/* ---------- Highlights: two wide rows on hairlines ---------- */
+.academic-spread{grid-template-columns:minmax(0,1fr);grid-template-areas:"journey" "ledger";
+ gap:0;padding:0 0 clamp(20px,4vh,40px)}
+.academic-spread .study-thread{display:none}
+.education-journey{padding:0;gap:0;margin:0}
+.education-journey:before{display:none}
+.education-stop:before{display:none}
+.education-leaf{grid-template-columns:clamp(180px,.32fr) minmax(0,1fr);grid-template-rows:auto auto;
+ gap:0 clamp(20px,3.4vw,56px);padding:clamp(24px,3.6vh,40px) 0;
+ border:0;border-top:1px solid var(--ed-rule);border-radius:0;
+ background:none!important;box-shadow:none;transform:none}
+.education-leaf:hover{transform:none;box-shadow:none}
+.education-leaf>.paper-tape{display:none}
+.education-leaf .school-photo-frame{grid-column:1;grid-row:1/3;align-self:start;min-height:0;height:clamp(120px,17vw,190px);
+ margin:0;padding:0;border:0;background:none;box-shadow:none;transform:none}
+.education-leaf .school-photo{min-height:0;height:100%;filter:saturate(.88)}
+.education-leaf .school-title{grid-column:2;grid-row:1;align-self:end}
+.education-leaf .school-year{font-size:9px;letter-spacing:1.8px}
+.education-leaf .school-name{font-size:clamp(22px,2.6vw,38px);line-height:1.12;letter-spacing:-.015em;margin-top:8px}
+.education-leaf .school-sub{max-width:52ch;margin-top:9px;font-size:12.5px;line-height:1.75}
+.education-leaf .school-detail{grid-column:2;grid-row:2;align-self:start;margin-top:14px}
+.education-leaf .school-detail-inner{padding-top:14px;border-top:1px solid var(--ed-rule)}
+.education-leaf .school-columns{grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,48px)}
+
+/* skills become a full-bleed band rather than a pinned card */
+.skill-ledger{grid-area:ledger;align-self:stretch;margin:clamp(26px,4vh,44px) calc(-1 * var(--ed-gutter)) 0;
+ padding:clamp(28px,4.6vw,52px) var(--ed-gutter);border:0;border-top:1px solid var(--ed-rule-strong);
+ border-bottom:1px solid var(--ed-rule-strong);border-radius:0;background:#e4eef0a6;
+ box-shadow:none;transform:none;display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);
+ grid-template-areas:"intro notes" "strip strip";gap:clamp(18px,3vw,48px)}
+.skill-ledger:before{display:none}
+.skill-ledger .paper-pin{display:none}
+.skill-ledger>.eyebrow{grid-area:intro;margin:0 0 12px;font-size:9.5px;letter-spacing:2.2px}
+.skill-ledger h3{grid-area:intro;align-self:start;margin:26px 0 0;font-size:clamp(21px,2.3vw,30px);line-height:1.25;font-weight:400}
+.skill-ledger .skill-footnote{grid-area:intro;align-self:end;margin:10px 0 0}
+.skill-ledger .skill-notes{grid-area:notes;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(18px,3vw,48px);margin:0}
+.skill-ledger .skill-notes li{padding:14px 0;border-bottom:1px solid var(--ed-rule)}
+.skill-ledger .skill-strip{grid-area:strip;margin:clamp(14px,2.4vh,22px) 0 0;padding-top:clamp(14px,2.4vh,22px);
+ border-top:1px solid var(--ed-rule-strong)}
+.skill-ledger .skill-chip{border-radius:14px;background:#ffffff7a;border:1px solid var(--ed-rule)}
+
+/* ---------- knowledge base: an open two-column spread ---------- */
+.knowledge-workbench{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(22px,4vw,64px);
+ margin-top:clamp(28px,5vh,52px);padding:clamp(26px,4.4vw,50px) 0 0;border:0;border-top:1px solid var(--ed-rule-strong);
+ border-radius:0;background:none;box-shadow:none;align-items:start}
+.knowledge-intro h3{margin:14px 0 12px;font-size:clamp(22px,2.5vw,34px);line-height:1.2;font-weight:400;letter-spacing:-.015em}
+.knowledge-intro p{max-width:46ch;font-size:13.5px;line-height:1.85}
+.knowledge-workbench .rag-chat{margin:0;padding:clamp(16px,2vw,22px);border:1px solid var(--ed-rule);
+ border-radius:2px;background:#fbfcf7a8;box-shadow:none}
+
+/* ---------- Projects: one story per hairline row ---------- */
+.project-atlas-index{grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 0 clamp(10px,2vh,18px);padding:0;border:0}
+.project-atlas-index a{min-height:0;display:flex;align-items:baseline;gap:9px;justify-content:flex-start;
+ padding:9px 0;border:0;border-radius:0;background:none;box-shadow:none}
+.project-atlas-index a>span{font-size:12px}
+.project-atlas-index a strong{font-size:11px;letter-spacing:.2px;color:#43606e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.project-atlas-index a:hover{transform:none;background:none;color:#22414f}
+.projects-atlas.project-list{display:block;margin:0;padding:0;border:0;background:none;grid-template-columns:none;grid-auto-rows:auto;gap:0}
+.project-entry,.project-entry-0,.project-entry-1,.project-entry-2,.project-entry-3{display:block;grid-column:auto;grid-row:auto}
+.projects-atlas .project-row.paper-project{display:grid;width:auto!important;height:auto;min-height:0;margin:0;
+ grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+ grid-template-areas:"head contrib" "purpose contrib" "actions detail";
+ gap:0 clamp(24px,4.5vw,72px);
+ padding:clamp(26px,3.8vh,44px) 0;border:0;border-top:1px solid var(--ed-rule);border-radius:0;
+ background:none!important;box-shadow:none!important;transform:none!important;overflow:visible}
+.projects-atlas .project-row::after{display:none}
+.projects-atlas .project-tape{display:none}
+.projects-atlas .project-row:hover,.projects-atlas .project-row.open{z-index:auto;transform:none;box-shadow:none}
+.project-card-heading{grid-area:head;display:flex;align-items:start;justify-content:space-between;gap:20px;
+ padding:0 0 clamp(10px,1.6vh,16px);border-bottom:0}
+.projects-atlas .project-row .row-type{font-size:9px;letter-spacing:2.2px;color:#67828d}
+.projects-atlas .project-heading-copy h3{font-size:clamp(23px,3.1vw,44px);line-height:1.08;
+ letter-spacing:-.02em;font-weight:400;margin-top:10px}
+.projects-atlas .project-entry-0 h3{font-size:clamp(23px,3.1vw,44px);max-width:none}
+.projects-atlas .row-number{font-size:clamp(20px,2.2vw,30px);opacity:.45}
+.project-purpose{grid-area:purpose;margin:0;padding:0 0 clamp(14px,2vh,20px);max-width:58ch;font-size:13.5px;line-height:1.85}
+.project-contribution{grid-area:contrib;align-self:start;margin:0;padding:0 0 0 clamp(14px,1.6vw,20px);
+ border-left:1px solid var(--ed-rule-strong);background:none}
+.project-contribution .contribution-copy{font-size:12.5px;line-height:1.8;color:#4a6875}
+.projects-atlas .paper-actions{grid-area:actions;margin:0;padding:0;border-top:0;display:flex;align-items:center;gap:14px}
+.projects-atlas .paper-actions .row-toggle,.projects-atlas .paper-actions .save-project{height:auto;padding:6px 0;
+ border:0;border-bottom:1px solid var(--ed-rule-strong);border-radius:0;background:none;box-shadow:none;font-size:10.5px;letter-spacing:1px}
+.projects-atlas .paper-actions .row-toggle:hover,.projects-atlas .paper-actions .save-project:hover{transform:none;background:none;border-bottom-color:#3f6a7d}
+.projects-atlas .paper-actions .save-project{width:auto;min-width:0;margin-left:0}
+.projects-atlas .paper-actions .save-project>span:last-child{display:inline}
+.projects-atlas .project-detail{grid-area:detail}
+.projects-atlas .project-detail .detail-inner{padding:0;font-size:12px;line-height:1.8}
+.projects-atlas .project-detail ul{margin:8px 0 12px}
+.projects-atlas #projects-empty{grid-area:auto}
+
+/* ---------- Life: a pull quote above an edge-to-edge wall ---------- */
+.life-spread{grid-template-columns:minmax(0,1fr);gap:clamp(22px,4vh,40px)}
+.life-letter{position:static;padding:0;border:0;border-radius:0;background:none;box-shadow:none;
+ backdrop-filter:none;-webkit-backdrop-filter:none;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(22px,4vw,64px)}
+.life-letter p{margin:0;font-size:clamp(14px,1.35vw,17px);line-height:1.95;max-width:52ch}
+.life-letter .hobby-badges{grid-column:1/-1;margin-top:clamp(16px,2.6vh,26px);padding-top:clamp(14px,2vh,20px);
+ border-top:1px solid var(--ed-rule)}
+.life-atlas{min-width:0;margin:0;padding:0}
+.life-atlas .local-note{max-width:56ch;margin:0 0 clamp(14px,2vh,20px)}
+#media-gallery.media-wall{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-right:calc(-1 * var(--ed-gutter))}
+#media-gallery .media-item{border:0;border-radius:0;box-shadow:none;aspect-ratio:1.2;background:#dbe9ee}
+#media-gallery .media-item:hover{transform:none;box-shadow:none;filter:brightness(1.04)}
+#media-gallery .media-item>span{font-size:10.5px;padding:24px 12px 10px;letter-spacing:.2px}
+
+/* ---------- Guestbook: an open letter on rules ---------- */
+.guestbook-postcard{display:grid;grid-template-columns:minmax(0,.74fr) minmax(0,1.26fr);
+ grid-template-areas:"letter writing" "signature notes";gap:clamp(20px,3vw,44px) clamp(26px,4.5vw,72px);
+ max-width:none;margin:0;padding:clamp(26px,4.4vw,50px) 0 clamp(30px,5vh,56px);
+ border:0;border-top:1px solid var(--ed-rule-strong);border-radius:0;background:none;box-shadow:none;transform:none;text-align:left}
+.guestbook-letterhead{padding:0}
+.guestbook-letterhead h2{font-size:var(--ed-h2);line-height:1.02;letter-spacing:-.02em;font-weight:400}
+.guestbook-letterhead .guestbook-intro{max-width:34ch;font-size:13.5px;line-height:1.85}
+.guestbook-writing-desk{padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+.guestbook-writing-desk .field input,.guestbook-writing-desk .field textarea{border-radius:2px;background:#fdfcf6b0}
+.guestbook-notes .guestbook-list{margin-top:0}
+.guest-note{border:0;border-top:1px solid var(--ed-rule);border-radius:0;background:none;box-shadow:none}
+.guestbook-sign{margin:0;text-align:left}
+.guestbook-postcard .guestbook-stars{opacity:.35}
+
+/* ---------- footer as a hairline, not a container ---------- */
+footer{max-width:none;margin:0;padding:20px var(--ed-gutter) 26px;border-top:1px solid var(--ed-rule-strong)}
+footer .wordmark{font-size:14px}
+footer>span{font-size:9.5px;letter-spacing:1.6px}
+.back-top{border-radius:0;border:1px solid var(--ed-rule-strong);background:#f4fafae0;box-shadow:none;width:38px;height:38px}
+
+/* ---------- narrow screens: stack, keep the bleed ---------- */
+@media(max-width:980px){
+ .ed-topbar{grid-template-columns:auto auto;gap:8px 16px;padding:14px var(--ed-gutter) 12px}
+ .pill-nav{grid-column:1/-1;justify-self:start;gap:12px;overflow-x:auto;max-width:100%;scrollbar-width:none}
+ .pill-nav::-webkit-scrollbar{display:none}
+ .pill-nav a{font-size:10.5px;letter-spacing:1.1px}
+ .music-pill{justify-self:end}
+ .journal-cover{grid-template-columns:minmax(0,1fr)}
+ .journal-cover .hero-art{height:clamp(300px,46vh,440px);margin:clamp(18px,3vh,28px) calc(-1 * var(--ed-gutter)) 0 0}
+ .cover-letter h1{font-size:clamp(34px,8.4vw,58px)}
+ .chapter-rail{margin-top:clamp(20px,4vh,34px)}
+ .chapter-rail a{grid-template-columns:30px minmax(0,1fr) 16px;gap:12px}
+ .skill-ledger{grid-template-columns:minmax(0,1fr);grid-template-areas:"intro" "notes" "strip"}
+ .skill-ledger .skill-notes{grid-template-columns:1fr}
+ .education-leaf{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto}
+ .education-leaf .school-photo-frame{grid-column:1;grid-row:1;height:clamp(150px,34vw,220px);margin-bottom:16px}
+ .education-leaf .school-title{grid-column:1;grid-row:2}
+ .education-leaf .school-detail{grid-column:1;grid-row:3}
+ .education-leaf .school-columns{grid-template-columns:1fr}
+ .projects-atlas .project-row.paper-project{grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"head" "purpose" "contrib" "actions" "detail";gap:0 0}
+ .project-contribution{padding:0;border-left:0;border-top:1px solid var(--ed-rule);padding-top:14px;margin-top:14px}
+ .life-letter{grid-template-columns:minmax(0,1fr)}
+ #media-gallery.media-wall{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .guestbook-postcard{grid-template-columns:minmax(0,1fr);grid-template-areas:"letter" "writing" "signature" "notes"}
+ .guestbook-sign{order:3}
+ .project-atlas-index{grid-template-columns:1fr 1fr}
+ .project-atlas-index a strong{white-space:normal}
+}
+@media(max-width:600px){
+ .section-number{display:none}
+ #media-gallery.media-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .life-letter p{font-size:14px}
+}
+
+/* ---------- R9b · legibility pass ----------
+   The fixed sky photograph was only ever a backdrop for the paper cards that
+   used to sit on top of it. With the cards gone it became the page surface and
+   swallowed the text, so the sky is now confined to the cover: the body is a
+   plain paper tone, the cover keeps a masked band of sky, and a paper wash on
+   the text side guarantees contrast without drawing another box. */
+body{background:#f7f5ee}
+.paper-grain{display:none}
+.sky-cloud-layer{display:none}
+
+.hero-section{position:relative;isolation:isolate}
+.hero-section::before{content:"";position:absolute;z-index:-2;left:0;right:0;top:0;
+ height:min(74vh,660px);background:#cfe6ef url('assets/sky.webp') center top/cover no-repeat;
+ -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 58%,transparent 100%);
+ mask-image:linear-gradient(180deg,#000 0%,#000 58%,transparent 100%)}
+.hero-section::after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;
+ background:linear-gradient(96deg,#f7f5ee 0%,#f7f5eef5 26%,#f7f5eed0 44%,#f7f5ee66 60%,#f7f5ee00 76%)}
+
+.ed-topbar{background:#f7f5eef2;border-bottom:1px solid var(--ed-rule)}
+.ed-topbar .wordmark{color:#2c4653}
+.pill-nav a{color:#5a7885}
+.pill-nav a:hover,.pill-nav a.active{color:#1f3d4a}
+.nav-indicator{background:#33586a}
+.reading-progress{background:#e6e9e2}
+.reading-progress span{background:#4a7285}
+
+.section-heading{margin:clamp(30px,4.6vh,58px) 0 clamp(20px,3.2vh,38px)}
+.section-heading h2{color:#2b4753}
+.section-heading h2 em{color:#3f6a7f}
+
+/* the cover image controls were being pushed off the right edge by the bleed */
+.journal-cover .circle-link{right:18px;bottom:132px;background:#fbfaf3e8;border-color:#9db3ba}
+.journal-cover .photo-stamp{background:#fbfaf3e8}
+
+/* specificity: the old paper-tinted blocks kept their fills */
+.projects-atlas .project-contribution{background:none;border-left:1px solid var(--ed-rule-strong);
+ padding:0 0 0 clamp(14px,1.6vw,20px)}
+.projects-atlas .project-detail .detail-inner>p{border-top:1px solid var(--ed-rule);color:#5c7582}
+.projects-atlas .paper-actions .row-toggle,.projects-atlas .paper-actions .save-project{color:#3f5f6d}
+.skill-ledger{background:#eef0e9}
+.skill-ledger .skill-notes li{border-bottom-color:#6f8f9e33}
+.edu-none{display:none}
+
+/* ---------- R9c · rhythm and the gallery grid ----------
+   Sections were still carrying the 115px top padding that used to separate
+   stacked paper cards; on a hairline layout it reads as dead air. The image
+   wall also kept its old mosaic placement rules, which forced six implicit
+   columns instead of the four the editorial grid asks for. */
+.section:not(.hero-section){padding-top:0;padding-bottom:0}
+.highlights-section,.projects-section,.life-section,.guestbook-section{padding-top:0;padding-bottom:0}
+
+/* Superseded by R10 (compact mosaic). The four-column rule and the !important
+   span reset that lived here were removed so the R10 layer can place tiles. */
+
+/* the row number sits with the label, not adrift between two columns */
+.projects-atlas .project-row.paper-project{grid-template-columns:minmax(0,1.24fr) minmax(0,.76fr)}
+
+/* ---------- R9d · fine alignment ---------- */
+/* the row number was floating in the gutter between the two columns; it now
+   opens the row as a folio, in line with the label */
+.project-card-heading{justify-content:flex-start;align-items:baseline;gap:14px;flex-wrap:wrap}
+.projects-atlas .row-number{order:-1;flex:none;margin:0;font-size:12.5px;opacity:.55}
+.projects-atlas .project-heading-copy{flex:1 1 auto;min-width:0}
+
+/* a hair of sub-pixel overshoot in the four-column wall */
+#media-gallery.media-wall{overflow-x:clip}
+
+/* the floating plane sat on top of the scroll caption and read as a stray arrow */
+.home-stickers .sticker-plane{display:none}
+.journal-cover .hero-art{height:clamp(420px,66vh,680px)}
+
+/* ---------- R9e · the cover on narrow screens ----------
+   A leftover rule from the card era capped the cover figure at 520px and pushed
+   it above the headline, so the cover shrank into a floating thumbnail with sky
+   on both sides. Here the headline leads and the photo runs to the right edge. */
+@media(max-width:980px){
+ .cover-letter{order:0}
+ .journal-cover .hero-art{order:0;width:auto;max-width:none;justify-self:stretch;
+  height:clamp(300px,48vh,460px);margin:clamp(22px,3.4vh,34px) calc(-1 * var(--ed-gutter)) 0 0}
+ .journal-cover .hero-art>img{width:100%;height:100%}
+}
+
+/* ---------- R9f · narrow cover, left-aligned ----------
+   V0 centred the hero copy on small screens because it sat under a photo. In a
+   left-aligned editorial grid a centred headline reads as a different page, and
+   the 540px rule was still adding a second 20px pad on top of the gutter. */
+@media(max-width:980px){
+ .journal-cover .cover-letter{text-align:left}
+ .journal-cover .cover-letter h1,.journal-cover .hero-description{text-align:left}
+ .journal-cover .hero-caption{justify-content:flex-start;text-align:left}
+ .journal-cover .text-link{margin-left:0}
+ main{padding:0}
+}
+@media(max-width:540px){
+ main{padding:0}
+ .cover-letter h1{font-size:clamp(32px,9.6vw,46px)}
+}
+
+/* the folio number kept wrapping onto its own line; a two-track grid keeps it
+   pinned to the left of the label at every width */
+.project-card-heading{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;
+ justify-content:start;gap:6px 14px}
+.projects-atlas .row-number{order:0;grid-column:1;grid-row:1;align-self:start;margin-top:2px}
+.projects-atlas .project-heading-copy{grid-column:2;grid-row:1;min-width:0}
+
+/* ============================================================
+   【V1迭代新增·R10】Life wall · compact mosaic
+   Four small tiles per band, one portrait spanning both bands as
+   the only vertical accent, captions moved out of the photo into
+   the margin. At 267x178 all nine moments are visible at once and
+   no tile is stretched to fill a leftover row.
+   ============================================================ */
+#media-gallery.media-wall{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));
+ grid-auto-rows:auto;grid-auto-flow:row;gap:13px 10px;margin:0;padding:0;overflow:visible;align-items:start}
+#media-gallery .media-item{grid-column:span 4;grid-row:auto;position:relative;display:flex;flex-direction:column;
+ aspect-ratio:auto;min-height:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;
+ text-align:left;overflow:visible;transform:none}
+#media-gallery .media-item>img,#media-gallery .media-item>video{display:block;width:100%;height:auto;
+ aspect-ratio:3/2;object-fit:cover;border-radius:0;transition:filter .45s ease-out,transform .55s ease-out}
+#media-gallery .media-item>span{position:static;left:auto;right:auto;bottom:auto;display:block;
+ margin-top:7px;padding:0;background:none;color:#6d8794;font-size:9.5px;letter-spacing:1.05px;
+ text-transform:uppercase;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#media-gallery .media-item:hover{transform:none;box-shadow:none}
+#media-gallery .media-item:hover>img,#media-gallery .media-item:hover>video,
+#media-gallery .media-item:focus-visible>img,#media-gallery .media-item:focus-visible>video{filter:brightness(1.04);transform:scale(1.02)}
+#media-gallery .media-item:focus-visible{outline:2px solid #41697b;outline-offset:3px}
+
+/* the double-bass portrait carries both bands at the right edge */
+#media-gallery .media-item:nth-child(7){grid-column:17/span 4;grid-row:1/span 2;align-self:stretch}
+#media-gallery .media-item:nth-child(7)>img{aspect-ratio:auto;flex:1 1 auto;height:auto;min-height:0;object-fit:cover}
+#media-gallery .media-item[data-media-kind="video"]:after{top:8px;right:8px;width:20px;height:20px;font-size:8px}
+
+/* between the desktop five-across and the phone two-across the tiles got down
+   to 178 px, so a narrower laptop drops to four per band instead */
+@media(max-width:1120px) and (min-width:981px){
+ #media-gallery.media-wall{grid-template-columns:repeat(16,minmax(0,1fr))}
+ #media-gallery .media-item{grid-column:span 4}
+ #media-gallery .media-item:nth-child(7){grid-column:13/span 4}
+}
+@media(max-width:980px){
+ #media-gallery.media-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 9px}
+ #media-gallery .media-item{grid-column:auto}
+ #media-gallery .media-item:nth-child(7){grid-column:auto;grid-row:auto}
+ #media-gallery .media-item:nth-child(7)>img{aspect-ratio:3/2;flex:0 0 auto;height:auto;min-height:0}
+ /* nine tiles leave one orphan on a two-column phone, so the closing film
+    takes the whole width and ends the wall instead of sitting alone */
+ #media-gallery .media-item:last-child{grid-column:1/-1}
+ #media-gallery .media-item:last-child>video{aspect-ratio:16/9}
+ #media-gallery .media-item>span{font-size:9px;letter-spacing:.8px}
+}
+
+/* ============================================================
+   【V1迭代新增·R11】Cover plate
+   The caption bar, the three thumbnails and the two round arrows
+   used to sit on top of the photograph and covered the sitter's
+   face and bouquet. The picture now carries nothing but itself and
+   its stamp; caption, counter and scene switcher moved onto a
+   hairline directly underneath, reading as a plate caption rather
+   than a widget. Thumbnails became two-pixel rules — at 82x47 they
+   showed nothing legible and only added weight.
+   ============================================================ */
+.cover-visual{min-width:0;display:flex;flex-direction:column}
+.cover-plate{display:flex;align-items:center;justify-content:space-between;gap:clamp(14px,2.4vw,32px);
+ margin:0 calc(-1 * var(--ed-gutter)) 0 0;padding:11px 0 0;border-top:1px solid var(--ed-rule)}
+.plate-caption{min-width:0;margin:0;font-size:10.5px;line-height:1.5;letter-spacing:1.7px;
+ text-transform:uppercase;color:#5c7d8b;transition:opacity .5s ease-out}
+.plate-tools{flex:0 0 auto;display:flex;align-items:center;gap:13px}
+#art-dots{display:flex;align-items:center;gap:7px}
+.cover-plate .scene-dot{width:20px;height:2px;padding:0;border:0;border-radius:0;background:#8aa6b2a8;
+ opacity:1;transform:none;box-shadow:none;overflow:visible;
+ transition:width .34s ease-out,background .34s ease-out}
+.cover-plate .scene-dot[aria-pressed="true"]{width:34px;border-radius:0;background:#33586a;
+ opacity:1;transform:none;box-shadow:none}
+.cover-plate .scene-dot:focus-visible{outline:2px solid #365b6e;outline-offset:4px}
+.cover-plate .art-step{width:24px;height:24px;padding:0;border:0;border-radius:0;background:none;
+ box-shadow:none;font-size:15px;line-height:1;color:#577c8b;
+ transition:color .25s ease-out,transform .25s ease-out}
+.cover-plate .art-step:hover{background:none;transform:none;color:#22414f;box-shadow:none}
+.cover-plate .art-step:focus-visible{outline:2px solid #365b6e;outline-offset:2px}
+.plate-count{font-size:10px;letter-spacing:1.5px;color:#6d8a97;font-variant-numeric:tabular-nums}
+
+/* the round "next" button no longer has a caption bar to clear */
+.journal-cover .circle-link{right:18px;bottom:18px}
+
+@media(max-width:980px){
+ .cover-plate{margin-right:calc(-1 * var(--ed-gutter))}
+}
+/* Between 981 and 1120 px the photo column is ~470 px wide: one line could hold
+   the caption or the controls, not both, and letting the caption break after
+   "campus" left "track" orphaned above the rules. The controls drop to their
+   own line here, the same shape they take on phones. */
+@media(max-width:1120px){
+ .cover-plate{flex-wrap:wrap;gap:9px 14px}
+ .plate-caption{flex:1 1 100%}
+ .plate-tools{margin-left:auto}
+}
+
+/* ============================================================
+   【V1迭代新增·R12】Skill notes open
+   The four lines carried a row of beads that read as carousel dots
+   and nothing answered a click. Each line is a disclosure now: the
+   one-liner rests, a hairline panel underneath holds the evidence
+   and a jump into the matching project story. The plus mark is
+   generated content, so the resting copy stays byte-identical to
+   V0 and the parity check still reads the same string.
+   ============================================================ */
+.skill-ledger .skill-notes li.skill-note{position:relative;display:block}
+.skill-note-toggle{display:block;width:100%;margin:0;padding:0 26px 0 0;border:0;border-radius:0;
+ background:none;box-shadow:none;text-align:left;cursor:pointer;color:inherit}
+.skill-note-toggle:hover{background:none;box-shadow:none;transform:none}
+.skill-note-toggle::after{content:"＋";position:absolute;right:0;top:1px;font-size:11px;line-height:1;
+ color:#8ba5b1;transition:transform .4s ease-out,color .3s ease-out}
+.skill-note.open .skill-note-toggle::after{transform:rotate(45deg);color:#33586a}
+.skill-note-toggle:hover .skill-beads{color:#33586a}
+.skill-note-toggle .skill-beads{transition:color .3s ease-out}
+.skill-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s ease-out}
+.skill-detail>div{min-height:0;overflow:hidden}
+.skill-note.open .skill-detail{grid-template-rows:1fr}
+.skill-detail-inner{margin-top:11px;padding-top:11px;border-top:1px solid var(--ed-rule)}
+.skill-detail-line{position:relative;margin:0 0 7px;padding-left:13px;font-size:12px;line-height:1.8;color:#43606e}
+.skill-detail-line::before{content:"—";position:absolute;left:0;color:#9db6c0}
+.skill-detail-line:last-of-type{margin-bottom:9px}
+.skill-project-link{display:inline-flex;align-items:baseline;gap:6px;font-size:9.5px;letter-spacing:1.5px;
+ text-transform:uppercase;color:#33586a;border-bottom:1px solid #33586a4d;padding-bottom:3px;
+ transition:border-color .3s ease-out,color .3s ease-out}
+.skill-project-link:hover{color:#16323f;border-bottom-color:#16323f}
+.skill-project-link:focus-visible{outline:2px solid #365b6e;outline-offset:3px}
+
+/* The intro column put its eyebrow, title and footnote into one named grid
+   cell and separated them with margins tuned for the 30px desktop title.
+   Below 980px the title shrinks to 21px and the eyebrow wraps to two lines,
+   so those margins no longer clear each other and the label printed through
+   the headline. Below the breakpoint each line gets its own row instead. */
+@media(max-width:980px){
+ .skill-ledger{grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"led-eyebrow" "led-title" "led-foot" "notes" "strip"}
+ .skill-ledger>.eyebrow{grid-area:led-eyebrow;margin:0 0 9px}
+ .skill-ledger h3{grid-area:led-title;margin:0}
+ .skill-ledger .skill-footnote{grid-area:led-foot;align-self:start;margin:13px 0 0}
+ .skill-ledger .skill-notes{margin-top:24px}
+}

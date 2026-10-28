@@ -1,0 +1,3 @@
+Aria’s Sky Journal — V2-RAG
+
+Independent coursework branch derived from the frozen V0 baseline. The course-note question module is the only functional redesign; no V1 source was used.
