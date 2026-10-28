@@ -1,3 +1,0 @@
-Aria’s Sky Journal — V0
-
-This package adopts the user-selected former V1 as the official coursework V0.
