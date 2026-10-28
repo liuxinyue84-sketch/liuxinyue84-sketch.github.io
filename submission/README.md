@@ -1,7 +1,5 @@
 # COMP5583 Final Experiment Submission
 
-This folder contains the final Chinese report, three independent website versions, fixed Task 2 evaluation materials, the supplementary version-sensitive human assessment, and version-specific prompt/evidence archives.
-
 ## Public websites
 
 - V0: https://liuxinyue84-sketch.github.io/
