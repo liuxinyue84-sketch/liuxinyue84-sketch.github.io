@@ -7,10 +7,12 @@ All AI values below come from independent clean-session Judge outputs saved with
 | Version | Human total | AI Judge total | Difference (AI − human) |
 |---|---:|---:|---:|
 | V0 | 76 / 100 | 81 / 100 | +5 |
-| V1 Few-shot | 85 / 100 | 85 / 100 | 0 |
-| V2-RAG | 86 / 100 | 81 / 100 | −5 |
+| V1 Few-shot | 86 / 100 | 85 / 100* | −1 |
+| V2-RAG | 86 / 100 | 91 / 100 | +5 |
 
-### Criterion-level comparison
+#*The V1 raw Judge output states 85/100, although its listed criterion scores recompute to 86/100. The comparison uses the unedited raw total; the arithmetic discrepancy is disclosed.
+
+## Criterion-level comparison
 
 | Version | Criterion | Human / 5 | AI / 5 | Difference |
 |---|---|---:|---:|---:|
@@ -23,15 +25,15 @@ All AI values below come from independent clean-session Judge outputs saved with
 | V1 | Readability & visual consistency | 4 | 4 | 0 |
 | V1 | Interaction robustness | 4 | 4 | 0 |
 | V2-RAG | Content completeness | 5 | 5 | 0 |
-| V2-RAG | Navigation & task completion | 4 | 3 | −1 |
+| V2-RAG | Navigation & task completion | 4 | 5 | +1 |
 | V2-RAG | Readability & visual consistency | 4 | 4 | 0 |
 | V2-RAG | Interaction robustness | 4 | 4 | 0 |
 
 ## Version-specific raw outputs
 
-- V0: `ai_raw_output.md`
+- V0: `ai_raw_output_v0.md`
 - V1: `ai_raw_output_v1.md`
-- V2-RAG: `../../task3/v2/evaluation/ai_judge_raw_output.md`
+- V2-RAG latest rerun: `ai_raw_output_v2_rerun.md` (91/100); the earlier V2 run is retained separately if present.
 
 The raw Judge responses are preserved verbatim. The Judge sessions received only their fixed rubric/prompt and version-specific evidence, not human scores or this comparison.
 
@@ -39,7 +41,7 @@ The raw Judge responses are preserved verbatim. The Judge sessions received only
 
 V0 received a higher AI content score because the Judge treated the source evidence as sufficient to establish complete project contributions, while the human score was conservative about evidence coverage. V0 readability was scored lower by AI because only limited visual evidence was supplied; the human score relied on broader local inspection. V0 robustness was scored higher by AI because it counted the dated E2E interactions despite the untested valid Guestbook path.
 
-V1 scores agree because the latest R12 evidence supplies both 35/35 E2E checks and 48-group content parity. V2 navigation was scored lower by AI because the current V2 evidence focuses on the RAG module and does not freshly verify non-RAG project/media/Guestbook tasks on the deployed URL. The human score gives partial credit for preserved V0 behavior and the current V2 browser evidence, but does not award full marks.
+V1 scores agree because the latest R12 evidence supplies both 35/35 E2E checks and 48-group content parity. The initial V2 Judge run scored 81/100 because the supplied evidence did not establish non-RAG portfolio behavior. After a fresh public non-RAG E2E record was added, the independent V2 Judge rerun scored 91/100 and raised Navigation & Task Completion from 3 to 5. The human score remains 86/100 because the available checks still do not cover valid Guestbook submission, reload persistence, mobile interaction, or stress behavior.
 
 ## Evaluator limitations
 

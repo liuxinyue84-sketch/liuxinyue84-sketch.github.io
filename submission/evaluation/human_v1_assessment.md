@@ -8,7 +8,7 @@ Date: 2026-10-28 (Asia/Hong_Kong)
 | Navigation & Task Completion | 25% | 4 | 20 |
 | Readability & Visual Consistency | 25% | 4 | 20 |
 | Interaction Robustness | 20% | 4 | 16 |
-| **Total** | **100%** |  | **85 / 100** |
+| **Total** | **100%** |  | **86 / 100** |
 
 ## Evidence
 
@@ -20,3 +20,6 @@ Date: 2026-10-28 (Asia/Hong_Kong)
 ## Conservative deductions
 
 The navigation and robustness scores remain 4 rather than 5 because the latest evidence does not include a successful Guestbook submission, complete length-limit testing, a formal contrast audit, or full-site mobile verification. These deductions are based on evidence gaps, not on the independent AI Judge output.
+
+
+**Arithmetic note:** the four criterion scores (5, 4, 4, 4) produce 86/100 under the stated weights. The separate version-sensitive supplementary score is 90/100 and uses a different rubric.

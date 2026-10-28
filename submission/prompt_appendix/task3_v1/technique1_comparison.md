@@ -21,7 +21,7 @@ These are transparent rubric-based human estimates, not AI-Judge results. V0’s
 
 The 4/5 interaction score reflects the MapReduce relevance improvement and passing tested interactions, while a valid guestbook submission and length-limit handling remain untested. The 4/5 visual score reflects the coherent desktop screenshot but does not claim a contrast or mobile audit. The content score remains 4 because V1 preserves V0 facts and improves contribution visibility, but source-by-source CV/PS fact verification is outside this browser run. The single rubric point increase is supported by the concrete retrieval change and test evidence, not by the aggregate alone.
 
-**AI-Judge comparison remains pending.** The coursework requires a new blank AI-Judge conversation containing only the fixed scoring instructions and V1 evidence. This task has not fabricated or inferred an AI score from the human assessment. Use the prepared evidence manifest in `ai_judge_evidence.md`; preserve the Judge’s response verbatim in a separate raw-output file.
+**AI-Judge result:** the independent clean-session V1 raw response is preserved verbatim in `../../evaluation/ai_raw_output_v1.md` (85/100 as reported by the Judge). The criterion values recompute to 86/100 under the listed rubric weights; the raw output is unchanged and the discrepancy is disclosed in `submission/README.md` and the report.
 
 ## How the few-shot examples affected V1
 
@@ -37,7 +37,7 @@ The 4/5 interaction score reflects the MapReduce relevance improvement and passi
 - The portfolio remains static HTML/CSS/JS; local favorites and guestbook entries remain browser-local.
 - V1 is deployed at `/V1/`; the root V0 URL remains untouched. The final threshold correction is deployed; the published HTTPS run passed 25/25 after the test harness replaced a fixed carousel delay with a state-based wait. The first 24/25 live run remains archived as an initial test attempt.
 - The old implicit favicon 404 remains in both codebases; it is reported separately because it is a browser-default request and not a missing application asset.
-- A fresh-session AI-Judge result, valid guestbook submission, length-limit test, and contrast audit still need to be added before the Task 3 submission package is complete.
+- The AI-Judge run is complete. Remaining evidence limits are a valid Guestbook submission, length-limit behavior, formal contrast audit, and comprehensive mobile verification; these are disclosed rather than treated as passed.
 
 ## Structural revision 2 — response to observed weakness
 

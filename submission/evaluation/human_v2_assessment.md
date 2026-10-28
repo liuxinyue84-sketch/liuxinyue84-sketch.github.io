@@ -56,4 +56,4 @@ The score is not 5 for navigation or robustness because the current V2 evidence 
 
 ## Limitations
 
-The same aggregate as preliminary V0 (76/100) does not imply that the RAG module failed to improve. The rubric covers the entire portfolio, and changes are intentionally confined to one module. RAG behavior improved in the observed questions, while other-site interaction evidence and the clean-session AI Judge run remain incomplete. The deterministic response stage is not real LLM generation.
+The 86/100 human score is a fixed-rubric assessment of the deployed V2 evidence; the independent clean-session AI Judge rerun is separately preserved in `ai_raw_output_v2_rerun.md` (91/100). The portfolio-wide rubric includes unchanged V0 sections, while the V2 enhancement targets the RAG module. The deterministic response stage is not real LLM generation. The separate non-RAG public run covers representative interactions but leaves valid Guestbook submission, reload persistence, mobile behavior, and stress cases unverified.

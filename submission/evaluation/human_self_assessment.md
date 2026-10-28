@@ -52,6 +52,11 @@ The published V0 was opened over HTTPS in Chrome on macOS. The desktop test cove
 
 These observations supplement but do not retroactively alter the original criterion scores. A dated reassessment should update scores only after the rubric's remaining tasks and the clean-session AI Judge run are complete.
 
-## Evidence collection still required
+## Items outstanding at the time of the preliminary assessment
 
 Still required: test the RAG no-match behavior; test valid guestbook submission and length limits in an isolated storage context; complete desktop readability/contrast checks; save screenshot image files into this evidence folder; run a clean-session AI Judge assessment. The empty guestbook state, a relevant typed RAG query, a weak MapReduce retrieval, desktop navigation, media preview, and music autoplay/manual play-pause were tested and are documented in the dated log. Do not silently revise these provisional scores; record a dated reassessment if the result changes.
+
+
+## Superseding evidence status — 2026-10-28
+
+The preceding section records the evidence gaps at the time of the preliminary V0 assessment; it is not a current checklist. The independent V0 AI Judge response is now preserved in `ai_raw_output_v0.md` (81/100), and V2 has a separate latest rerun in `ai_raw_output_v2_rerun.md` (91/100). This historical V0 human score remains 76/100; later supplementary scores use a distinct version-sensitive rubric. The original assessment was not rewritten from later evidence. Valid Guestbook submission and length-limit behavior, formal contrast, and broader responsive checks remain unverified in the V0 record.
