@@ -10,18 +10,9 @@ This version-sensitive assessment supplements, and does not replace, the officia
 
 The table records weighted points directly. The five columns sum to a maximum of 100.
 
-## V0 evidence
+## V0 and V1 evidence note
 
-- Test operation or prompt:
-- Observed behavior:
-- Why this supports the score:
-
-## V1 Few-shot evidence
-
-- Few-shot material inspected:
-- Structural change observed:
-- Personal-content preservation check:
-- Why this supports the score:
+This file does not contain retrospective, criterion-level human observations for V0 or V1. Their recorded scores are retained above; no missing test operations or observations have been reconstructed or presented as contemporaneous evidence. Version artifacts and independent Judge records remain in the corresponding `coursework/evaluation/` and `prompt_appendix/task3_v1/` folders.
 
 ## V2 RAG evidence
 
@@ -34,9 +25,9 @@ Additional non-RAG public test: Home, Highlights, Projects, Life, Guestbook, edu
 
 ## Comparative conclusion
 
-- Strongest V1 improvement:
-- Strongest V2 improvement:
-- Remaining trade-off:
-- Evidence that the improvement is version-specific:
+- Strongest V1 improvement: The V1 Few-shot version records 90/100 in the supplementary human score versus 79/100 for V0. The version record describes a change to the page shell and component structure; separate evidence reports 48 content comparisons with no differences and 35/35 desktop E2E checks.
+- Strongest V2 improvement: V2 records 91/100 in the supplementary human score and 91/100 in the latest AI Judge run. Its nine public RAG E2E cases cover retrieval, citations, abstention, and representative English and Chinese queries.
+- Remaining trade-off: V2 is a static RAG workflow demonstration without a live LLM; BM25 and title-led relevance rules can miss paraphrases or rank imperfectly. The public non-RAG run also recorded one favicon 404. V1 has weaker evidence for mobile behavior and successful guestbook submission.
+- Evidence that the improvement is version-specific: V1 evidence is tied to its Few-shot iteration record, content comparison, and 35/35 E2E result. V2 evidence is tied to the RAG-specific public test run and its query/retrieval archive. The two versions target different improvements and both originate from frozen V0.
 
 The supplementary score must be reported next to, not instead of, the official score.

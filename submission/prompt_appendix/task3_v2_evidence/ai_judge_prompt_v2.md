@@ -65,10 +65,10 @@ The clean-session Judge should receive only this prompt, `rubric.md`, and the fo
 - **E5 — Website evidence:** V2 `website/index.html`, `website/projects.js`, `website/rag-v2.js`, and `website/rag-knowledge.js`. Source code supports implementation claims only; it does not prove behavior by itself.
 - **E6 — Frozen V0 baseline evidence for comparison:** `../../../coursework/website/V0/` and the V0 evaluator evidence listed in `../../../coursework/evaluation/ai_raw_output.md`. Only provide these items if the Judge is explicitly asked to compare versions; do not include human scores or assessments.
 
-## Clean Judge run metadata (complete after an independent session)
+## Clean Judge run metadata
 
-- Model/service:
-- New blank session used: Yes / No
-- Date/time (Asia/Hong_Kong):
-- Evidence IDs sent:
-- Raw output file/hash:
+- Model/service: Independent clean-session Judge agent; the specific model/service is not recorded in the preserved raw output.
+- New blank session used: Yes, according to the raw output's clean-session metadata.
+- Date/time (Asia/Hong_Kong): 2026-10-28; exact time was not recorded.
+- Evidence IDs sent: A transfer manifest was not preserved. The raw Judge response cites E3, E4, E5, NR1, NR-projects, NR-detail, NR-highlights, NR-life, NR-guestbook, NR-edu, NR-filter, NR-save, and NR-media. The prompt's evidence bundle lists E1–E6.
+- Raw output file/hash: `evaluation/ai_raw_output_v2_rerun.md` — SHA-256 `c3125d67cfd582d75c70fac03710c7c8f3e4e4a4e891f14c8bae7438fed0f8dc`. The same digest was verified against `task3/v2/evaluation/ai_judge_raw_output_rerun_2026-10-28.md`.
