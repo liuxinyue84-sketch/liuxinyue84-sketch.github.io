@@ -1,3 +1,9 @@
 Aria’s Sky Journal — V1
 
 Derived independently from the frozen coursework/website/V0 baseline using In-context Few-Shot Learning. The V0 source remains unchanged.
+
+Iteration 10 (2026-10-27): the Life image wall rebuilt as a compact mosaic — four small tiles per band with the one portrait spanning both bands, captions moved out of the photographs, and poster frames for the two films. The editorial skeleton from iteration 9 is unchanged. V0 remains unchanged and byte-identical.
+
+Iteration 11 (2026-10-28): the hero caption bar, thumbnail strip and round arrows were taken off the photograph and moved onto a hairline underneath it. Thumbnails became two-pixel rules. Iterations 9 and 10 (skeleton and Life wall) are unchanged. V0 remains unchanged and byte-identical.
+
+Iteration 12 (2026-10-28): the four lines in the skills ledger open. Each is a button that unfolds a hairline panel with two evidence lines and a link into the matching project story, which the link also unfolds. Resting copy is unchanged character for character; the plus mark is generated content, so the parity check still reads the same strings. A pre-existing overlap of the band's eyebrow and headline below 980 px was found and fixed in the same pass.

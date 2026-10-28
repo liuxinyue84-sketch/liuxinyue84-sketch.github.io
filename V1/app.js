@@ -191,7 +191,6 @@ scenes.forEach((scene, i) => {
  dot.className = 'scene-dot';
  dot.setAttribute('aria-label', `View scene ${i + 1}: ${scene.caption}`);
  dot.setAttribute('aria-pressed', String(i === 0));
- dot.innerHTML = `<img src="assets/${scene.src}" alt="" loading="lazy"><span>${scene.caption}</span>`;
  dot.addEventListener('click', () => showScene(i));
  dots.append(dot);
 });
@@ -210,7 +209,7 @@ function showScene(i) {
    sceneImage.src = nextSrc;
    sceneImage.alt = scene.alt;
    sceneCaption.textContent = scene.caption;
-   sceneCounter.textContent = `— ${String(activeScene + 1).padStart(2, '0')} / ${String(scenes.length).padStart(2, '0')}`;
+   sceneCounter.textContent = `${String(activeScene + 1).padStart(2, '0')} / ${String(scenes.length).padStart(2, '0')}`;
    sceneImage.style.opacity = '1';
    [...dots.children].forEach((d, j) => d.setAttribute('aria-pressed', String(j === activeScene)));
    sceneCaption.style.opacity = '1';
@@ -236,10 +235,17 @@ sceneImage.addEventListener('keydown', e => {
 /* ================= section navigation ================= */
 const sectionLinks = [...document.querySelectorAll('[data-nav]')];
 const indicator = document.querySelector('.nav-indicator');
+/* 【V1迭代新增·R9】The editorial bar uses a hairline underline instead of a
+   sliding pill, so the indicator is sized and placed from the active link's
+   own box. That keeps it correct even though the labels differ in width. */
 function setActive(id) {
  const i = Math.max(0, sectionLinks.findIndex(a => a.dataset.nav === id));
  sectionLinks.forEach((a, j) => a.classList.toggle('active', j === i));
- indicator.style.transform = `translateX(${i * 100}%)`;
+ if (!indicator) return;
+ const target = sectionLinks[i];
+ if (!target) return;
+ indicator.style.width = `${target.offsetWidth}px`;
+ indicator.style.transform = `translateX(${target.offsetLeft}px)`;
 }
 function updateSectionNav() {
  const sections = [...document.querySelectorAll('main > section')];
@@ -247,10 +253,16 @@ function updateSectionNav() {
  sections.forEach(section => {
   if (section.getBoundingClientRect().top < innerHeight * .5) current = section.id;
  });
- if (innerHeight + scrollY >= document.documentElement.scrollHeight - 12) current = 'guestbook';
+ const atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 12;
+ if (atEnd) current = 'guestbook';
  setActive(current);
 }
 addEventListener('scroll', updateSectionNav, { passive: true });
+addEventListener('resize', () => {
+ const active = document.querySelector('[data-nav].active');
+ updateSectionNav();
+ if (active) setActive(active.dataset.nav);
+}, { passive: true });
 updateSectionNav();
 sectionLinks.forEach(a => a.addEventListener('click', () => setActive(a.dataset.nav)));
 
@@ -288,7 +300,7 @@ const mediaCaption = document.querySelector('#media-caption');
 const soundtrack = document.querySelector('#soundtrack');
 const audioStatus = document.querySelector('#audio-status');
 
-function addGalleryItem(url, label, kind) {
+function addGalleryItem(url, label, kind, poster) {
  const item = document.createElement('button');
  item.className = 'media-item';
  item.type = 'button';
@@ -300,7 +312,15 @@ function addGalleryItem(url, label, kind) {
  el.src = url;
  el.loading = 'lazy';
  if (kind === 'image') el.alt = label;
- if (kind === 'video') { el.preload = 'metadata'; el.muted = true; el.playsInline = true; }
+ /* 【V1迭代新增·R10】A video left on preload="metadata" sometimes paints nothing,
+    which showed up as an empty beige tile in the wall. A captured frame keeps
+    the tile whole before the clip is fetched (31 MB for the first one). */
+ if (kind === 'video') {
+  el.preload = 'metadata';
+  el.muted = true;
+  el.playsInline = true;
+  if (poster) el.poster = poster;
+ }
  item.append(el);
  const caption = document.createElement('span');
  caption.textContent = label;
@@ -323,10 +343,10 @@ lifePhotos.forEach(photo => addGalleryItem(`assets/${photo.src}`, photo.label, '
 
 /* Two short films from life, ready to play. */
 const lifeVideos = [
- { src: 'life-video-1.mp4', label: 'Life in motion · I' },
- { src: 'life-video-2.mp4', label: 'Life in motion · II' }
+ { src: 'life-video-1.mp4', label: 'Life in motion · I', poster: 'assets/life-video-1-poster.jpg' },
+ { src: 'life-video-2.mp4', label: 'Life in motion · II', poster: 'assets/life-video-2-poster.jpg' }
 ];
-lifeVideos.forEach(video => addGalleryItem(`assets/${video.src}`, video.label, 'video'));
+lifeVideos.forEach(video => addGalleryItem(`assets/${video.src}`, video.label, 'video', video.poster));
 
 function openMedia(url, name, kind) {
  mediaContent.replaceChildren();
@@ -353,7 +373,13 @@ dialog.addEventListener('close', () => {
  mediaContent.replaceChildren();
 });
 document.addEventListener('visibilitychange', () => { if (document.hidden) soundtrack.pause(); });
-addEventListener('pagehide', () => mediaURLs.forEach(URL.revokeObjectURL));
+/* 【V1迭代新增·R9】`mediaURLs` is referenced here but never declared anywhere in
+   the bundle, so this handler threw on every page hide (a latent defect carried
+   over unchanged from the frozen V0). The guard keeps the intended cleanup
+   behaviour if the list is ever added, and stays silent until then. */
+addEventListener('pagehide', () => {
+ if (typeof mediaURLs !== 'undefined') mediaURLs.forEach(URL.revokeObjectURL);
+});
 
 /* ================= music toggle (navigation bar) ================= */
 const soundToggle = document.querySelector('#sound-toggle');

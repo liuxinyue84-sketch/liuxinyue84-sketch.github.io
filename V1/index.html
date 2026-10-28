@@ -15,13 +15,10 @@
 <div class="paper-grain" aria-hidden="true"></div>
 <div class="sky-cloud-layer" aria-hidden="true"></div>
 
-<header class="masthead">
+<!-- 【V1迭代新增·R9】Full-bleed editorial: one slim top bar, no frame and no side rail.
+     Nothing is boxed; every section breathes across the whole viewport width. -->
+<header class="ed-topbar">
  <a class="wordmark" href="#home">Aria’s Sky Journal <span>✧</span></a>
- <span class="header-note">IDEAS · ART · A LITTLE MUSIC</span>
-</header>
-
-<!-- Music toggle sits beside the navigation bar, labelled with the English title of the piece -->
-<div class="nav-bar">
  <nav class="pill-nav" aria-label="Page navigation">
   <a href="#home" data-nav="home">Home</a>
   <a href="#highlights" data-nav="highlights">Highlights</a>
@@ -34,7 +31,7 @@
   <button id="sound-toggle" type="button" aria-pressed="false" aria-label="Play Schumann’s Träumerei" title="Play Schumann’s Träumerei"><span aria-hidden="true">♫</span></button>
   <span class="music-pill-text">Träumerei<small>Schumann · Dreaming</small></span>
  </div>
-</div>
+</header>
 
 <div class="reading-progress" aria-hidden="true"><span id="progress-bar"></span></div>
 
@@ -53,26 +50,32 @@
   <a class="text-link" href="#highlights">Start exploring <span>↓</span></a>
   <div class="hero-caption"><span>01</span><span>SCROLL TO EXPLORE</span><i></i></div>
  </header>
- <figure class="hero-art" aria-label="A bright start on the campus track">
-  <img id="hero-art-image" src="assets/hero-1.jpg" alt="Graduate in gown holding a bouquet on the campus track">
-  <div class="photo-stamp">ARIA’S<br>JOURNAL <span>✧</span></div>
-  <figcaption class="art-caption"><span id="art-caption-text" aria-live="polite">A bright start on the campus track</span><span id="art-counter">— 01 / 03</span></figcaption>
-  <div class="art-controls" role="group" aria-label="Switch hero scenery">
-   <button id="art-prev" class="art-step" aria-label="Previous scene">‹</button>
-   <div id="art-dots"></div>
-   <button id="art-next" class="art-step" aria-label="Next scene">›</button>
+ <!-- 【V1迭代新增·R11】The photo carries nothing but the picture and its stamp.
+      Caption, counter and scene switcher sit on a hairline underneath it. -->
+ <div class="cover-visual">
+  <figure class="hero-art" aria-label="A bright start on the campus track">
+   <img id="hero-art-image" src="assets/hero-1.jpg" alt="Graduate in gown holding a bouquet on the campus track">
+   <div class="photo-stamp">ARIA’S<br>JOURNAL <span>✧</span></div>
+   <a href="#highlights" class="circle-link" aria-label="Scroll down to explore">↓</a>
+  </figure>
+  <div class="cover-plate">
+   <p class="plate-caption" id="art-caption-text" aria-live="polite">A bright start on the campus track</p>
+   <div class="plate-tools">
+    <div id="art-dots" role="group" aria-label="Hero scenes"></div>
+    <span class="plate-count" id="art-counter">01 / 03</span>
+    <button id="art-prev" class="art-step" type="button" aria-label="Previous scene">‹</button>
+    <button id="art-next" class="art-step" type="button" aria-label="Next scene">›</button>
+   </div>
   </div>
-  <a href="#highlights" class="circle-link" aria-label="Scroll down to explore">↓</a>
- </figure>
  </div>
-</section>
-
-<!-- 【V1迭代新增】A separate journal route keeps the carousel controls clear. -->
+ </div>
+ <!-- 【V1迭代新增】A separate journal route keeps the carousel controls clear. -->
 <nav class="chapter-rail" aria-label="Journal chapters">
  <a href="#highlights" aria-label="Highlights"><span class="chapter-rail-number">01</span><strong class="chapter-rail-label">Highlights</strong><span class="chapter-rail-arrow" aria-hidden="true">↘</span></a>
  <a href="#projects" aria-label="Projects"><span class="chapter-rail-number">02</span><strong class="chapter-rail-label">Projects</strong><span class="chapter-rail-arrow" aria-hidden="true">↘</span></a>
  <a href="#life" aria-label="Life"><span class="chapter-rail-number">03</span><strong class="chapter-rail-label">Life</strong><span class="chapter-rail-arrow" aria-hidden="true">↘</span></a>
 </nav>
+</section>
 
 <!-- ======================= HIGHLIGHTS ======================= -->
 <section id="highlights" class="section highlights-section" aria-labelledby="highlights-title">
@@ -152,11 +155,50 @@
   <span class="eyebrow">THINGS I WORK WITH</span>
   <h3>Turning curiosity into capability</h3>
   <p class="skill-footnote">Information Management × Agentic AI</p>
+  <!-- 【V1迭代新增·R12】Each skill line is a disclosure now: the one-liner stays
+       as the resting state, the panel underneath carries the evidence and a
+       jump into the matching project story. -->
   <ul class="skill-notes">
-   <li><span class="skill-beads" aria-hidden="true">● ○ ○ ○</span><strong>Python · Text Processing</strong><small>Parsing pipelines, regex cleaning, data wrangling</small></li>
-   <li><span class="skill-beads" aria-hidden="true">○ ● ○ ○</span><strong>RAG · Knowledge Retrieval</strong><small>BM25, SQLite FTS5, vector search</small></li>
-   <li><span class="skill-beads" aria-hidden="true">○ ○ ● ○</span><strong>AI Agents · Research</strong><small>Annotation review, LLM-agent frameworks</small></li>
-   <li><span class="skill-beads" aria-hidden="true">○ ○ ○ ●</span><strong>Full-Stack · Visualization</strong><small>Vue 3, Spring Boot, ECharts</small></li>
+   <li class="skill-note">
+    <button class="skill-note-toggle" type="button" aria-expanded="false" aria-controls="skill-detail-0">
+     <span class="skill-beads" aria-hidden="true">● ○ ○ ○</span><strong>Python · Text Processing</strong><small>Parsing pipelines, regex cleaning, data wrangling</small>
+    </button>
+    <div class="skill-detail" id="skill-detail-0" inert><div><div class="skill-detail-inner">
+     <p class="skill-detail-line">Parsing pipelines built in Python with regular expressions: multi-level headers, Chinese numerals and messy PDF layout are normalised before anything else touches them.</p>
+     <p class="skill-detail-line">JSON-Schema constrained prompts plus dictionary-regex guardrails keep model output machine-checkable rather than merely readable.</p>
+     <a class="skill-project-link" href="#project-story-2">Intelligent Policy Q&amp;A System <span aria-hidden="true">↗</span></a>
+    </div></div></div>
+   </li>
+   <li class="skill-note">
+    <button class="skill-note-toggle" type="button" aria-expanded="false" aria-controls="skill-detail-1">
+     <span class="skill-beads" aria-hidden="true">○ ● ○ ○</span><strong>RAG · Knowledge Retrieval</strong><small>BM25, SQLite FTS5, vector search</small>
+    </button>
+    <div class="skill-detail" id="skill-detail-1" inert><div><div class="skill-detail-inner">
+     <p class="skill-detail-line">Hybrid retrieval — BM25 with SQLite FTS5 in the thesis project, 1024D SentenceTransformer embeddings on a ClickHouse vector index in the capstone.</p>
+     <p class="skill-detail-line">Every answer carries the passage it came from, so a claim can be traced back to the paragraph that supports it.</p>
+     <a class="skill-project-link" href="#project-story-1">LLM-Agent Framework for Financial Data Annotation <span aria-hidden="true">↗</span></a>
+    </div></div></div>
+   </li>
+   <li class="skill-note">
+    <button class="skill-note-toggle" type="button" aria-expanded="false" aria-controls="skill-detail-2">
+     <span class="skill-beads" aria-hidden="true">○ ○ ● ○</span><strong>AI Agents · Research</strong><small>Annotation review, LLM-agent frameworks</small>
+    </button>
+    <div class="skill-detail" id="skill-detail-2" inert><div><div class="skill-detail-inner">
+     <p class="skill-detail-line">Co-authored a review of agent-supported data annotation in Future Internet (2025, 17, 353 · JCR-Q2, IF 3.6).</p>
+     <p class="skill-detail-line">Read across agent architectures, reasoning mechanisms and the quality-control loops that decide whether an annotation can be trusted.</p>
+     <a class="skill-project-link" href="#project-story-0">AI Agents for Data Annotation: A Review <span aria-hidden="true">↗</span></a>
+    </div></div></div>
+   </li>
+   <li class="skill-note">
+    <button class="skill-note-toggle" type="button" aria-expanded="false" aria-controls="skill-detail-3">
+     <span class="skill-beads" aria-hidden="true">○ ○ ○ ●</span><strong>Full-Stack · Visualization</strong><small>Vue 3, Spring Boot, ECharts</small>
+    </button>
+    <div class="skill-detail" id="skill-detail-3" inert><div><div class="skill-detail-inner">
+     <p class="skill-detail-line">Vue 3 front end, Spring Boot and MyBatis behind it — schema, API and interface owned end to end.</p>
+     <p class="skill-detail-line">ECharts spatio-temporal heatmaps and knowledge graphs; ChatGLM3 natural-language querying answering in under two seconds.</p>
+     <a class="skill-project-link" href="#project-story-3">Music Information Platform <span aria-hidden="true">↗</span></a>
+    </div></div></div>
+   </li>
   </ul>
   <div class="skill-strip"><span class="eyebrow">TOOLS · CLICK TO SEE RELATED PROJECTS</span>
    <div>
