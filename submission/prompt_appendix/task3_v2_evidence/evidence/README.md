@@ -1,24 +1,14 @@
-# V2-RAG Evidence Index
+# V2-RAG Screenshot Evidence
 
-This index distinguishes current final evidence from retained iteration evidence. Dated `_PRE_UI` screenshots and screenshots under `iterations/` document earlier interface states or reported failures; they are not evidence of the final interface.
+The files currently suffixed `_PRE_UI.png` were captured from the first V2-RAG UI in desktop Chrome at a 1512×1000 browser viewport on 2026-10-24 (Asia/Hong_Kong). They are iteration evidence, **not screenshots of the revised visitor UI**. Copies are in `../iterations/2026-10-24-before-ui-simplification/`.
 
-## Current final evidence
+The user's screenshot of the later `agent是什么` → GNN mismatch is preserved at `../iterations/2026-10-24-before-relevance-fix/agent-wrong-answer-user-screenshot.png`. It is failure evidence, not a screenshot of the repaired result.
 
-- `V2-RAG-01_retrieved-answer-desktop.png` — public desktop RAG answer with cited retrieved sources.
-- `V2-RAG-02_insufficient-materials-desktop.png` — public desktop no-evidence answer.
-- `V2-RAG-03_agent-definition-desktop.png` — public desktop agent query and answer.
-- `V2-RAG-04_cnn-significance-desktop.png` — public desktop CNN query and answer.
-- `V2-RAG-05_mcp-definition-desktop.png` — public desktop MCP query and answer.
-- `V2-public-E2E-*.png` — public desktop site and interaction states.
-- `../e2e_results_v2.json` — public V2 RAG E2E record (9/9 cases, 2026-10-28).
-- `../nonrag_public_e2e.json` — separate public non-RAG interaction record (13 functional checks; one favicon 404).
-- `../relevance_regression_v2.json` — 28 archived queries checked against 10 shared pipeline invariants; all checks pass. This is deterministic regression evidence, not browser E2E.
-- `../../../evaluation/ai_raw_output_v2_rerun.md` — independent clean-session AI Judge raw response (91/100).
+The user's screenshot of `cnn的开创性意义` returning no references is preserved at `../iterations/2026-10-24-before-cnn-retrieval-fix/cnn-no-answer-user-screenshot.png`. The revised CNN answer screenshot `V2-RAG-04_cnn-significance-desktop.png` is pending.
 
-The public runs used Google Chrome headless at 1512×1000. The evidence does not establish full mobile, accessibility, or stress-test coverage.
+The revised MCP answer screenshot `V2-RAG-05_mcp-definition-desktop.png` is pending. It should show that all four MCP passages remain available after removal of the answer-generation retrieval gate.
 
-## Historical and failure evidence
+- `V2-RAG-01_retrieved-answer-desktop_PRE_UI.png` — previous clear-query result, including the now-removed prompt disclosure.
+- `V2-RAG-02_insufficient-materials-desktop_PRE_UI.png` — previous vague-query fallback.
 
-`V2-RAG-01_retrieved-answer-desktop_PRE_UI.png` and `V2-RAG-02_insufficient-materials-desktop_PRE_UI.png` show the initial UI before visitor-facing prompt removal and answer cleanup. The dated screenshots under `iterations/` preserve reported failures such as the early agent/GNN mismatch, CNN no-retrieval result, GNN ranking issue, and compound-query failure. Keep them as change-history evidence; do not present them as final behavior.
-
-The former browser-server limitation and pending-capture notes in earlier dated logs describe the state when those logs were written. The public final screenshots and test records listed above supersede those status notes.
+Screenshots of the latest answer-first UI, including the native closed reference disclosure and formatted English answers, are still pending. The current sandbox could not bind a local web server, and the browser URL policy blocks automated access to `file:` pages. In a browser-enabled environment, run `node task3/v2/scripts/e2e_v2.cjs` from the project root; the script defaults to the local `file:` page and can use an HTTP URL through `V2_SITE_URL`. It should create five unsuffixed screenshots, including the repaired agent, CNN, and MCP answers, and replace the pending marker in `e2e_results_v2.json`. Keep the prior evidence for the change history.

@@ -1,0 +1,224 @@
+{
+  "version": "V1",
+  "url": "http://127.0.0.1:8765/coursework/website/V1/index.html",
+  "browser": "Google Chrome headless (Playwright)",
+  "viewport": "1512x982 CSS px",
+  "date": "2026-10-28T11:32:49.844Z",
+  "checks": [
+    {
+      "id": "E2E-01",
+      "name": "Desktop homepage loads",
+      "status": "PASS",
+      "note": "HTTP 200; Aria’s Sky Journal"
+    },
+    {
+      "id": "E2E-02",
+      "name": "Navigate to home",
+      "status": "PASS",
+      "note": "http://127.0.0.1:8765/coursework/website/V1/index.html#home"
+    },
+    {
+      "id": "E2E-02",
+      "name": "Navigate to highlights",
+      "status": "PASS",
+      "note": "http://127.0.0.1:8765/coursework/website/V1/index.html#highlights"
+    },
+    {
+      "id": "E2E-02",
+      "name": "Navigate to projects",
+      "status": "PASS",
+      "note": "http://127.0.0.1:8765/coursework/website/V1/index.html#projects"
+    },
+    {
+      "id": "E2E-02",
+      "name": "Navigate to life",
+      "status": "PASS",
+      "note": "http://127.0.0.1:8765/coursework/website/V1/index.html#life"
+    },
+    {
+      "id": "E2E-02",
+      "name": "Navigate to guestbook",
+      "status": "PASS",
+      "note": "http://127.0.0.1:8765/coursework/website/V1/index.html#guestbook"
+    },
+    {
+      "id": "E2E-02b",
+      "name": "V1 chapter rail names all three destinations",
+      "status": "PASS",
+      "note": "Highlights · Projects · Life"
+    },
+    {
+      "id": "E2E-03",
+      "name": "Hero carousel advances",
+      "status": "PASS",
+      "note": "WILLOWS AND QUIET WATERS"
+    },
+    {
+      "id": "E2E-03b",
+      "name": "V1 scene rules sit on the caption line and select a scene",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-04a",
+      "name": "V1 undergraduate photo opens its education details",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-04e",
+      "name": "Postgraduate education details expand independently",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-04c",
+      "name": "V1 project story index jumps to an individual story",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-04d",
+      "name": "V1 project stories render as a semantic atlas list",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-04b",
+      "name": "Project details expand",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-04f",
+      "name": "Opening one story leaves the adjacent story folded and compact",
+      "status": "PASS",
+      "note": "{\"open\":1,\"first\":409,\"second\":283,\"secondExpanded\":\"false\"}"
+    },
+    {
+      "id": "E2E-05a",
+      "name": "Research filter returns two projects",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-05b",
+      "name": "System-build filter returns two projects",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-05c",
+      "name": "All filter returns four projects",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-06a",
+      "name": "Favorite appears in Saved",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-06b",
+      "name": "Favorite persists after reload",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-06c",
+      "name": "Test favorite can be removed",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-07a",
+      "name": "Leading MapReduce excerpt is relevant and cites Big Data Computing",
+      "status": "PASS",
+      "note": "阶段 课件原文 要点 --- --- --- 判断适用性 Determine if the problem is parallelizable and solvable using MapReduce 两个条件：可并行 + 可用 MapReduce 解 检查数据形态 Is the data Write Once Read Many (WORM )? WORM 数据一次写入、多次读取，是并行的前提（无需锁） 设计与实现 Design and implement Mapper c"
+    },
+    {
+      "id": "E2E-07b",
+      "name": "Unsupported query receives no-evidence response",
+      "status": "PASS",
+      "note": "Hmm, I couldn’t find that in my notes. Try asking about prompt engineering, MapReduce, RAG or agent memory."
+    },
+    {
+      "id": "E2E-07c",
+      "name": "Paraphrased unsupported query also receives no-evidence response",
+      "status": "PASS",
+      "note": "Hmm, I couldn’t find that in my notes. Try asking about prompt engineering, MapReduce, RAG or agent memory."
+    },
+    {
+      "id": "E2E-08c",
+      "name": "V1 scrapbook wall retains all nine existing moments",
+      "status": "PASS",
+      "note": "items=9; V1 wall=true"
+    },
+    {
+      "id": "E2E-08d",
+      "name": "V1 media wall is a compact mosaic: uniform small tiles, one portrait spanning both bands, captions outside the frame",
+      "status": "PASS",
+      "note": "{\"median\":198,\"spanning\":1,\"widths\":[267],\"flushRight\":true,\"compact\":true,\"wallMetrics\":[{\"x\":70,\"y\":819,\"w\":267,\"h\":198,\"captionOutside\":true},{\"x\":346,\"y\":819,\"w\":267,\"h\":198,\"captionOutside\":true},{\"x\":623,\"y\":819,\"w\":267,\"h\":198,\"captionOutside\":true},{\"x\":899,\"y\":819,\"w\":267,\"h\":198,\"captionOutside\":true},{\"x\":70,\"y\":1036,\"w\":267,\"h\":198,\"captionOutside\":true},{\"x\":346,\"y\":1036,\"w\":267,\"h\":198,\"captionOutside\":true},{\"x\":1176,\"y\":819,\"w\":267,\"h\":420,\"captionOutside\":true},{\"x\":623,\"y\":1036,\"w\":267,\"h\":198,\"captionOutside\":true},{\"x\":899,\"y\":1036,\"w\":267,\"h\":198,\"captionOutside\":true}]}"
+    },
+    {
+      "id": "E2E-08",
+      "name": "Photo preview opens",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-08b",
+      "name": "Photo preview closes",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-08e",
+      "name": "Photo preview opens from the keyboard",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-08f",
+      "name": "Keyboard Escape closes the photo preview",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-09",
+      "name": "Video preview opens with controls",
+      "status": "PASS",
+      "note": "{\"controls\":true,\"source\":\"http://127.0.0.1:8765/coursework/website/V1/assets/life-video-1.mp4\",\"readyState\":1}"
+    },
+    {
+      "id": "E2E-09b",
+      "name": "Video preview closes",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-10a",
+      "name": "Music can be played and paused by user control",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-11",
+      "name": "Empty guestbook input does not create a note",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "id": "E2E-12",
+      "name": "No uncaught browser errors",
+      "status": "PASS",
+      "note": "No page errors or console errors."
+    }
+  ],
+  "ignoredFavicon404": [
+    "Failed to load resource: the server responded with a status of 404 (File not found)",
+    "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "consoleErrors": []
+}

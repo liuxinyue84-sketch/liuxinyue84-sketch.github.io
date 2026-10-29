@@ -1,18 +1,18 @@
 # Human vs AI Judge Comparison and Limitations
 
-## Current version comparison — 2026-10-28
+## Current official Task 2 comparison — 2026-10-28
 
-All AI values below come from independent clean-session Judge outputs saved without human scores in the Judge input.
+The table below compares the fixed four-criterion Task 2 human assessment with each independent AI Judge result. The official human scores are recorded in `human_self_assessment.md`, `human_v1_assessment.md`, and `human_v2_assessment.md`. The V2 value uses the latest clean-session rerun only.
 
-| Version | Human total | AI Judge total | Difference (AI − human) |
-|---|---:|---:|---:|
-| V0 | 76 / 100 | 81 / 100 | +5 |
-| V1 Few-shot | 86 / 100 | 85 / 100* | −1 |
-| V2-RAG | 86 / 100 | 91 / 100 | +5 |
+| Version | Human total | AI Judge raw total | AI Judge recomputed total | Difference (raw AI − human) |
+|---|---:|---:|---:|---:|
+| V0 | 76 / 100 | 81 / 100 | 81 / 100 | +5 |
+| V1 Few-shot | 86 / 100 | 85 / 100 | 86 / 100 | −1 |
+| V2-RAG | 86 / 100 | 91 / 100 | 91 / 100 | +5 |
 
-#*The V1 raw Judge output states 85/100, although its listed criterion scores recompute to 86/100. The comparison uses the unedited raw total; the arithmetic discrepancy is disclosed.
+The V1 human criterion scores (5, 4, 4, 4) produce 86/100 under the fixed weights. The raw V1 AI Judge output states 85/100, while its listed criterion scores (also 5, 4, 4, 4) recompute to 86/100. The raw value is preserved for auditability; the recomputed value is shown separately and is not substituted for the raw output.
 
-## Criterion-level comparison
+### Criterion-level comparison
 
 | Version | Criterion | Human / 5 | AI / 5 | Difference |
 |---|---|---:|---:|---:|
@@ -29,19 +29,19 @@ All AI values below come from independent clean-session Judge outputs saved with
 | V2-RAG | Readability & visual consistency | 4 | 4 | 0 |
 | V2-RAG | Interaction robustness | 4 | 4 | 0 |
 
-## Version-specific raw outputs
+### Raw AI Judge outputs
 
 - V0: `ai_raw_output_v0.md`
-- V1: `ai_raw_output_v1.md`
-- V2-RAG latest rerun: `ai_raw_output_v2_rerun.md` (91/100); the earlier V2 run is retained separately if present.
+- V1 Few-shot: `ai_raw_output_v1.md`
+- V2-RAG latest rerun: `ai_raw_output_v2_rerun.md`
 
-The raw Judge responses are preserved verbatim. The Judge sessions received only their fixed rubric/prompt and version-specific evidence, not human scores or this comparison.
+The current table does not use the earlier V2 pre-rerun score. The latest V2 raw output is preserved verbatim. Judge sessions received their fixed rubric/prompt and version-specific evidence, not human scores or this comparison.
 
 ## Disagreement analysis
 
 V0 received a higher AI content score because the Judge treated the source evidence as sufficient to establish complete project contributions, while the human score was conservative about evidence coverage. V0 readability was scored lower by AI because only limited visual evidence was supplied; the human score relied on broader local inspection. V0 robustness was scored higher by AI because it counted the dated E2E interactions despite the untested valid Guestbook path.
 
-V1 scores agree because the latest R12 evidence supplies both 35/35 E2E checks and 48-group content parity. The initial V2 Judge run scored 81/100 because the supplied evidence did not establish non-RAG portfolio behavior. After a fresh public non-RAG E2E record was added, the independent V2 Judge rerun scored 91/100 and raised Navigation & Task Completion from 3 to 5. The human score remains 86/100 because the available checks still do not cover valid Guestbook submission, reload persistence, mobile interaction, or stress behavior.
+V1 criterion-level scores agree (5, 4, 4, 4). The human weighted total is 86; the AI raw total is 85, but recomputing from its listed criterion scores yields 86. The one-point raw-total difference is an arithmetic discrepancy in the AI response, not a criterion-level disagreement. The latest R12 evidence supplies both 35/35 E2E checks and 48-group content parity. For V2, the current AI Judge awards 5/5 for navigation based on fresh public non-RAG interaction evidence, while the independently recorded human score remains 4/5 because it was assessed under a more conservative evidence threshold.
 
 ## Evaluator limitations
 
@@ -55,7 +55,3 @@ V1 scores agree because the latest R12 evidence supplies both 35/35 E2E checks a
 ## Interpretation rule
 
 AI scores are a second assessment, not ground truth. Disagreements are reported transparently, with raw outputs preserved. The V2 human score was independently assessed from current evidence and was not supplied to the V2 Judge.
-
-## V2 Judge rerun after public non-RAG evidence — 2026-10-28
-
-After adding the fresh public RAG and non-RAG E2E records, an independent V2 Judge rerun produced **91/100** (5, 5, 4, 4). The earlier V2 score of 81/100 remains preserved as the pre-rerun result; it is not overwritten. The rerun raised Navigation & Task Completion from 3 to 5 because the new evidence verified navigation, education disclosure, project expansion/filtering/saving, Life media/photo preview, Guestbook form availability, and nine RAG cases. Readability remained 4 because only the 1512x1000 desktop viewport was evidenced. Robustness remained 4 because the non-RAG run recorded one favicon 404 and did not test reload persistence, stress behavior, or mobile interaction.

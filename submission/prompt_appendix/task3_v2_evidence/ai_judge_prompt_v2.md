@@ -67,8 +67,8 @@ The clean-session Judge should receive only this prompt, `rubric.md`, and the fo
 
 ## Clean Judge run metadata
 
-- Model/service: Independent clean-session Judge agent; the specific model/service is not recorded in the preserved raw output.
-- New blank session used: Yes, according to the raw output's clean-session metadata.
-- Date/time (Asia/Hong_Kong): 2026-10-28; exact time was not recorded.
-- Evidence IDs sent: A transfer manifest was not preserved. The raw Judge response cites E3, E4, E5, NR1, NR-projects, NR-detail, NR-highlights, NR-life, NR-guestbook, NR-edu, NR-filter, NR-save, and NR-media. The prompt's evidence bundle lists E1–E6.
-- Raw output file/hash: `evaluation/ai_raw_output_v2_rerun.md` — SHA-256 `c3125d67cfd582d75c70fac03710c7c8f3e4e4a4e891f14c8bae7438fed0f8dc`. The same digest was verified against `task3/v2/evaluation/ai_judge_raw_output_rerun_2026-10-28.md`.
+- Model/service: Independent clean-session Judge agent. Exact model and service version: Not recorded in the surviving run record.
+- New blank session used: Yes, described in the raw output as an independent clean-session Judge run. Session ID: Not recorded.
+- Date/time (Asia/Hong_Kong): 2026-10-28; exact time not recorded.
+- Evidence IDs sent: Not recorded as a separate run manifest. The retained prompt enumerates E1, E2, E3, E3a-E3c, E4, E4a, and E5; E6 is conditional for cross-version comparison. The raw response cites NR-* evidence IDs as well. These references do not establish the exact transmitted evidence list.
+- Raw output file/hash: `../../evaluation/ai_raw_output_v2_rerun.md`; SHA-256 `c3125d67cfd582d75c70fac03710c7c8f3e4e4a4e891f14c8bae7438fed0f8dc`.

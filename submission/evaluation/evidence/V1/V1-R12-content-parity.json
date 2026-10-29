@@ -1,0 +1,35 @@
+{
+  "v0Url": "http://127.0.0.1:8765/coursework/website/V0/index.html",
+  "v1Url": "http://127.0.0.1:8765/coursework/website/V1/index.html",
+  "viewport": "1512x982 CSS px",
+  "comparedCopyGroups": 48,
+  "status": "PASS",
+  "differences": [],
+  "structureErrors": [],
+  "v0Structure": {
+    ".journal-cover": 0,
+    ".chapter-rail": 0,
+    ".academic-spread": 0,
+    ".education-journey > .education-stop": 0,
+    ".skill-ledger": 0,
+    ".knowledge-workbench": 0,
+    ".project-atlas-index": 0,
+    "#project-list.projects-atlas": 0,
+    ".life-spread": 0,
+    "#media-gallery.media-wall": 0,
+    ".guestbook-postcard": 0
+  },
+  "v1Structure": {
+    ".journal-cover": 1,
+    ".chapter-rail": 1,
+    ".academic-spread": 1,
+    ".education-journey > .education-stop": 2,
+    ".skill-ledger": 1,
+    ".knowledge-workbench": 1,
+    ".project-atlas-index": 1,
+    "#project-list.projects-atlas": 1,
+    ".life-spread": 1,
+    "#media-gallery.media-wall": 1,
+    ".guestbook-postcard": 1
+  }
+}

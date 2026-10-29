@@ -56,12 +56,6 @@
 
 该轮要求分为：删除两条成绩，并排查 RAG 不能使用的原因。
 
-### P0-09 对应的错误截图反馈（当前对话原文摘要）
-
-> 还是没改啊，而且那两个成绩也没删
-
-此反馈指向打开了旧的 V0 文件路径/旧页面仍显示错误结果。后续操作将改动同步到用户实际打开的 `outputs/Aria_Sky_Journal_V0/` 并重新打包；浏览器 `file://` 缓存/旧标签页需刷新。
-
 ## 原始模型输出说明
 
 当前证据目录包含冻结 V0 的完整 HTML、CSS、JavaScript 与静态资源，可作为最终交付源码。但未取得 Trae 各轮完整原始会话导出，因此不能声称它们是 LLM 每轮原始输出。实际 HTML/代码以 `website/V0/` 为准；以下是关键实现片段索引，完整代码请直接查相应文件：
@@ -83,4 +77,4 @@
 | FIX-03 | 修改后用户仍看到旧成绩/旧 RAG 报错 | `outputs/Aria_Sky_Journal_V0/` 与 V0 zip | 将修订同步到用户实际打开的官方 V0 目录并重建 zip；解释旧 `file://` 标签需刷新 | 当前冻结目录包含修订源码；此前截图证明用户打开的是该路径 |
 | FIX-04 | 原页面从旧 V1 更名为官方 coursework V0，容易让文件名/代码标识混淆 | `VERSION.txt`、`README.md`、`index.html`、`style.css`、`app.js`，以及压缩包 | 将版本标识与文件命名统一为 V0；保留 `aria-guestbook-v2` 作为 localStorage 数据键，因为它是存储键而非网页版本 | 当前冻结目录 README/VERSION 有说明 |
 
-**冻结 URL：** https://liuxinyue84-sketch.github.io/ （GitHub Pages，公开可访问）。线上浏览器测试记录见 `../../evaluation/evidence/V0/2026-10-23_live_e2e_test.md`。测试截图曾在浏览器会话中展示，但截图文件仍需单独导出到证据目录。
+**冻结 URL：** https://liuxinyue84-sketch.github.io/ （GitHub Pages，公开可访问）。线上浏览器测试记录见 `../../evaluation/evidence/V0/2026-10-23_live_e2e_test.md`。已从项目归档恢复实际截图并纳入 `../../evaluation/evidence/V0/`；恢复的原始测试日志和截图没有重新制作。
